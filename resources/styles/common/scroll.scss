@@ -1,0 +1,59 @@
+.scroll-top {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  
+    .progress-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+  
+      path {
+        fill: none;
+        stroke: #1f2029;
+        stroke-width: 4;
+        stroke-dasharray: 307.92;
+        stroke-dashoffset: 307.92;
+        transition: stroke-dashoffset 0.2s linear;
+      }
+    }
+  
+    .scroll-arrow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      fill: #1f2029;
+      transition: fill 0.2s ease;
+  
+      &:hover {
+        fill: #fd6b18;
+      }
+    }
+  
+    &.hidden {
+      display: none;
+    }
+  }
+  

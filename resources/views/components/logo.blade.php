@@ -1,0 +1,154 @@
+@props(['class' => ''])
+
+<svg
+    {{ $attributes->merge(['class' => $class]) }}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 324.2 69.4"
+    aria-hidden="true">
+    <defs>
+        <style>
+            .cls-1,
+            .cls-2 {
+                fill: none;
+            }
+
+            .cls-3,
+            .cls-4 {
+                fill: #f36c24;
+            }
+
+            .cls-5,
+            .cls-6,
+            .cls-7,
+            .cls-8,
+            .cls-9,
+            .cls-4 {
+                isolation: isolate;
+            }
+
+            .cls-10 {
+                clip-path: url(#clippath-1);
+            }
+
+            .cls-11 {
+                fill: #e05b26;
+            }
+
+            .cls-6,
+            .cls-7,
+            .cls-8,
+            .cls-9 {
+                fill: currentColor;
+            }
+
+            .cls-6,
+            .cls-7,
+            .cls-8,
+            .cls-9,
+            .cls-4 {
+                font-family: OpenSans, 'Open Sans';
+            }
+
+            .cls-6,
+            .cls-7,
+            .cls-8,
+            .cls-4 {
+                font-size: 11.7px;
+            }
+
+            .cls-7,
+            .cls-4 {
+                letter-spacing: .2em;
+            }
+
+            .cls-8 {
+                letter-spacing: .2em;
+            }
+
+            .cls-2 {
+                stroke: #bcbec0;
+                stroke-miterlimit: 10;
+                stroke-width: .5px;
+            }
+
+            .cls-12 {
+                clip-path: url(#clippath);
+            }
+
+            .cls-9 {
+                font-size: 19.2px;
+            }
+        </style>
+        <clipPath id="clippath">
+            <rect class="cls-1" x="-105.6" y="-71.9" width="510.1" height="216" />
+        </clipPath>
+        <clipPath id="clippath-1">
+            <rect class="cls-1" x="-105.6" y="-71.9" width="510.1" height="216" />
+        </clipPath>
+    </defs>
+    <!-- Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)  -->
+    <g>
+        <g id="Layer_2">
+            <g id="Layer_1-2">
+                <g class="cls-12">
+                    <g>
+                        <line class="cls-2" x1="76.3" y1="69" x2="76.3" />
+                        <line class="cls-2" x1="76.3" y1="70" x2="76.3" y2="1" />
+                        <line class="cls-2" x1="76.3" y1="69" x2="76.3" />
+                        <g class="cls-5">
+                            <text class="cls-9" transform="translate(95.3 21)">
+                                <tspan x="0" y="0">FreeBalance International</tspan>
+                            </text>
+                        </g>
+                        <g class="cls-5">
+                            <text class="cls-9" transform="translate(95.3 40.3)">
+                                <tspan x="0" y="0">Steering Committee</tspan>
+                            </text>
+                        </g>
+                        <g class="cls-5">
+                            <text class="cls-4" transform="translate(95.3 59.5)">
+                                <tspan x="0" y="0">2025</tspan>
+                            </text>
+                        </g>
+                        <g class="cls-5">
+                            <text class="cls-8" transform="translate(136.9 59.5)">
+                                <tspan x="0" y="0">T</tspan>
+                            </text>
+                            <text class="cls-7" transform="translate(145.7 59.5)">
+                                <tspan x="0" y="0">IMO</tspan>
+                            </text>
+                            <text class="cls-8" transform="translate(175.8 59.5)">
+                                <tspan x="0" y="0">R</tspan>
+                            </text>
+                            <text class="cls-8" transform="translate(185.4 59.5)">
+                                <tspan x="0" y="0">-</tspan>
+                            </text>
+                            <text class="cls-8" transform="translate(191.5 59.5)">
+                                <tspan x="0" y="0">LE</tspan>
+                            </text>
+                            <text class="cls-8" transform="translate(208.8 59.5)">
+                                <tspan x="0" y="0">S</tspan>
+                            </text>
+                            <text class="cls-8" transform="translate(217.6 59.5)">
+                                <tspan x="0" y="0">T</tspan>
+                            </text>
+                            <text class="cls-6" transform="translate(226.4 59.5)">
+                                <tspan x="0" y="0">E</tspan>
+                            </text>
+                        </g>
+                        <g class="cls-10">
+                            <g>
+                                <path class="cls-3" d="M7.8,69.1c4.3,0,7.8-3.5,7.8-7.8s-3.5-7.8-7.8-7.8S0,57,0,61.3s3.5,7.8,7.8,7.8" />
+                                <path class="cls-3" d="M51.9,10.2L45.1,1c-.3-.4-.8-.7-1.3-.7H7.8C3.5.3,0,3.8,0,8.1v19.8C0,23.7,3.5,22,7.8,22h35.9c.5,0,1-.2,1.3-.7l6.8-9.2c.4-.6.4-1.4,0-2" />
+                                <path class="cls-3" d="M38.4,36.4l-6.8-9.2c-.3-.4-.8-.7-1.3-.7H7.8C3.5,26.6,0,30,0,34.4v19.9C0,49.9,3.5,48.2,7.8,48.2h22.5c.5,0,1-.2,1.3-.7l6.8-9.2c.4-.6.4-1.4,0-2" />
+                                <path class="cls-11" d="M7.4,53.5C3.3,53.7,0,57.1,0,61.3s3.3,7.6,7.4,7.8v-15.6Z" />
+                                <path class="cls-11" d="M7.5,26.6c-4.2.2-7.5,3.6-7.5,7.8v19.8c0-4.2,3.3-5.9,7.5-6v-21.7Z" />
+                                <path class="cls-11" d="M7.5.3C3.3.5,0,3.9,0,8.1v19.8c0-4.2,3.3-5.9,7.5-6V.3Z" />
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
