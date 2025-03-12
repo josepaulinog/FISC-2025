@@ -12,277 +12,282 @@
         <h2 class="text-3xl mb-4">Video Gallery</h2>
         <div class="w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
         <p class="text-lg max-w-2xl mx-auto text-neutral-500 dark:text-neutral-400 lg:mb-8">
-        Missed a session? Watch expert discussions and key insights from FISC 2025, featuring top voices in government finance, technology, and policy.
+            Missed a session? Watch expert discussions and key insights from FISC 2025, featuring top voices in government finance, technology, and policy.
         </p>
     </div>
 
     <!-- Alpine.js Video Gallery -->
     <div x-data="videoGallery()" x-init="initialize()">
-        <!-- Filter Row -->
-        <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-10">
-            <!-- Year Filter -->
-            <div>
-                <h3 class="text-lg font-medium mb-3">Filter by Year</h3>
-                <div class="flex flex-wrap gap-2" id="year-filters">
-                    <button class="btn btn-sm"
-                        :class="activeYear === 'all' ? 'btn-primary text-white' : 'btn-outline'"
-                        @click="setYearFilter('all')">
-                        All Years
-                    </button>
+    @php
+// Get all events with videos
+$events_with_videos = get_posts([
+    'post_type' => 'tribe_events',
+    'posts_per_page' => -1,
+    'meta_query' => [
+        [
+            'key' => 'enable_video',
+            'value' => '1',
+            'compare' => '='
+        ],
+        [
+            'key' => 'video_embed',
+            'compare' => 'EXISTS'
+        ]
+    ]
+]);
 
-                    @php
-                    // Get all events with videos
-                    $events_with_videos = get_posts([
-                    'post_type' => 'tribe_events',
-                    'posts_per_page' => -1,
-                    'meta_query' => [
-                    [
-                    'key' => 'enable_video',
-                    'value' => '1',
-                    'compare' => '='
-                    ],
-                    [
-                    'key' => 'video_embed',
-                    'compare' => 'EXISTS'
-                    ]
-                    ]
-                    ]);
+// Define custom days in the specific order
+$custom_days = [
+    '2025-04-07' => ['label' => 'Day 1', 'date' => 'April 7, 2025'],
+    '2025-04-08' => ['label' => 'Day 2', 'date' => 'April 8, 2025'],
+    '2025-04-09' => ['label' => 'Day 3', 'date' => 'April 9, 2025'],
+    '2025-04-10' => ['label' => 'Day 4', 'date' => 'April 10, 2025'],
+];
 
-                    // Extract years from events
-                    $years = [];
-                    foreach ($events_with_videos as $event) {
-                    $event_date = get_post_meta($event->ID, '_EventStartDate', true);
-                    if ($event_date) {
-                    $year = date('Y', strtotime($event_date));
-                    if (!in_array($year, $years)) {
-                    $years[] = $year;
-                    }
-                    }
-                    }
+// Extract days from events (for filtering purposes)
+$days = [];
+foreach ($events_with_videos as $event) {
+    $event_date = get_post_meta($event->ID, '_EventStartDate', true);
+    if ($event_date) {
+        $day = date('Y-m-d', strtotime($event_date));
+        if (isset($custom_days[$day])) {
+            $days[$day] = $custom_days[$day];
+        }
+    }
+}
 
-                    // Sort years in descending order
-                    rsort($years);
-                    @endphp
-
-                    @foreach($years as $year)
-                    <button class="btn btn-sm"
-                        :class="activeYear === '{{ $year }}' ? 'btn-primary text-white' : 'btn-outline'"
-                        @click="setYearFilter('{{ $year }}')">
-                        {{ $year }}
-                    </button>
-                    @endforeach
-                </div>
-            </div>
-
-            <!-- Category Filter -->
-            <div>
-                <h3 class="text-lg font-medium mb-3">Filter by Category</h3>
-                <div class="tabs tabs-boxed" id="category-filters">
-                    <button class="tab"
-                        :class="{ 'bg-primary text-white': activeCategory === 'all' }"
-                        @click="setCategoryFilter('all')">
-                        All
-                    </button>
-
-                    @php
-                    // Get categories from events with videos
-                    $event_categories = [];
-                    foreach ($events_with_videos as $event) {
-                    $terms = get_the_terms($event->ID, 'tribe_events_cat');
-                    if ($terms && !is_wp_error($terms)) {
-                    foreach ($terms as $term) {
-                    if (!isset($event_categories[$term->slug])) {
-                    $event_categories[$term->slug] = [
+// Get categories from events with videos
+$event_categories = [];
+foreach ($events_with_videos as $event) {
+    $terms = get_the_terms($event->ID, 'tribe_events_cat');
+    if ($terms && !is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            if (!isset($event_categories[$term->slug])) {
+                $event_categories[$term->slug] = [
                     'name' => $term->name,
                     'count' => 1
-                    ];
-                    } else {
-                    $event_categories[$term->slug]['count']++;
-                    }
-                    }
-                    }
-                    }
+                ];
+            } else {
+                $event_categories[$term->slug]['count']++;
+            }
+        }
+    }
+}
 
-                    // Sort categories by count
-                    uasort($event_categories, function($a, $b) {
-                    return $b['count'] - $a['count'];
-                    });
-                    @endphp
+// Sort categories by count
+uasort($event_categories, function($a, $b) {
+    return $b['count'] - $a['count'];
+});
+@endphp
 
-                    @foreach($event_categories as $slug => $category)
-                    <button class="tab"
-                        :class="{ 'bg-primary text-white': activeCategory === '{{ $slug }}' }"
-                        @click="setCategoryFilter('{{ $slug }}')">
-                        {{ $category['name'] }}
-                        <span class="ml-1 text-xs opacity-70">({{ $category['count'] }})</span>
-                    </button>
-                    @endforeach
-                </div>
+<!-- Day Tabs -->
+<div class="tabs tabs-boxed mb-10">
+    <a class="h-10 tab tab-bordered day-tab" 
+       :class="activeDay === 'all' ? 'tab-active text-primary' : ''" 
+       data-day="all" 
+       @click="setDayFilter('all')">
+        All Days
+    </a>
+    @foreach($custom_days as $day_key => $day_info)
+        <a class="h-10 tab tab-bordered day-tab" 
+           :class="activeDay === '{{ $day_key }}' ? 'tab-active text-primary' : ''" 
+           data-day="{{ $day_key }}" 
+           @click="setDayFilter('{{ $day_key }}')">
+            <div class="flex flex-col items-center">
+                <span class="font-medium">{{ $day_info['label'] }}</span>
+                <span class="text-sm hidden">{{ $day_info['date'] }}</span>
             </div>
+        </a>
+    @endforeach
+</div>
 
-            <!-- Search & Reset -->
-            <div class="flex items-center gap-2">
-                <div class="form-control">
-                    <input type="text"
-                        placeholder="Search videos..."
-                        class="input input-bordered w-full md:w-auto"
-                        x-model="searchQuery"
-                        @input="updateFilters()">
-                </div>
-                <button class="btn btn-ghost btn-sm" @click="resetFilters()">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                    </svg>
-                    Reset
-                </button>
-            </div>
+<div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-10">
+    <!-- Category Filter -->
+    <div>
+        <h3 class="text-lg font-medium mb-3">Filter by Category</h3>
+        <div role="tablist" class="filter-tabs tabs tabs-lifted tabs-lg">
+            <a class="tab tab-bordered filter-tab" 
+               :class="{ 'tab-active text-primary': activeCategory === 'all' }"
+               data-filter="all" 
+               @click="setCategoryFilter('all')">
+                All
+            </a>
+            
+            @foreach($event_categories as $slug => $category)
+            <a class="tab tab-bordered filter-tab" 
+               :class="{ 'tab-active text-primary': activeCategory === '{{ $slug }}' }"
+               data-filter="{{ $slug }}" 
+               @click="setCategoryFilter('{{ $slug }}')">
+                {{ $category['name'] }}
+                <span class="ml-1 text-xs opacity-70">({{ $category['count'] }})</span>
+            </a>
+            @endforeach
         </div>
+    </div>
+
+    <!-- Search & Reset -->
+    <div class="flex items-center gap-2">
+        <div class="form-control">
+            <input type="text"
+                placeholder="Search videos..."
+                class="input input-bordered w-full md:w-auto"
+                x-model="searchQuery"
+                @input="updateFilters()">
+        </div>
+        <button class="btn btn-ghost btn-sm" @click="resetFilters()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            Reset
+        </button>
+    </div>
+</div>       
 
         <!-- Video Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-grid" :class="{ 'opacity-50': isLoading }">
-        @php
-foreach ($events_with_videos as $event) {
-    $event_id = $event->ID;
-    $video_url = get_post_meta($event_id, 'video_embed', true);
+            @php
+            foreach ($events_with_videos as $event) {
+            $event_id = $event->ID;
+            $video_url = get_post_meta($event_id, 'video_embed', true);
 
-    // Skip if no video URL
-    if (empty($video_url)) {
-        continue;
-    }
+            // Skip if no video URL
+            if (empty($video_url)) {
+            continue;
+            }
 
-    // *** VIDEO COVER IMAGE RETRIEVAL ***
-    $video_cover_id = get_post_meta($event_id, 'video_cover', true);
-    $thumbnail_url = '';
+            // *** VIDEO COVER IMAGE RETRIEVAL ***
+            $video_cover_id = get_post_meta($event_id, 'video_cover', true);
+            $thumbnail_url = '';
 
-    if (!empty($video_cover_id)) {
-        // If it's an ID (numeric)
-        if (is_numeric($video_cover_id)) {
+            if (!empty($video_cover_id)) {
+            // If it's an ID (numeric)
+            if (is_numeric($video_cover_id)) {
             $image_array = wp_get_attachment_image_src($video_cover_id, 'large');
             if ($image_array) {
-                $thumbnail_url = $image_array[0]; // The URL is the first element of the array
+            $thumbnail_url = $image_array[0]; // The URL is the first element of the array
             }
-        }
-        // If it's already an array with URL key (ACF image field format)
-        else if (is_array($video_cover_id) && isset($video_cover_id['url'])) {
+            }
+            // If it's already an array with URL key (ACF image field format)
+            else if (is_array($video_cover_id) && isset($video_cover_id['url'])) {
             $thumbnail_url = $video_cover_id['url'];
-        }
-        // If it's a direct URL string
-        else if (is_string($video_cover_id) && filter_var($video_cover_id, FILTER_VALIDATE_URL)) {
+            }
+            // If it's a direct URL string
+            else if (is_string($video_cover_id) && filter_var($video_cover_id, FILTER_VALIDATE_URL)) {
             $thumbnail_url = $video_cover_id;
-        }
-    }
+            }
+            }
 
-    // Fallback to featured image if no video cover
-    if (empty($thumbnail_url) && has_post_thumbnail($event_id)) {
-        $thumbnail_url = get_the_post_thumbnail_url($event_id, 'large');
-    }
+            // Fallback to featured image if no video cover
+            if (empty($thumbnail_url) && has_post_thumbnail($event_id)) {
+            $thumbnail_url = get_the_post_thumbnail_url($event_id, 'large');
+            }
 
-    // Final fallback to placeholder
-    if (empty($thumbnail_url)) {
-        $thumbnail_url = get_template_directory_uri() . '/resources/images/video-placeholder.jpg';
-    }
+            // Final fallback to placeholder
+            if (empty($thumbnail_url)) {
+            $thumbnail_url = get_template_directory_uri() . '/resources/images/video-placeholder.jpg';
+            }
 
-    // Get event date info
-    $event_date = get_post_meta($event_id, '_EventStartDate', true);
-    $event_year = date('Y', strtotime($event_date));
-    $formatted_date = date('F j, Y', strtotime($event_date));
+            // Get event date info
+            $event_date = get_post_meta($event_id, '_EventStartDate', true);
+            $event_day = date('Y-m-d', strtotime($event_date));
+            $formatted_date = date('F j, Y', strtotime($event_date));
 
-    // Get event categories
-    $category_terms = get_the_terms($event_id, 'tribe_events_cat');
-    $categories = [];
-    $category_slugs = [];
+            // Get event categories
+            $category_terms = get_the_terms($event_id, 'tribe_events_cat');
+            $categories = [];
+            $category_slugs = [];
 
-    if ($category_terms && !is_wp_error($category_terms)) {
-        foreach ($category_terms as $term) {
+            if ($category_terms && !is_wp_error($category_terms)) {
+            foreach ($category_terms as $term) {
             $categories[] = $term->name;
             $category_slugs[] = $term->slug;
-        }
-    }
+            }
+            }
 
-    // Get excerpt and content
-    $excerpt = wp_trim_words(get_the_excerpt($event_id), 15);
-    $description = wpautop(get_the_excerpt($event_id));
-    
-    // Get event permalink
-    $event_url = get_permalink($event_id);
+            // Get excerpt and content
+            $excerpt = wp_trim_words(get_the_excerpt($event_id), 15);
+            $description = wpautop(get_the_excerpt($event_id));
 
-    // Prepare data attributes for filtering
-    $title_attr = esc_attr($event->post_title);
-    $videoUrlAttr = esc_attr($video_url);
-    $description_attr = esc_attr($description);
-    $event_url_attr = esc_attr($event_url);
-    $date_attr = esc_attr($formatted_date);
-    $categories_json = esc_attr(json_encode($categories));
+            // Get event permalink
+            $event_url = get_permalink($event_id);
 
-    echo '<div class="video-item-container"
-        data-year="' . $event_year . '"
-        data-categories="' . implode(' ', $category_slugs) . '"
-        data-title="' . strtolower($title_attr) . '"
-        data-date="' . $date_attr . '"
-        data-description="' . $description_attr . '"
-        data-event-url="' . $event_url_attr . '"
-        data-categories-json="' . $categories_json . '"
-        x-show="isVisible(\'' . $event_year . '\', \'' . implode(' ', $category_slugs) . '\', \'' . strtolower($title_attr) . '\')"
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0 transform scale-95"
-        x-transition:enter-end="opacity-100 transform scale-100"
-        x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="opacity-100 transform scale-100"
-        x-transition:leave-end="opacity-0 transform scale-95">';
-        echo '<div class="video-item group shadow-xl rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 border">
-        <div class="relative aspect-video cursor-pointer video-trigger"
-                data-video-url="' . $videoUrlAttr . '"
-                data-title="' . $title_attr . '"
+            // Prepare data attributes for filtering
+            $title_attr = esc_attr($event->post_title);
+            $videoUrlAttr = esc_attr($video_url);
+            $description_attr = esc_attr($description);
+            $event_url_attr = esc_attr($event_url);
+            $date_attr = esc_attr($formatted_date);
+            $categories_json = esc_attr(json_encode($categories));
+
+            echo '<div class="video-item-container"
+                data-day="' . $event_day . '"
+                data-categories="' . implode(' ', $category_slugs) . '"
+                data-title="' . strtolower($title_attr) . '"
                 data-date="' . $date_attr . '"
                 data-description="' . $description_attr . '"
                 data-event-url="' . $event_url_attr . '"
                 data-categories-json="' . $categories_json . '"
-                @click="openVideoModal(\'' . $videoUrlAttr . '\', \'' . $title_attr . '\')">
-                <img src="' . esc_url($thumbnail_url) . '"
-                    alt="' . $title_attr . '"
-                    class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 text-white opacity-80">
-                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z" clip-rule="evenodd" />
-                    </svg>
+                x-show="isVisible(\'' . $event_day . '\', \'' . implode(' ', $category_slugs) . '\', \'' . strtolower($title_attr) . '\')"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100 transform scale-100"
+                x-transition:leave-end="opacity-0 transform scale-95">';
+                echo '<div class="video-item group shadow-xl rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 border">
+                    <div class="relative aspect-video cursor-pointer video-trigger"
+                        data-video-url="' . $videoUrlAttr . '"
+                        data-title="' . $title_attr . '"
+                        data-date="' . $date_attr . '"
+                        data-description="' . $description_attr . '"
+                        data-event-url="' . $event_url_attr . '"
+                        data-categories-json="' . $categories_json . '"
+                        @click="openVideoModal(\'' . $videoUrlAttr . '\', \'' . $title_attr . '\')">
+                        <img src="' . esc_url($thumbnail_url) . '"
+                            alt="' . $title_attr . '"
+                            class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 text-white opacity-80">
+                                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold line-clamp-2">' . $event->post_title . '</h3>';
+                            if ($event_day) {
+                            echo '<span class="badge badge-primary hidden">' . $event_day . '</span>';
+                            }
+                            echo '
+                        </div>';
+
+                        if ($formatted_date) {
+                        echo '<div class="flex items-center text-sm text-gray-500 mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5" />
+                            </svg>
+                            ' . $formatted_date . '
+                        </div>';
+                        }
+
+                        if (count($categories) > 0) {
+                        echo '<div class="flex flex-wrap gap-1 mb-3">';
+                            foreach ($categories as $category) {
+                            echo '<span class="badge badge-outline badge-sm">' . $category . '</span>';
+                            }
+                            echo '</div>';
+                        }
+
+                        if ($excerpt) {
+                        echo '<div class="mt-2 line-clamp-2 text-sm text-gray-600">' . $excerpt . '</div>';
+                        }
+
+                        echo '
+                    </div>
                 </div>
-            </div>
-            <div class="p-4">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-lg font-semibold line-clamp-2">' . $event->post_title . '</h3>';
-                    if ($event_year) {
-                    echo '<span class="badge badge-primary hidden">' . $event_year . '</span>';
-                    }
-                    echo '
-                </div>';
-
-                if ($formatted_date) {
-                echo '<div class="flex items-center text-sm text-gray-500 mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5" />
-                    </svg>
-                    ' . $formatted_date . '
-                </div>';
-                }
-
-                if (count($categories) > 0) {
-                echo '<div class="flex flex-wrap gap-1 mb-3">';
-                    foreach ($categories as $category) {
-                    echo '<span class="badge badge-outline badge-sm">' . $category . '</span>';
-                    }
-                    echo '</div>';
-                }
-
-                if ($excerpt) {
-                echo '<div class="mt-2 line-clamp-2 text-sm text-gray-600">' . $excerpt . '</div>';
-                }
-
-                echo '
-            </div>
-        </div>
-    </div>';
-}
-@endphp
+            </div>';
+            }
+            @endphp
         </div>
 
         <!-- Empty State -->
@@ -292,7 +297,7 @@ foreach ($events_with_videos as $event) {
             </svg>
             <h3 class="text-2xl font-semibold mb-2">No videos found</h3>
             <p class="text-gray-600">No videos match your current filter criteria.</p>
-            <button class="btn btn-primary mt-4" @click="resetFilters()">Reset Filters</button>
+            <button class="btn btn-primary mt-4 text-white" @click="resetFilters()">Reset Filters</button>
         </div>
 
         <!-- Loading State -->
@@ -376,7 +381,7 @@ foreach ($events_with_videos as $event) {
             </div>
 
             <!-- Modal backdrop - clickable to close -->
-            <form method="dialog" class="modal-backdrop backdrop-filter backdrop-blur-lg">
+            <form method="dialog" class="modal-backdrop backdrop-filter backdrop-blur-sm">
                 <button>close</button>
             </form>
         </dialog>
@@ -386,222 +391,228 @@ foreach ($events_with_videos as $event) {
 
 <script>
     document.addEventListener('alpine:init', () => {
-    Alpine.data('videoGallery', () => ({
-        videoItems: [],
-        currentVideoIndex: 0,
-        currentVideoTitle: '',
-        currentVideoDate: '',
-        currentVideoDescription: '', 
-        currentVideoEventUrl: '',
-        currentVideoCategories: [],
-        activeYear: 'all',
-        activeCategory: 'all',
-        searchQuery: '',
-        isLoading: false,
-        hasVisibleItems: true,
+        Alpine.data('videoGallery', () => ({
+            videoItems: [],
+            currentVideoIndex: 0,
+            currentVideoTitle: '',
+            currentVideoDate: '',
+            currentVideoDescription: '',
+            currentVideoEventUrl: '',
+            currentVideoCategories: [],
+            activeDay: 'all',
+            activeCategory: 'all',
+            searchQuery: '',
+            isLoading: false,
+            hasVisibleItems: true,
 
-        initialize() {
-            // Collect all video items on page load
-            this.collectVideoItems();
-            
-            // Set up keyboard navigation for the modal
-            document.addEventListener('keydown', (e) => {
-                const modal = this.$refs.videoModal;
-                if (modal && modal.open) {
-                    if (e.key === 'ArrowLeft') {
-                        this.navigateVideo('prev');
-                    } else if (e.key === 'ArrowRight') {
-                        this.navigateVideo('next');
+            initialize() {
+                // Collect all video items on page load
+                this.collectVideoItems();
+
+                // Set up keyboard navigation for the modal
+                document.addEventListener('keydown', (e) => {
+                    const modal = this.$refs.videoModal;
+                    if (modal && modal.open) {
+                        if (e.key === 'ArrowLeft') {
+                            this.navigateVideo('prev');
+                        } else if (e.key === 'ArrowRight') {
+                            this.navigateVideo('next');
+                        }
+                    }
+                });
+
+                // Setup dialog close event to stop video playback
+                this.$refs.videoModal.addEventListener('close', () => {
+                    this.$refs.videoIframe.src = '';
+                });
+
+                // Initial check for visible items
+                this.checkVisibleItems();
+            },
+
+            collectVideoItems() {
+                // Get all video trigger elements and create the video item array
+                const videoTriggers = document.querySelectorAll('.video-trigger');
+                this.videoItems = Array.from(videoTriggers).map(trigger => {
+                    return {
+                        url: trigger.dataset.videoUrl,
+                        title: trigger.dataset.title,
+                        date: trigger.dataset.date || '',
+                        description: trigger.dataset.description || '',
+                        eventUrl: trigger.dataset.eventUrl || '',
+                        categories: trigger.dataset.categoriesJson ? JSON.parse(trigger.dataset.categoriesJson) : []
+                    };
+                });
+
+                console.log('Collected video items:', this.videoItems.length);
+            },
+
+            isVisible(day, categories, title) {
+                // Day filter - check if we should show all days or this specific day
+                const dayMatch = this.activeDay === 'all' || day === this.activeDay;
+
+                // Category filter
+                const categoryMatch = this.activeCategory === 'all' || categories.includes(this.activeCategory);
+
+                // Search filter
+                const searchMatch = this.searchQuery === '' || title.includes(this.searchQuery.toLowerCase());
+
+                return dayMatch && categoryMatch && searchMatch;
+            },
+
+            setDayFilter(day) {
+                // Changed from setdayFilter to setDayFilter
+                this.isLoading = true;
+                this.activeDay = day;
+
+                setTimeout(() => {
+                    this.isLoading = false;
+                    this.checkVisibleItems();
+                }, 300);
+            },
+
+            setCategoryFilter(category) {
+                this.isLoading = true;
+                this.activeCategory = category;
+
+                setTimeout(() => {
+                    this.isLoading = false;
+                    this.checkVisibleItems();
+                }, 300);
+            },
+
+            updateFilters() {
+                this.isLoading = true;
+
+                setTimeout(() => {
+                    this.isLoading = false;
+                    this.checkVisibleItems();
+                }, 300);
+            },
+
+            resetFilters() {
+                this.isLoading = true;
+                this.activeDay = 'all';
+                this.activeCategory = 'all';
+                this.searchQuery = '';
+
+                setTimeout(() => {
+                    this.isLoading = false;
+                    this.checkVisibleItems();
+                }, 300);
+            },
+
+            checkVisibleItems() {
+                const containers = document.querySelectorAll('.video-item-container');
+                this.hasVisibleItems = Array.from(containers).some(item => {
+                    const day = item.dataset.day;
+                    const categories = item.dataset.categories;
+                    const title = item.dataset.title;
+
+                    return this.isVisible(day, categories, title);
+                });
+            },
+
+            openVideoModal(videoUrl, title) {
+                // Find the video item in our collected array
+                const videoItem = this.videoItems.find(item =>
+                    item.url === videoUrl && item.title === title
+                );
+
+                if (!videoItem) {
+                    console.error('Video not found in collection:', videoUrl, title);
+                    return;
+                }
+
+                // Update all video metadata
+                this.currentVideoTitle = videoItem.title;
+                this.currentVideoDate = videoItem.date;
+                this.currentVideoDescription = videoItem.description;
+                this.currentVideoEventUrl = videoItem.eventUrl;
+                this.currentVideoCategories = videoItem.categories;
+
+                // Find the index for navigation
+                this.currentVideoIndex = this.videoItems.findIndex(item =>
+                    item.url === videoUrl && item.title === title
+                );
+
+                // Process YouTube URLs
+                if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
+                    // Extract YouTube ID
+                    let youtubeId = '';
+                    if (videoUrl.includes('youtube.com/watch?v=')) {
+                        youtubeId = videoUrl.split('v=')[1].split('&')[0];
+                    } else if (videoUrl.includes('youtu.be/')) {
+                        youtubeId = videoUrl.split('youtu.be/')[1].split('?')[0];
+                    } else if (videoUrl.includes('youtube.com/embed/')) {
+                        youtubeId = videoUrl.split('embed/')[1].split('?')[0];
+                    }
+
+                    if (youtubeId) {
+                        this.$refs.videoIframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
                     }
                 }
-            });
-
-            // Setup dialog close event to stop video playback
-            this.$refs.videoModal.addEventListener('close', () => {
-                this.$refs.videoIframe.src = '';
-            });
-
-            // Initial check for visible items
-            this.checkVisibleItems();
-        },
-        
-        collectVideoItems() {
-            // Get all video trigger elements and create the video item array
-            const videoTriggers = document.querySelectorAll('.video-trigger');
-            this.videoItems = Array.from(videoTriggers).map(trigger => {
-                return {
-                    url: trigger.dataset.videoUrl,
-                    title: trigger.dataset.title,
-                    date: trigger.dataset.date || '',
-                    description: trigger.dataset.description || '',
-                    eventUrl: trigger.dataset.eventUrl || '',
-                    categories: trigger.dataset.categoriesJson ? JSON.parse(trigger.dataset.categoriesJson) : []
-                };
-            });
-            
-            console.log('Collected video items:', this.videoItems.length);
-        },
-
-        isVisible(year, categories, title) {
-            const yearMatch = this.activeYear === 'all' || year === this.activeYear;
-            const categoryMatch = this.activeCategory === 'all' || categories.includes(this.activeCategory);
-            const searchMatch = this.searchQuery === '' || title.includes(this.searchQuery.toLowerCase());
-
-            return yearMatch && categoryMatch && searchMatch;
-        },
-
-        setYearFilter(year) {
-            this.isLoading = true;
-            this.activeYear = year;
-
-            setTimeout(() => {
-                this.isLoading = false;
-                this.checkVisibleItems();
-            }, 300);
-        },
-
-        setCategoryFilter(category) {
-            this.isLoading = true;
-            this.activeCategory = category;
-
-            setTimeout(() => {
-                this.isLoading = false;
-                this.checkVisibleItems();
-            }, 300);
-        },
-
-        updateFilters() {
-            this.isLoading = true;
-
-            setTimeout(() => {
-                this.isLoading = false;
-                this.checkVisibleItems();
-            }, 300);
-        },
-
-        resetFilters() {
-            this.isLoading = true;
-            this.activeYear = 'all';
-            this.activeCategory = 'all';
-            this.searchQuery = '';
-
-            setTimeout(() => {
-                this.isLoading = false;
-                this.checkVisibleItems();
-            }, 300);
-        },
-
-        checkVisibleItems() {
-            const containers = document.querySelectorAll('.video-item-container');
-            this.hasVisibleItems = Array.from(containers).some(item => {
-                const year = item.dataset.year;
-                const categories = item.dataset.categories;
-                const title = item.dataset.title;
-
-                return this.isVisible(year, categories, title);
-            });
-        },
-
-        openVideoModal(videoUrl, title) {
-            // Find the video item in our collected array
-            const videoItem = this.videoItems.find(item => 
-                item.url === videoUrl && item.title === title
-            );
-            
-            if (!videoItem) {
-                console.error('Video not found in collection:', videoUrl, title);
-                return;
-            }
-            
-            // Update all video metadata
-            this.currentVideoTitle = videoItem.title;
-            this.currentVideoDate = videoItem.date;
-            this.currentVideoDescription = videoItem.description;
-            this.currentVideoEventUrl = videoItem.eventUrl;
-            this.currentVideoCategories = videoItem.categories;
-            
-            // Find the index for navigation
-            this.currentVideoIndex = this.videoItems.findIndex(item => 
-                item.url === videoUrl && item.title === title
-            );
-
-            // Process YouTube URLs
-            if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
-                // Extract YouTube ID
-                let youtubeId = '';
-                if (videoUrl.includes('youtube.com/watch?v=')) {
-                    youtubeId = videoUrl.split('v=')[1].split('&')[0];
-                } else if (videoUrl.includes('youtu.be/')) {
-                    youtubeId = videoUrl.split('youtu.be/')[1].split('?')[0];
-                } else if (videoUrl.includes('youtube.com/embed/')) {
-                    youtubeId = videoUrl.split('embed/')[1].split('?')[0];
+                // Process Vimeo URLs
+                else if (videoUrl.includes('vimeo.com')) {
+                    const vimeoId = videoUrl.split('vimeo.com/')[1].split('?')[0];
+                    this.$refs.videoIframe.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1`;
+                }
+                // Direct embed URL or fallback
+                else {
+                    this.$refs.videoIframe.src = videoUrl;
                 }
 
-                if (youtubeId) {
-                    this.$refs.videoIframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
-                }
-            }
-            // Process Vimeo URLs
-            else if (videoUrl.includes('vimeo.com')) {
-                const vimeoId = videoUrl.split('vimeo.com/')[1].split('?')[0];
-                this.$refs.videoIframe.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1`;
-            }
-            // Direct embed URL or fallback
-            else {
-                this.$refs.videoIframe.src = videoUrl;
-            }
+                // Open the modal using the DaisyUI dialog method
+                this.$refs.videoModal.showModal();
+            },
 
-            // Open the modal using the DaisyUI dialog method
-            this.$refs.videoModal.showModal();
-        },
+            navigateVideo(direction) {
+                if (this.videoItems.length <= 1) return;
 
-        navigateVideo(direction) {
-            if (this.videoItems.length <= 1) return;
-
-            if (direction === 'prev') {
-                this.currentVideoIndex = (this.currentVideoIndex - 1 + this.videoItems.length) % this.videoItems.length;
-            } else {
-                this.currentVideoIndex = (this.currentVideoIndex + 1) % this.videoItems.length;
-            }
-
-            const nextVideo = this.videoItems[this.currentVideoIndex];
-            
-            // Update all metadata for the next video
-            this.currentVideoTitle = nextVideo.title;
-            this.currentVideoDate = nextVideo.date;
-            this.currentVideoDescription = nextVideo.description;
-            this.currentVideoEventUrl = nextVideo.eventUrl;
-            this.currentVideoCategories = nextVideo.categories;
-            
-            // Process the video URL
-            let videoUrl = nextVideo.url;
-            
-            // Process YouTube URLs
-            if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
-                // Extract YouTube ID
-                let youtubeId = '';
-                if (videoUrl.includes('youtube.com/watch?v=')) {
-                    youtubeId = videoUrl.split('v=')[1].split('&')[0];
-                } else if (videoUrl.includes('youtu.be/')) {
-                    youtubeId = videoUrl.split('youtu.be/')[1].split('?')[0];
-                } else if (videoUrl.includes('youtube.com/embed/')) {
-                    youtubeId = videoUrl.split('embed/')[1].split('?')[0];
+                if (direction === 'prev') {
+                    this.currentVideoIndex = (this.currentVideoIndex - 1 + this.videoItems.length) % this.videoItems.length;
+                } else {
+                    this.currentVideoIndex = (this.currentVideoIndex + 1) % this.videoItems.length;
                 }
 
-                if (youtubeId) {
-                    this.$refs.videoIframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
+                const nextVideo = this.videoItems[this.currentVideoIndex];
+
+                // Update all metadata for the next video
+                this.currentVideoTitle = nextVideo.title;
+                this.currentVideoDate = nextVideo.date;
+                this.currentVideoDescription = nextVideo.description;
+                this.currentVideoEventUrl = nextVideo.eventUrl;
+                this.currentVideoCategories = nextVideo.categories;
+
+                // Process the video URL
+                let videoUrl = nextVideo.url;
+
+                // Process YouTube URLs
+                if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
+                    // Extract YouTube ID
+                    let youtubeId = '';
+                    if (videoUrl.includes('youtube.com/watch?v=')) {
+                        youtubeId = videoUrl.split('v=')[1].split('&')[0];
+                    } else if (videoUrl.includes('youtu.be/')) {
+                        youtubeId = videoUrl.split('youtu.be/')[1].split('?')[0];
+                    } else if (videoUrl.includes('youtube.com/embed/')) {
+                        youtubeId = videoUrl.split('embed/')[1].split('?')[0];
+                    }
+
+                    if (youtubeId) {
+                        this.$refs.videoIframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
+                    }
+                    // Process Vimeo URLs
+                } else if (videoUrl.includes('vimeo.com')) {
+                    const vimeoId = videoUrl.split('vimeo.com/')[1].split('?')[0];
+                    this.$refs.videoIframe.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1`;
+                    // Direct embed URL or fallback
+                } else {
+                    this.$refs.videoIframe.src = videoUrl;
                 }
-            // Process Vimeo URLs
-            } else if (videoUrl.includes('vimeo.com')) {
-                const vimeoId = videoUrl.split('vimeo.com/')[1].split('?')[0];
-                this.$refs.videoIframe.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1`;
-            // Direct embed URL or fallback
-            } else {
-                this.$refs.videoIframe.src = videoUrl;
             }
-        }
-    }));
-});
+        }));
+    });
 </script>
 
 <style>
@@ -756,5 +767,9 @@ foreach ($events_with_videos as $event) {
 
     #video-modal .btn-circle:hover {
         background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .tabs-boxed>.tab-active {
+        color: #ffffff !important;
     }
 </style>

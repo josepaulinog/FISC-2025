@@ -1,9 +1,8 @@
-<x-hero 
-  title="FISC 2025: Empowering Public Finance Innovation" 
-  subtitle="April 7-10, 2025 | Dili, Timor-Leste" 
-  videoUrl="https://www.youtube.com/embed/vTzAYp-oXS4"
+<x-hero-image 
+  title="FISC 2025: The Digital Transformation of Public Financial Management" 
+  subtitle="April 7-10, 2025 | Dili, Timor-Leste"
 >
-</x-hero>
+</x-hero-image>
 
 @if (!is_front_page())
   <div class="container mx-auto px-4 py-4 hidden">

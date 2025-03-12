@@ -9,9 +9,7 @@
     <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div class="mx-auto w-full max-w-sm lg:w-96">
 
-            <div>
-                <img class="h-12 w-auto" src="{{ get_theme_file_uri('resources/images/logo.svg') }}" alt="{{ get_bloginfo('name') }}">
-            </div>
+            <x-logo class="lg:h-12 h-10 fill-current dark:text-white font-normal" />
 
             <div class="mt-8">
                 @if (is_user_logged_in())
@@ -93,7 +91,9 @@
         </div>
     </div>
     <div class="relative hidden w-0 flex-1 lg:block">
-        <img class="absolute inset-0 h-full w-full object-cover" src="https://cdn.midjourney.com/fe8838c4-1aac-4611-98d7-ba3a8ac53a5b/0_3.png" alt="">
+        <img class="absolute inset-0 h-full w-full object-cover" src="https://replicate.delivery/xezq/jWh9MKFLGZ61KBEdNPT1P2TyowbN0EMHzWeJv4pmILjfSlXUA/tmp6_134lj_.jpg" alt="">
+        <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     </div>
 </div>
 

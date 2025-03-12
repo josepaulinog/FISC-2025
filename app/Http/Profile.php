@@ -13,6 +13,12 @@ function updateProfile() {
     $display_name = sanitize_text_field($_POST['display_name'] ?? '');
     $user_email = sanitize_email($_POST['user_email'] ?? '');
     $bio = wp_kses_post($_POST['bio'] ?? '');
+    $company = sanitize_text_field($_POST['company'] ?? '');
+    
+    // Get social media fields
+    $linkedin = esc_url_raw($_POST['linkedin'] ?? '');
+    $twitter = esc_url_raw($_POST['twitter'] ?? '');
+    $website = esc_url_raw($_POST['website'] ?? '');
 
     // Update user data
     $user_data = [
@@ -28,6 +34,12 @@ function updateProfile() {
     }
 
     update_user_meta($user_id, 'description', $bio);
+    update_user_meta($user_id, 'company', $company);
+    
+    // Update social media fields
+    update_user_meta($user_id, 'linkedin', $linkedin);
+    update_user_meta($user_id, 'twitter', $twitter);
+    update_user_meta($user_id, 'website', $website);
 
     return wp_send_json_success('Profile updated successfully');
 }

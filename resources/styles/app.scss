@@ -4,24 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base Dropdown Menu */
-.menu-md.dropdown-content {
-  background-color: #fff;
-
-  li a {
-    color: #374151 !important;
-
-    &:hover {
-      color: var(--primary) !important;
-      background-color: #f9fafb !important;
-    }
-
-    &.active {
-      color: var(--primary) !important;
-      background-color: #f9fafb !important;
-    }
-  }
-}
 
 /* Form Elements */
 .select-custom {
@@ -44,8 +26,9 @@ input[type=checkbox]:checked::before {
   display: none;
 }
 
-.header-transparent .menu li:not(.menu-title):not(.disabled) > :not(ul):not(details):not(.menu-title):not(summary):not(.active):not(.btn):focus {
+header.bg-transparent .menu-horizontal > li:not(.menu-title):not(.disabled) > :not(ul):not(details):not(.menu-title):not(summary):not(.active):not(.btn):focus {
   color: #FFF !important;
+  background-color: oklch(25% 0 0) !important;
 }
 
 
@@ -95,8 +78,9 @@ input[type=checkbox]:checked::before {
   --tec-font-family-sans-serif: inherit;
 }
 
-.header-transparent :where(.menu li:not(.menu-title):not(.disabled)>:not(ul):not(details):not(.menu-title)):not(summary):not(.active):not(.btn):focus {
+header.bg-transparent :where(.menu-horizontal > li:not(.menu-title):not(.disabled)>:not(ul):not(details):not(.menu-title)):not(summary):not(.active):not(.btn):focus {
     color: #FFF !important;
+    background-color: oklch(25% 0 0) !important;
 }
 
 #tribe-events-pg-template {

@@ -5,6 +5,7 @@ import { setupPasswordToggle } from './components/passwordToggle';
 import { setupProfileForm } from './forms/profileForm';
 import { setupLoginForm } from './forms/loginForm';
 import { setupModal } from './utils/modal';
+import { setupFormHandlers } from './handlers/handlers';
 import Alpine from 'alpinejs';
 // Import only the specific lodash functions we need
 import { debounce } from 'lodash';
@@ -21,12 +22,13 @@ domReady(async () => {
   setupProfileForm();
   setupLoginForm();
   setupModal('successModal', 'closeModal');
+  setupFormHandlers();
   Alpine.start();
   
   // Lazy load components that might not be needed immediately
   Promise.all([
-    // Only load event video component if it exists on the page - we don't need it for the hero anymore
-    document.querySelector('#event-video') ? 
+    // Load video component if ANY video element exists
+    (document.querySelector('#background-video') || document.querySelector('#event-video')) ? 
       import('./components/videoBackground').then(({ setupVideoBackground }) => setupVideoBackground()) :
       Promise.resolve(),
     // Only load gallery components if gallery exists on the page

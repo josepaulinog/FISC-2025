@@ -1,7 +1,7 @@
 <div x-data="{ isScrolled: false }" 
      x-init="window.addEventListener('scroll', () => isScrolled = window.pageYOffset > 20)">
   <header 
-    x-bind:class="isScrolled ? 'bg-white shadow-md' : 'bg-transparent backdrop-blur-lg'"
+    x-bind:class="isScrolled ? 'bg-white shadow-md' : 'bg-transparent'"
     class="fixed w-full z-20 transition-all duration-300"
   >
     <div class="container mx-auto py-4 px-4">
@@ -24,7 +24,7 @@
             aria-label="Go to homepage"
           >
           <x-logo 
-                class="lg:h-12 h-9 fill-current transition-colors duration-300 font-normal"
+                class="lg:h-12 h-10 fill-current transition-colors duration-300 font-normal"
                 x-bind:class="isScrolled ? 'text-gray-800' : 'text-white'"
          />
         </a>

@@ -1,6 +1,8 @@
 @props([
-    'postType' => 'speaker', // or 'attendee'
-    'posts' => null,
+    'userType' => 'attendee', 
+    'users' => null,
+    'postType' => null, // Keeping for backward compatibility
+    'posts' => null, // Keeping for backward compatibility
     'showSocial' => true,
     'showContact' => true,
     'showAdditionalInfo' => false,
@@ -30,10 +32,57 @@
     @endif
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      @if(count($posts) > 0)
+      @if(isset($users) && count($users) > 0)
+        @foreach($users as $person)
+          @php
+            // Get user metadata
+            $job_title = get_user_meta($person->ID, 'job_title', true);
+            $organization = get_user_meta($person->ID, 'company', true);
+            $country = get_user_meta($person->ID, 'country', true);
+            $email = $person->user_email;
+            $phone = get_user_meta($person->ID, 'phone', true);
+            $linkedin = get_user_meta($person->ID, 'linkedin', true);
+            $twitter = get_user_meta($person->ID, 'twitter', true);
+            $website = get_user_meta($person->ID, 'website', true);
+            $bio = get_user_meta($person->ID, 'description', true);
+            $avatar = get_user_meta($person->ID, 'profile_avatar', true) ?: get_avatar_url($person->ID);
+            
+            // Additional attendee specific fields
+            $arrival_date = get_user_meta($person->ID, 'arrival_date', true);
+            $hotel_name = get_user_meta($person->ID, 'hotel_name', true);
+            $visa_required = get_user_meta($person->ID, 'visa_required', true);
+            $dietary_restrictions = get_user_meta($person->ID, 'dietary_restrictions', true);
+            $accessibility_requirements = get_user_meta($person->ID, 'accessibility_requirements', true);
+          @endphp
+          
+          <x-person-card 
+            :user="$person"
+            :userType="$userType"
+            :job_title="$job_title"
+            :organization="$organization"
+            :country="$country"
+            :email="$email"
+            :phone="$phone"
+            :linkedin="$linkedin"
+            :twitter="$twitter"
+            :website="$website"
+            :bio="$bio"
+            :avatar="$avatar"
+            :arrival_date="$arrival_date"
+            :hotel_name="$hotel_name"
+            :visa_required="$visa_required"
+            :dietary_restrictions="$dietary_restrictions"
+            :accessibility_requirements="$accessibility_requirements"
+            :showSocial="$showSocial"
+            :showContact="$showContact"
+            :showAdditionalInfo="$showAdditionalInfo"
+          />
+        @endforeach
+      @elseif(isset($posts) && count($posts) > 0)
+        {{-- Backward compatibility with post type --}}
         @foreach($posts as $person)
           @php
-            // Common fields
+            // Original post meta processing
             $job_title = null;
             $organization = null;
             $country = null;
@@ -95,7 +144,7 @@
           />
         @endforeach
       @else
-        <p class="text-center col-span-full text-gray-600">No {{ $postType }}s found.</p>
+        <p class="text-center col-span-full text-gray-600">No {{ $userType ?? $postType }}s found.</p>
       @endif
     </div>
 

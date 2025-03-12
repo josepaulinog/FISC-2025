@@ -46,20 +46,43 @@ add_filter('wp_nav_menu_objects', function ($items, $args) {
 }, 10, 2);
 
 /**
- * Redirect non-logged-in users to the custom login page template.
+ * Redirect non-logged-in users to the landing page by default,
+ * and to the login page when they try to access internal pages.
  */
 add_action('template_redirect', function () {
-    // Get the IDs of your custom login and prelogin pages
-    $login_page_id = get_page_by_path('login')->ID;
-    $prelogin_page_id = get_page_by_path('landing')->ID;
-
-    // Check if the user is not logged in and not already on the login, prelogin page, or admin area
-    if (!is_user_logged_in() && !is_page([$login_page_id, $prelogin_page_id]) && !is_admin() && $GLOBALS['pagenow'] !== 'wp-login.php') {
-        wp_redirect(get_permalink($prelogin_page_id));
-        exit;
+    // Get the IDs of your custom login and landing pages
+    $login_page = get_page_by_path('login');
+    $landing_page = get_page_by_path('landing');
+    
+    // Set up page IDs safely
+    $login_page_id = $login_page ? $login_page->ID : 0;
+    $landing_page_id = $landing_page ? $landing_page->ID : 0;
+    
+    // Get current page ID
+    $current_page_id = get_queried_object_id();
+    
+    // Skip this check for admin pages, direct wp-login.php access, and AJAX requests
+    if (is_admin() || $GLOBALS['pagenow'] === 'wp-login.php' || wp_doing_ajax()) {
+        return;
+    }
+    
+    // If user is not logged in
+    if (!is_user_logged_in()) {
+        // If accessing the home page, redirect to landing page
+        if (is_front_page() || is_home()) {
+            wp_safe_redirect(get_permalink($landing_page_id));
+            exit;
+        }
+        
+        // If trying to access any page other than login or landing, redirect to login
+        if (!is_page([$login_page_id, $landing_page_id])) {
+            // Save the current URL to redirect back after login
+            $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            wp_safe_redirect(add_query_arg('redirect_to', urlencode($current_url), get_permalink($login_page_id)));
+            exit;
+        }
     }
 });
-
 
 /**
  * Override the default WordPress login URL

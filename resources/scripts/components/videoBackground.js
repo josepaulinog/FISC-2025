@@ -74,15 +74,21 @@ function extractYouTubeID(url) {
  * Initialize YouTube Background Player
  */
 async function initBackgroundYouTubePlayer(elementId, videoUrl) {
+  console.log(`Initializing YouTube background player for element: ${elementId}, URL: ${videoUrl}`);
+  
   const videoId = extractYouTubeID(videoUrl);
   if (!videoId) {
-    console.error('Invalid YouTube URL or ID');
+    console.error('Invalid YouTube URL or ID:', videoUrl);
     return null;
   }
   
+  console.log(`Extracted video ID: ${videoId}`);
+  
   try {
     // Load YouTube API
+    console.log('Loading YouTube API...');
     const YT = await loadYouTubeAPI();
+    console.log('YouTube API loaded successfully');
     
     const backgroundElement = document.getElementById(elementId);
     if (!backgroundElement) {
@@ -90,9 +96,12 @@ async function initBackgroundYouTubePlayer(elementId, videoUrl) {
       return null;
     }
     
+    console.log(`Found background element:`, backgroundElement);
+    
     // Create player container if it doesn't exist
     let playerContainer = backgroundElement.querySelector('.youtube-container');
     if (!playerContainer) {
+      console.log('Creating new player container');
       playerContainer = document.createElement('div');
       playerContainer.className = 'youtube-container';
       playerContainer.style.position = 'absolute';
@@ -101,19 +110,26 @@ async function initBackgroundYouTubePlayer(elementId, videoUrl) {
       playerContainer.style.width = '100%';
       playerContainer.style.height = '100%';
       playerContainer.style.overflow = 'hidden';
+      playerContainer.style.zIndex = '1'; // Ensure visibility
       
       // Create player div
       const playerDiv = document.createElement('div');
       playerDiv.id = `${elementId}-youtube-player`;
       playerContainer.appendChild(playerDiv);
       backgroundElement.appendChild(playerContainer);
+      console.log('Player container created and added to DOM');
     }
+
+    console.log('Initializing YouTube player with ID:', videoId);
     
     // Initialize player
+    // In initBackgroundYouTubePlayer function, update the player initialization:
     const player = new YT.Player(`${elementId}-youtube-player`, {
       videoId: videoId,
       playerVars: {
         autoplay: 1,
+        // playlist parameter must contain the video ID to enable looping
+        playlist: videoId,
         loop: 1,
         mute: 1,
         controls: 0,
@@ -123,11 +139,11 @@ async function initBackgroundYouTubePlayer(elementId, videoUrl) {
         iv_load_policy: 3,
         fs: 0,
         playsinline: 1,
-        disablekb: 1,
-        playlist: videoId // Required for looping
+        disablekb: 1
       },
       events: {
         'onReady': (event) => {
+          console.log('YouTube player ready');
           event.target.mute();
           event.target.playVideo();
           
@@ -135,24 +151,73 @@ async function initBackgroundYouTubePlayer(elementId, videoUrl) {
           updatePlayerSize(player, playerContainer);
         },
         'onStateChange': (event) => {
-          // Restart video if it ends
+          console.log('YouTube player state changed:', event.data);
+          // This is critical: manually loop the video when it ends
           if (event.data === YT.PlayerState.ENDED) {
-            player.playVideo();
+            console.log('Video ended. Manual restart...');
+            setTimeout(() => {
+              player.playVideo();
+            }, 100);
           }
           
           // For some browsers, we need to re-mute on state change
           if (event.data === YT.PlayerState.PLAYING) {
             event.target.mute();
           }
+        },
+        'onError': (event) => {
+          console.error('YouTube player error:', event.data);
         }
       }
     });
     
+
+    // Update the healthCheck interval with more aggressive looping logic
+    const healthCheck = setInterval(() => {
+      if (player && typeof player.getPlayerState === 'function') {
+        try {
+          const state = player.getPlayerState();
+          console.log('Health check: YouTube player state:', state);
+          
+          // YT.PlayerState.ENDED = 0, -1 = unstarted, YT.PlayerState.PAUSED = 2
+          if (state === YT.PlayerState.ENDED || state === -1 || state === YT.PlayerState.PAUSED) {
+            console.log(`Health check: Video in state ${state}, restarting...`);
+            
+            // Try seeking to beginning first
+            player.seekTo(0);
+            player.playVideo();
+            
+            // Ensure the video is properly looping by checking the playlist
+            const playlist = player.getPlaylist();
+            if (!playlist || !playlist.length) {
+              console.log('Playlist not set correctly. Setting playlist...');
+              player.loadPlaylist({
+                playlist: [videoId],
+                listType: 'playlist',
+                index: 0,
+                startSeconds: 0,
+                suggestedQuality: 'default'
+              });
+            }
+          }
+        } catch (error) {
+          console.error('Health check error:', error);
+        }
+      }
+    }, 3000); // Check every 3 seconds
+    
     // Update size when window resizes
-    window.addEventListener('resize', () => updatePlayerSize(player, playerContainer));
+    const resizeHandler = () => updatePlayerSize(player, playerContainer);
+    window.addEventListener('resize', resizeHandler);
     
     console.log('✅ Background YouTube video initialized!');
-    return player;
+    return {
+      player,
+      cleanup: () => {
+        clearInterval(healthCheck);
+        window.removeEventListener('resize', resizeHandler);
+      }
+    };
   } catch (error) {
     console.error('Error initializing YouTube player:', error);
     return null;
@@ -219,6 +284,12 @@ function initNativeBackgroundVideo(elementId, videoUrl) {
     videoElement.style.objectFit = 'cover';
     videoElement.style.top = '0';
     videoElement.style.left = '0';
+    videoElement.autoplay = true;
+    videoElement.loop = true;
+    videoElement.muted = true;
+    videoElement.playsInline = true;
+    videoElement.setAttribute('playsinline', '');
+    videoElement.controls = false;
     
     element.appendChild(videoElement);
   }
@@ -332,6 +403,7 @@ async function initEventVideo(elementId, videoUrl, posterUrl = null) {
           videoId: youtubeId,
           playerVars: {
             modestbranding: 1,
+            playlist: youtubeId,
             rel: 0,
             showinfo: 0,
             controls: 1,
@@ -386,20 +458,29 @@ async function initEventVideo(elementId, videoUrl, posterUrl = null) {
  */
 export async function setupVideoBackground() {
   try {
+    console.log('Setting up video backgrounds...');
+    
     // Handle background video (if exists)
     const backgroundVideoElement = document.getElementById('background-video');
+    console.log('Looking for background-video element:', backgroundVideoElement);
+    
     if (backgroundVideoElement) {
       const videoUrl = backgroundVideoElement.getAttribute('data-src') || backgroundVideoElement.getAttribute('src');
+      console.log('Found video URL:', videoUrl);
       
       if (videoUrl) {
         if (extractYouTubeID(videoUrl)) {
-          // YouTube background
+          console.log('Detected YouTube URL, initializing YouTube player');
           await initBackgroundYouTubePlayer('background-video', videoUrl);
         } else {
-          // Native video background
+          console.log('Detected direct video URL, initializing native video');
           initNativeBackgroundVideo('background-video', videoUrl);
         }
+      } else {
+        console.warn('No video URL found on background-video element');
       }
+    } else {
+      console.warn('No background-video element found on page');
     }
     
     // Handle event video (if exists)

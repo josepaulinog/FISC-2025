@@ -46,6 +46,8 @@ const config = {
     'bg-gradient-to-b',
     'from-primary',
     'to-primary',
+    'grid-cols-[5]',
+    'grid-cols-5'
   ],
   darkMode: ['class', '[data-theme="dark"]'],
   theme: {

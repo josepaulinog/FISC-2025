@@ -4,9 +4,10 @@
 
       <!-- Location -->
       <div class="border-b md:border-b-0 md:border-r p-6 text-center">
-        <div class="mx-auto flex justify-center items-center w-16 h-16 rounded-full dark:bg-gray-700 bg-gray-100 border mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"></path>
+        <div class="mx-auto flex justify-center items-center w-16 h-16 rounded-full dark:bg-gray-700 bg-gray-100 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
         </div>
         <h5 class="text-lg font-semibold">Location</h5>
@@ -15,21 +16,20 @@
 
       <!-- Date & Time -->
       <div class="border-b md:border-b-0 md:border-r p-6 text-center">
-        <div class="mx-auto flex justify-center items-center w-16 h-16 rounded-full dark:bg-gray-700 bg-gray-100 border mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-window-dock" viewBox="0 0 16 16">
-            <path d="M3.5 11a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm4.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z"></path>
-            <path d="M14 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h12ZM2 14h12a1 1 0 0 0 1-1V5H1v8a1 1 0 0 0 1 1ZM2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1H2Z"></path>
+        <div class="mx-auto flex justify-center items-center w-16 h-16 rounded-full dark:bg-gray-700 bg-gray-100 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
         </div>
-        <h5 class="text-lg font-semibold">Date & Time</h5>
+        <h5 class="text-lg font-semibold">Date</h5>
         <p class="mb-0">April 7-10, 2025</p>
       </div>
 
       <!-- Admission -->
       <div class="p-6 text-center">
-        <div class="mx-auto flex justify-center items-center w-16 h-16 rounded-full dark:bg-gray-700 bg-gray-100 border mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-ticket-detailed-fill" viewBox="0 0 16 16">
-            <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5Zm4 1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5Zm0 5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5ZM4 8a1 1 0 0 0 1 1h6a1 1 0 1 0 0-2H5a1 1 0 0 0-1 1Z"></path>
+        <div class="mx-auto flex justify-center items-center w-16 h-16 rounded-full dark:bg-gray-700 bg-gray-100 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
           </svg>
         </div>
         <h5 class="text-lg font-semibold">Admission</h5>
@@ -129,7 +129,7 @@
   imageAlt="Illustration of FreeBalance Partner Portal"
   imagePosition="vectorRight"
   title="Welcome to the FISC 2025 Event Portal"
-  paragraph1="This portal is designed exclusively for event participants, speakers, and employees attending FISC 2025. Here, you can:"
+  paragraph1="This portal is designed exclusively for event participants attending FISC 2025. Here, you can:"
   :items="[
     'Access the event agenda and session details.',
     'Watch recorded sessions after the event.',
@@ -155,8 +155,9 @@
 
 <x-agenda
   title="Schedule And Agenda"
-  description="Stay informed with our detailed schedule and agenda for FISC 2025. This section provides a comprehensive rundown of all events, sessions, and activities from the first day to the last."
+  description="Stay informed with our detailed schedule and agenda for FISC 2025."
   :days="[
+      '2025-04-06' => 'April 6, 2025',
       '2025-04-07' => 'April 7, 2025',
       '2025-04-08' => 'April 8, 2025',
       '2025-04-09' => 'April 9, 2025',
@@ -167,22 +168,22 @@
   location="Timor Leste"
   layout="horizontal" />
 
+
 <x-carousel
   title="Speakers & Panelists"
   description="Meet the experts sharing insights at FISC 2025."
-  :limit="12"
+  :limit="10"
   bgClass="bg-base-200"
   showCTA="true" />
-
 <!-- Venue Location Section -->
 <x-venue-map
   venueLabel="Venue"
-  venueTitle="Timor-Leste Convention Centre"
-  venueImage="https://cdn.midjourney.com/7fc0c967-a030-4509-9415-313e54c4776e/0_0.png"
-  mapCaption="Dili Convention Centre, Timor Leste"
-  mapUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15707.524751609307!2d125.56969491541241!3d-8.556099999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d01ddbf53388799%3A0x9f0afa8afce6fc82!2sDili%20Convention%20Center!5e0!3m2!1sen!2s!4v1707307167149!5m2!1sen!2s"
-  latitude="-8.556099999999999"
-  longitude="125.56969491541241"
+  venueTitle="Palm Springs Hotel Dili"
+  venueImage="https://devsite.freebalance.com/wp-content/uploads/palms-springs2.jpg"
+  mapCaption="Palm Springs Hotel Dili, Timor Leste"
+  mapUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15781.754082080079!2d125.53304161805914!3d-8.55376131383627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d01dd006439a6cb%3A0xd677435eec582d71!2sPalm%20Springs%20Hotel%20Dili!5e0!3m2!1ses!2sus!4v1741707721544!5m2!1ses!2sus"
+  latitude="-8.5537613"
+  longitude="125.5330416"
   apiKey="AIzaSyDXzyvduzOJ4K3bYeEzwDYveHiwPR92em8"
   width="600"
   height="300"
@@ -201,7 +202,7 @@ $faqItems = [
 ],
 [
 'question' => 'Where will FISC 2025 be held?',
-'answer' => 'FISC 2025 will be held at the Timor-Leste Convention Centre in Dili, Timor-Leste.'
+'answer' => 'FISC 2025 will be held at the Palm Springs Hotel in Dili, Timor-Leste.'
 ],
 [
 'question' => 'How does FISC contribute to global PFM practices?',
@@ -228,144 +229,186 @@ $faqItems = [
 
 <section class="py-16">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
+    <div class="text-center mb-6">
       <h2 class="text-3xl mb-4">Contact Us</h2>
       <div class="w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
       <p class="text-lg max-w-2xl mx-auto text-neutral-500">
-        Please fill out the form below so that the right resource from FreeBalance can get back to you.
+        Please reach out to our team with any questions about FISC 2025.
       </p>
     </div>
 
-    <div class="max-w-3xl mx-auto">
-      <form class="bg-white dark:bg-black/25 shadow-lg rounded-lg p-8 border">
-        <!-- First Name and Last Name -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div class="form-control">
-            <label for="first-name" class="label">
-              <span class="label-text text-gray-700 font-medium dark:text-gray-100">First Name *</span>
-            </label>
-            <input
-              type="text"
-              id="first-name"
-              name="first-name"
-              placeholder="Enter your first name"
-              class="input input-bordered w-full focus:ring-2 focus:ring-orange-500"
-              required />
-          </div>
-          <div class="form-control">
-            <label for="last-name" class="label">
-              <span class="label-text text-gray-700 font-medium dark:text-gray-100">Last Name *</span>
-            </label>
-            <input
-              type="text"
-              id="last-name"
-              name="last-name"
-              placeholder="Enter your last name"
-              class="input input-bordered w-full focus:ring-2 focus:ring-orange-500"
-              required />
-          </div>
-        </div>
+    <div class="mx-auto">
+<!-- Contact Details Cards with DaisyUI Slide -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <!-- Before the Event Card -->
+                    <div class="card bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700 h-full">
+                        <div class="card-body">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Before the Event</h3>
+                                <div class="divider my-2"></div>
+                                
+                                <!-- Single contact slide -->
+                                <div class="w-full">
+                                    <p class="font-medium">Ludmila Patralska</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Director of Human Resources</p>
+                                    <p class="flex items-center justify-center mb-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                        </svg>
+                                        <a href="mailto:lpatralska@freebalance.com" class="text-primary underline">lpatralska@freebalance.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Organization and Job Title -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div class="form-control">
-            <label for="organization" class="label">
-              <span class="label-text text-gray-700 font-medium dark:text-gray-100">Organization *</span>
-            </label>
-            <input
-              type="text"
-              id="organization"
-              name="organization"
-              placeholder="Enter your organization"
-              class="input input-bordered w-full focus:ring-2 focus:ring-orange-500"
-              required />
-          </div>
-          <div class="form-control">
-            <label for="job-title" class="label">
-              <span class="label-text text-gray-700 font-medium dark:text-gray-100">Job Title *</span>
-            </label>
-            <input
-              type="text"
-              id="job-title"
-              name="job-title"
-              placeholder="Enter your job title"
-              class="input input-bordered w-full focus:ring-2 focus:ring-orange-500"
-              required />
-          </div>
-        </div>
+                    <!-- During the Event Card -->
+                    <div class="card bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700 h-full">
+                        <div class="card-body">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">During the Event</h3>
+                                <div class="divider my-2"></div>
+                                
+                                <!-- Carousel for multiple contacts -->
+                                <div class="carousel w-full" id="event-contacts-carousel">
+                                    <!-- First slide -->
+                                    <div id="contact-slide1" class="carousel-item relative w-full">
+                                        <div class="w-full">
+                                            <p class="font-medium">Carolyn Bowick</p>
+                                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Director of Marketing Communications</p>
+                                            <p class="flex items-center justify-center mb-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                                </svg>
+                                                <a href="mailto:carolyn.bowick@freebalance.com" class="text-primary underline">carolyn.bowick@freebalance.com</a>
+                                            </p>
+                                        </div>
+                                        <div class="absolute flex justify-between transform -translate-y-1/2 -left-2 -right-2 top-1/2">
+                                            <a href="#contact-slide2" class="btn btn-circle btn-sm btn-ghost slide-nav" data-slide="contact-slide2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                                                </svg>
+                                            </a> 
+                                            <a href="#contact-slide2" class="btn btn-circle btn-sm btn-ghost slide-nav" data-slide="contact-slide2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div> 
+                                    
+                                    <!-- Second slide -->
+                                    <div id="contact-slide2" class="carousel-item relative w-full">
+                                        <div class="w-full">
+                                            <p class="font-medium">Ana Santos</p>
+                                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Human Resources Manager</p>
+                                            <p class="flex items-center justify-center mb-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                                </svg>
+                                                <a href="mailto:ana.santos@freebalance.com" class="text-primary underline">ana.santos@freebalance.com</a>
+                                            </p>
+                                        </div>
+                                        <div class="absolute flex justify-between transform -translate-y-1/2 left-0 right-0 top-1/2">
+                                            <a href="#contact-slide1" class="btn btn-circle btn-sm btn-ghost slide-nav" data-slide="contact-slide1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                                                </svg>
+                                            </a> 
+                                            <a href="#contact-slide1" class="btn btn-circle btn-sm btn-ghost slide-nav" data-slide="contact-slide1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Country and Company Email -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div class="form-control">
-            <label for="country" class="label">
-              <span class="label-text text-gray-700 font-medium dark:text-gray-100">Country *</span>
-            </label>
-            <select
-              id="country"
-              name="country"
-              class="select select-bordered w-full focus:ring-2 focus:ring-orange-500"
-              required>
-              <option value="" disabled selected>Select Country</option>
-              <option value="USA">United States</option>
-              <option value="Canada">Canada</option>
-              <option value="UK">United Kingdom</option>
-              <!-- Add more countries as needed -->
-            </select>
-          </div>
-          <div class="form-control">
-            <label for="email" class="label">
-              <span class="label-text text-gray-700 font-medium dark:text-gray-100">Company Email *</span>
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your company email"
-              class="input input-bordered w-full focus:ring-2 focus:ring-orange-500"
-              required />
-          </div>
-        </div>
+                    <!-- Venue Assistance Card -->
+                    <div class="card bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700 h-full">
+                        <div class="card-body">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Venue Assistance</h3>
+                                <div class="divider my-2"></div>
+                                
+                                <!-- Single contact info -->
+                                <div class="w-full">
+                                    <p class="font-medium">Palm Springs Hotel Dili</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Front Desk Support</p>
+                                    <p class="flex items-center justify-center mb-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                        </svg>
+                                        <a href="mailto:info@palmspringshoteldili.com" class="text-primary underline">info@palmspringshoteldili.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Inquiry Type and Description -->
-        <div class="form-control mb-6">
-          <label for="inquiry-type" class="label">
-            <span class="label-text text-gray-700 font-medium dark:text-gray-100">Inquiry Type *</span>
-          </label>
-          <select
-            id="inquiry-type"
-            name="inquiry-type"
-            class="select select-bordered w-full focus:ring-2 focus:ring-orange-500"
-            required>
-            <option value="" disabled selected>Select Inquiry Type</option>
-            <option value="General">General Inquiry</option>
-            <option value="Support">Support</option>
-            <option value="Sales">Sales</option>
-            <option value="Partnership">Partnership</option>
-          </select>
-        </div>
+                <style>
+                    /* Add smooth slide transitions */
+                    .carousel-item {
+                        transition: transform 0.5s ease-in-out;
+                    }
+                    
+                    /* Highlight navigation buttons on hover */
+                    .slide-nav:hover {
+                        background-color: rgba(var(--p), 0.2);
+                    }
+                </style>
 
-        <div class="form-control mb-6">
-          <label for="inquiry-description" class="label">
-            <span class="label-text text-gray-700 font-medium dark:text-gray-100">Inquiry Description *</span>
-          </label>
-          <textarea
-            id="inquiry-description"
-            name="inquiry-description"
-            rows="5"
-            placeholder="Enter your inquiry description"
-            class="textarea textarea-bordered w-full focus:ring-2 focus:ring-orange-500"
-            required></textarea>
-        </div>
-
-        <!-- Submit Button -->
-        <div class="text-center">
-          <button
-            type="submit"
-            class="btn bg-orange-500 text-white hover:bg-orange-600 transition-colors">
-            Submit
-          </button>
-        </div>
-      </form>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Prevent default behavior for carousel navigation links
+                        const slideNavLinks = document.querySelectorAll('.slide-nav');
+                        
+                        slideNavLinks.forEach(link => {
+                            link.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                const targetSlide = this.getAttribute('data-slide');
+                                
+                                // Navigate to the slide without changing page URL
+                                const carousel = document.getElementById('event-contacts-carousel');
+                                const slides = carousel.querySelectorAll('.carousel-item');
+                                
+                                slides.forEach(slide => {
+                                    if (slide.id === targetSlide) {
+                                        slide.classList.add('active');
+                                        // Scroll the carousel to this slide
+                                        document.getElementById(targetSlide).scrollIntoView({
+                                            behavior: 'smooth',
+                                            block: 'nearest',
+                                            inline: 'start'
+                                        });
+                                    } else {
+                                        slide.classList.remove('active');
+                                    }
+                                });
+                            });
+                        });
+                    });
+                </script>
     </div>
   </div>
 </section>

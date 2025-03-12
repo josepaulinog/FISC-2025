@@ -8,19 +8,18 @@
   @include('partials.headers.default')
 
   @php
-    $attendees = new WP_Query([
-      'post_type'      => 'attendee',
-      'posts_per_page' => -1,
-      'orderby'        => 'title',
-      'order'          => 'ASC',
+    // Query for users with the 'attendee' role instead of custom post type
+    $attendees = get_users([
+      'role'    => 'attendee',
+      'orderby' => 'display_name',
+      'order'   => 'ASC',
     ]);
-    
-    $attendeePosts = $attendees->posts;
   @endphp
 
-  <x-people-grid 
-    postType="attendee"
-    :posts="$attendeePosts"
+  <x-people-grid
+    title="Delegate Community"  
+    userType="attendee"
+    :users="$attendees"
     showSocial="true"
     showContact="true"
     showAdditionalInfo="false"

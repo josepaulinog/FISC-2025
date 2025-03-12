@@ -1,12 +1,12 @@
 @props([
     'venueLabel'       => 'Venue',
-    'venueTitle'       => 'Timor-leste Convention Centre',
-    'venueImage'       => 'https://cdn.midjourney.com/7fc0c967-a030-4509-9415-313e54c4776e/0_0.png',
+    'venueTitle'       => 'Palm Springs Hotel Dili',
+    'venueImage'       => 'https://devsite.freebalance.com/wp-content/uploads/palms-springs2.jpg',
     'venueSVG'         => '<svg class="mx-auto" width="92" height="148" viewBox="0 0 92 148" fill="none" xmlns="http://www.w3.org/2000/svg"><path
     d="M90.9673 138.146C91.6004 137.612 91.6807 136.666 91.1465 136.033L82.4411 125.714C81.9069 125.081 80.9605 125.001 80.3274 125.535C79.6942 126.069 79.6139 127.016 80.1481 127.649L87.8863 136.821L78.7145 144.559C78.0813 145.093 78.0011 146.039 78.5353 146.673C79.0695 147.306 80.0158 147.386 80.649 146.852L90.9673 138.146ZM2.14339 0.748035C-0.804437 18.0478 -0.804677 50.5058 10.8439 79.6263C22.5313 108.844 46.0002 134.775 89.8733 138.495L90.1267 135.505C47.6245 131.902 24.9929 106.92 13.6293 78.5121C2.22694 50.007 2.22537 18.1266 5.10077 1.25196L2.14339 0.748035Z"
     fill="#fd6b18" /></svg>',
-    'mapCaption'       => 'Dili Convention Centre, Timor Leste',
-    'mapUrl'           => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15707.524751609307!2d125.56969491541241!3d-8.556099999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d01ddbf53388799%3A0x9f0afa8afce6fc82!2sDili%20Convention%20Center!5e0!3m2!1sen!2s!4v1707307167149!5m2!1sen!2s',
+    'mapCaption'       => 'Palm Springs Hotel Dili, Timor Leste',
+    'mapUrl'           => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.457457465842!2d125.5540383860013!3d-8.551932769553227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d01dd006439a6cb%3A0xd677435eec582d71!2sPalm%20Springs%20Hotel%20Dili!5e0!3m2!1sen!2sus!4v1741651882372!5m2!1sen!2sus',
     'modalId'          => 'my_modal_4',
     'latitude'         => '-8.556099999999999',
     'longitude'        => '125.56969491541241',

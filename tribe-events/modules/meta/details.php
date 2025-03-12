@@ -57,6 +57,28 @@ $time_title = apply_filters('tribe_events_single_event_time_title', __('Time:', 
 $cost    = tribe_get_formatted_cost();
 $website = tribe_get_event_website_link($event_id);
 $website_title = tribe_events_get_event_website_title();
+
+// Get categories without links
+$categories = get_the_terms($event_id, 'tribe_events_cat');
+$categories_list = '';
+if (!empty($categories) && !is_wp_error($categories)) {
+    $cat_names = array();
+    foreach ($categories as $category) {
+        $cat_names[] = $category->name;
+    }
+    $categories_list = implode(', ', $cat_names);
+}
+
+// Get tags without links
+$tags = get_the_terms($event_id, 'post_tag');
+$tags_list = '';
+if (!empty($tags) && !is_wp_error($tags)) {
+    $tag_names = array();
+    foreach ($tags as $tag) {
+        $tag_names[] = $tag->name;
+    }
+    $tags_list = implode(', ', $tag_names);
+}
 ?>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -99,8 +121,6 @@ $website_title = tribe_events_get_event_website_title();
         // All day (single day) events
         elseif (tribe_event_is_all_day()): ?>
             <div class="flex items-start gap-4">
-            
-
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 mt-1 text-gray-500">
                 <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clip-rule="evenodd" />
                 </svg>
@@ -209,29 +229,14 @@ $website_title = tribe_events_get_event_website_title();
             </div>
         <?php endif ?>
 
-        <?php
-        // Categories
-        $categories_html = tribe_get_event_categories(
-            get_the_id(),
-            [
-                'before'       => '',
-                'sep'          => ', ',
-                'after'        => '',
-                'label'        => null,
-                'label_before' => '<dt class="font-medium">',
-                'label_after'  => '</dt>',
-                'wrap_before'  => '<dd class="text-gray-600">',
-                'wrap_after'   => '</dd>',
-            ]
-        );
-
-        if (!empty($categories_html)) : ?>
+        <?php if (!empty($categories_list)) : ?>
             <div class="flex items-start gap-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
                 </svg>
                 <div>
-                    <?php echo $categories_html; ?>
+                    <dt class="font-medium"><?php esc_html_e('Event Categories:', 'the-events-calendar'); ?></dt>
+                    <dd class="text-gray-600"><?php echo esc_html($categories_list); ?></dd>
                 </div>
             </div>
         <?php endif; ?>
@@ -250,26 +255,14 @@ $website_title = tribe_events_get_event_website_title();
             </div>
         <?php endif ?>
 
-        <?php
-        // Event Tags
-        $tags_html = tribe_meta_event_archive_tags(
-            /* Translators: %s: Event (singular) */
-            sprintf(
-                esc_html__('%s Tags:', 'the-events-calendar'),
-                tribe_get_event_label_singular()
-            ),
-            ', ',
-            false // Set to false to return the HTML instead of echoing it
-        );
-
-        if (! empty($tags_html)) : ?>
+        <?php if (!empty($tags_list)) : ?>
             <div class="flex items-start gap-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
-  <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
-</svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                </svg>
                 <div>
                     <dt class="font-medium">Tags: </dt>
-                    <dd class="text-gray-600"><?php echo $tags_html; ?></dd>
+                    <dd class="text-gray-600"><?php echo esc_html($tags_list); ?></dd>
                 </div>
             </div>
         <?php endif; ?>

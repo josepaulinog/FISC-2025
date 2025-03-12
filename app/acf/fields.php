@@ -3,6 +3,30 @@
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
+    'key' => 'group_event_subtitle',
+    'title' => 'Event Subtitle',
+    'fields' => array(
+        array(
+            'key' => 'field_event_subtitle',
+            'label' => 'Subtitle',
+            'name' => 'event_subtitle',
+            'type' => 'text',
+            'instructions' => 'Enter a subtitle for this event.',
+            'required' => 0,
+        ),
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'post_type',
+                'operator' => '==',
+                'value' => 'tribe_events',
+            ),
+        ),
+    ),
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_attendees_fields',
 	'title' => 'Attendee & Delegate Fields',
 	'fields' => array(
@@ -270,7 +294,7 @@ acf_add_local_field_group(array(
             'name' => 'contact_form_description',
             'type' => 'textarea',
             'instructions' => 'Enter the description to display above the form',
-            'default_value' => 'Get in touch with our team to learn more about how we can support your public financial management goals. We\'re here to answer your questions and provide the resources you need.',
+            'default_value' => 'We\'re here to answer your questions and provide the resources you need.',
             'required' => 0,
         ),
     ),

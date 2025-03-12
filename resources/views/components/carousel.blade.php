@@ -28,9 +28,17 @@ $speakersQuery = new WP_Query($args);
 
 // Create array of speakers
 $speakers = [];
+
+$excludedTitles = ['Customer Representatives', 'FreeBalance Staff'];
+
 if($speakersQuery->have_posts()) {
 while($speakersQuery->have_posts()) {
 $speakersQuery->the_post();
+$speakerTitle = get_the_title();
+if(in_array($speakerTitle, $excludedTitles)) {
+   continue;
+}
+        
 $speaker = [
 'id' => get_the_ID(),
 'title' => get_the_title(),
@@ -201,7 +209,7 @@ $slideCount = count($slides);
 
         @if($showCTA)
         <div class="text-center mt-8">
-            <a class="btn btn-outline px-8" href="/speakers">View All Speakers</a>
+            <a class="btn btn-outline px-8 border-gray-400" href="/speakers">View All Speakers</a>
         </div>
         @endif
 

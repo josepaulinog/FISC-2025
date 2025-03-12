@@ -155,9 +155,9 @@
   <nav>
     <h6 class="footer-title">Quick Links</h6>
     <a href="/" class="link link-hover">Home</a>
-    <a href="/sales-toolkit" class="link link-hover">Sales Toolkit</a>
-    <a href="/resources" class="link link-hover">Resources</a>
-    <a href="/submit-an-opportunity" class="link link-hover">Opportunity</a>
+    <a href="/about" class="link link-hover">About FISC</a>
+    <a href="/agenda" class="link link-hover">Agenda</a>
+    <a href="/speakers" class="link link-hover">Speakers</a>
     <a href="/contact" class="link link-hover">Contact</a>
   </nav>
   <nav>
@@ -166,7 +166,6 @@
     <a href="https://freebalance.com/en/purpose/" class="link link-hover">Our Purpose</a>
     <a href="https://freebalance.com/en/leadership/" class="link link-hover">Leadership</a>
     <a href="https://freebalance.com/en/news/" class="link link-hover">News</a>
-    <a href="https://freebalance.com/en/contact/" class="link link-hover">Contact</a>
   </nav>
   <form>
     <h6 class="footer-title">Stay Connected</h6>

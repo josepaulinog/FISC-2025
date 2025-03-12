@@ -25,8 +25,8 @@
 
 </style>
 
-<section class="py-16 bg-base-200">
-    <div class="text-center mb-12">
+<section id="location" class="py-16 bg-base-100">
+    <div class="text-center mb-8">
         <h2 class="text-3xl mb-4">Location & Directions</h2>
         <div class="w-24 h-1 bg-primary rounded-full mx-auto mb-4"></div>
         <p class="text-lg text-base-content/70">Find your way around the conference area</p>
@@ -38,21 +38,21 @@
                 <div id="map" class="h-[600px] w-full"></div>
 
                 <div class="p-6 bg-base-200/50">
-                    <h3 class="text-lg font-medium mb-4">Key Locations</h3>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="flex items-center gap-3">
-                            <div class="badge badge-primary badge-lg"></div>
-                            <span class="text-base-content/80">Conference Venue</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="badge badge-secondary badge-lg"></div>
-                            <span class="text-base-content/80">Hotels</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="badge badge-accent badge-lg"></div>
-                            <span class="text-base-content/80">Restaurants</span>
-                        </div>
+                  <h3 class="text-lg font-medium mb-4">Key Locations</h3>
+                  <div class="grid md:grid-cols-3 gap-6">
+                    <div class="flex items-center gap-3">
+                      <div class="badge badge-primary badge-lg"></div>
+                      <span class="text-base-content/80">Conference Venue</span>
                     </div>
+                    <div class="flex items-center gap-3">
+                      <div class="badge badge-info badge-lg"></div>
+                      <span class="text-base-content/80">Airport</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <div class="badge badge-warning badge-lg"></div>
+                      <span class="text-base-content/80">Cultural Landmarks</span>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -64,62 +64,80 @@
 const MAP_DATA = {
   venue: [
     {
-      position: [-8.556099, 125.567694],
-      title: 'Dili Convention Center - FISC 2025',
+      position: [-8.551709999445626, 125.55892002883573],
+      title: 'Palm Springs Hotel Dili - FISC 2025',
       category: 'venue',
       icon: 'venue',
-      address: '123 Convention Ave, Dili, Timor-Leste',
+      address: 'Zero IV, Fatuhada, Dom Aleixo, Dili, Timor-Leste',
       description: 'Main conference venue hosting all keynotes and sessions',
       amenities: ['Free WiFi', 'Accessible', 'Parking Available']
     }
   ],
-  hotels: [
+  transportation: [
     {
-      position: [-8.555099, 125.566694],
-      title: 'Hotel Timor - Main Conference Hotel',
-      category: 'hotels',
-      icon: 'hotel',
-      address: '45 Beach Road, Dili, Timor-Leste',
-      description: 'Official conference hotel with special rates for attendees',
-      amenities: ['Conference Rate', 'Restaurant', 'Pool']
-    },
-    {
-      position: [-8.557099, 125.568694],
-      title: 'Plaza Hotel',
-      category: 'hotels',
-      icon: 'hotel',
-      address: '78 Plaza Street, Dili, Timor-Leste',
-      description: 'Alternative accommodation option near the venue',
-      amenities: ['Business Center', 'Gym', 'Free Breakfast']
+      position: [-8.549499729955766, 125.52493802567274],
+      title: 'Presidente Nicolau Lobato International Airport',
+      category: 'transportation',
+      icon: 'airport',
+      address: 'Comoro, Dili, Timor-Leste',
+      description: 'Dili\'s international airport, the main gateway to Timor-Leste',
+      amenities: ['International Flights', 'Taxis', 'Car Rental']
     }
   ],
-  dining: [
+  landmarks: [
     {
-      position: [-8.554099, 125.565694],
-      title: 'Agora Food Studio',
-      category: 'dining',
-      icon: 'restaurant',
-      address: '22 Food Street, Dili, Timor-Leste',
-      description: 'Local cuisine featuring Timorese specialties',
-      amenities: ['Local Cuisine', 'Vegetarian Options', 'Outdoor Seating']
+      position: [-8.52045106096694, 125.60838638644216],
+      title: 'Cristo Rei of Dili',
+      category: 'landmarks',
+      icon: 'landmark',
+      address: 'Eastern Dili, Timor-Leste',
+      description: 'Iconic 27-meter statue of Jesus overlooking the city and bay',
+      amenities: ['Scenic Views', 'Photography Spot', '570 Steps Climb']
     },
     {
-      position: [-8.558099, 125.569694],
-      title: 'Castaway Restaurant',
-      category: 'dining',
-      icon: 'restaurant',
-      address: '89 Beach Front, Dili, Timor-Leste',
-      description: 'Seafood restaurant with ocean views',
-      amenities: ['Seafood', 'Ocean View', 'Bar']
+      position: [-8.556531, 125.571553],
+      title: 'Government Palace',
+      category: 'landmarks',
+      icon: 'landmark',
+      address: 'Central Dili, Timor-Leste',
+      description: 'Official government building and historical landmark',
+      amenities: ['Historical Site', 'Colonial Architecture']
     },
     {
-      position: [-8.553099, 125.564694],
-      title: 'Dili Beach Hotel Restaurant',
-      category: 'dining',
-      icon: 'restaurant',
-      address: '33 Seaside Ave, Dili, Timor-Leste',
-      description: 'International cuisine with beach views',
-      amenities: ['International Cuisine', 'Beach View', 'Full Bar']
+      position: [-8.552407, 125.578745],
+      title: 'Timor-Leste National Museum',
+      category: 'landmarks',
+      icon: 'museum',
+      address: 'Av. de Portugal, Dili, Timor-Leste',
+      description: 'National museum showcasing Timorese history and culture',
+      amenities: ['Cultural Exhibits', 'Historical Artifacts']
+    },
+    {
+      position: [-8.553291, 125.579083],
+      title: 'Resistance Museum',
+      category: 'landmarks',
+      icon: 'museum',
+      address: 'Av. da Liberdade de Imprensa, Dili, Timor-Leste',
+      description: 'Museum documenting Timor-Leste\'s struggle for independence',
+      amenities: ['Historical Exhibits', 'Photography Displays']
+    },
+    {
+      position: [-8.556506, 125.574421],
+      title: 'Santa Cruz Cemetery',
+      category: 'landmarks',
+      icon: 'landmark',
+      address: 'Santa Cruz District, Dili, Timor-Leste',
+      description: 'Historic cemetery and site of the 1991 Santa Cruz massacre',
+      amenities: ['Memorial Site', 'Historical Significance']
+    },
+    {
+      position: [-8.551541, 125.576869],
+      title: 'Dili Cathedral',
+      category: 'landmarks',
+      icon: 'landmark',
+      address: 'Av. Bispo de Medeiros, Dili, Timor-Leste',
+      description: 'The Catholic cathedral of Dili, an important religious landmark',
+      amenities: ['Religious Site', 'Architecture']
     }
   ]
 };
@@ -130,7 +148,7 @@ class InteractiveMap {
     this.markers = [];
     this.mapStyle = 'https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=VhMYYW4B1qp8ZpsVF2LP';
     
-    // DaisyUI themed markers
+    // Add these new icon definitions to your InteractiveMap class
     this.icons = {
       venue: L.divIcon({
         html: `<div class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white shadow-lg">
@@ -138,7 +156,7 @@ class InteractiveMap {
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                 </svg>
-               </div>`,
+              </div>`,
         className: 'custom-marker'
       }),
       hotel: L.divIcon({
@@ -146,7 +164,7 @@ class InteractiveMap {
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
                 </svg>
-               </div>`,
+              </div>`,
         className: 'custom-marker'
       }),
       restaurant: L.divIcon({
@@ -154,7 +172,34 @@ class InteractiveMap {
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 7.5h10.5a.75.75 0 0 0 0-1.5H6.75a.75.75 0 0 0 0 1.5Z" />
                 </svg>
-               </div>`,
+              </div>`,
+        className: 'custom-marker'
+      }),
+      // NEW ICON: Airport
+      airport: L.divIcon({
+        html: `<div class="flex items-center justify-center w-8 h-8 rounded-full bg-info text-white shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                </svg>
+              </div>`,
+        className: 'custom-marker'
+      }),
+      // NEW ICON: Landmark
+      landmark: L.divIcon({
+        html: `<div class="flex items-center justify-center w-8 h-8 rounded-full bg-warning text-white shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+                </svg>
+              </div>`,
+        className: 'custom-marker'
+      }),
+      // NEW ICON: Museum
+      museum: L.divIcon({
+        html: `<div class="flex items-center justify-center w-8 h-8 rounded-full bg-neutral text-white shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+                </svg>
+              </div>`,
         className: 'custom-marker'
       })
     };
@@ -164,13 +209,17 @@ class InteractiveMap {
     const badgeClass = {
       venue: 'badge-primary',
       hotels: 'badge-secondary',
-      dining: 'badge-accent'
+      dining: 'badge-accent',
+      transportation: 'badge-info',     // Added for airport
+      landmarks: 'badge-warning'   
     }[location.category];
 
     const typeLabel = {
       venue: 'Conference Venue',
       hotels: 'Hotel',
-      dining: 'Restaurant'
+      dining: 'Restaurant',
+      transportation: 'Transportation',  // Added for airport
+      landmarks: 'Landmark'  
     }[location.category];
 
     return `

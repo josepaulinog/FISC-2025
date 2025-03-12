@@ -11,6 +11,15 @@ class UserController {
         $user_email = sanitize_email($_POST['user_email'] ?? '');
         $bio = wp_kses_post($_POST['bio'] ?? '');
         $company = sanitize_text_field($_POST['company'] ?? '');
+        $job_title = sanitize_text_field($_POST['job_title'] ?? '');
+        $country = sanitize_text_field($_POST['country'] ?? '');
+        $phone = sanitize_text_field($_POST['phone'] ?? '');
+        $attendee_type = sanitize_text_field($_POST['attendee_type'] ?? '');
+        
+        // Get social media fields
+        $linkedin = esc_url_raw($_POST['linkedin'] ?? '');
+        $twitter = esc_url_raw($_POST['twitter'] ?? '');
+        $website = esc_url_raw($_POST['website'] ?? '');
 
         if (!is_user_logged_in()) {
             wp_send_json_error('User not logged in');
@@ -41,8 +50,18 @@ class UserController {
             wp_send_json_error($updated_user_id->get_error_message());
         }
 
+        // Update user meta fields
         update_user_meta($user_id, 'description', $bio);
         update_user_meta($user_id, 'company', $company);
+        update_user_meta($user_id, 'job_title', $job_title);
+        update_user_meta($user_id, 'country', $country);
+        update_user_meta($user_id, 'phone', $phone);
+        update_user_meta($user_id, 'attendee_type', $attendee_type);
+        
+        // Update social media links
+        update_user_meta($user_id, 'linkedin', $linkedin);
+        update_user_meta($user_id, 'twitter', $twitter);
+        update_user_meta($user_id, 'website', $website);
 
         wp_send_json_success('Profile updated successfully');
     }
@@ -66,31 +85,108 @@ class UserController {
         wp_send_json_success('Theme updated successfully');
     }  
 
-    // Display the "Company" field in the user profile
+    // Display the user profile fields including attendee fields
     public static function showCompanyField($user) {
         ?>
-        <h3><?php _e("Additional Information", "sage"); ?></h3>
+        <h3><?php _e("FISC 2025 Attendee Information", "sage"); ?></h3>
         <table class="form-table">
             <tr>
-                <th><label for="company"><?php _e("Company"); ?></label></th>
+                <th><label for="job_title"><?php _e("Job Title"); ?></label></th>
+                <td>
+                    <input type="text" name="job_title" id="job_title" value="<?php echo esc_attr(get_user_meta($user->ID, 'job_title', true)); ?>" class="regular-text" /><br />
+                    <span class="description"><?php _e("Enter your job title."); ?></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="company"><?php _e("Organization"); ?></label></th>
                 <td>
                     <input type="text" name="company" id="company" value="<?php echo esc_attr(get_user_meta($user->ID, 'company', true)); ?>" class="regular-text" /><br />
-                    <span class="description"><?php _e("Please enter your company name."); ?></span>
+                    <span class="description"><?php _e("Enter your organization name."); ?></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="country"><?php _e("Country"); ?></label></th>
+                <td>
+                    <input type="text" name="country" id="country" value="<?php echo esc_attr(get_user_meta($user->ID, 'country', true)); ?>" class="regular-text" /><br />
+                    <span class="description"><?php _e("Enter your country."); ?></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="phone"><?php _e("Phone Number"); ?></label></th>
+                <td>
+                    <input type="text" name="phone" id="phone" value="<?php echo esc_attr(get_user_meta($user->ID, 'phone', true)); ?>" class="regular-text" /><br />
+                    <span class="description"><?php _e("Enter your phone number (include country code)."); ?></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="attendee_type"><?php _e("Attendee Type"); ?></label></th>
+                <td>
+                    <input type="text" name="attendee_type" id="attendee_type" value="<?php echo esc_attr(get_user_meta($user->ID, 'attendee_type', true)); ?>" class="regular-text" /><br />
+                    <span class="description"><?php _e("Type of attendee (e.g., Delegate, Observer, etc.)"); ?></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="linkedin"><?php _e("LinkedIn Profile"); ?></label></th>
+                <td>
+                    <input type="url" name="linkedin" id="linkedin" value="<?php echo esc_attr(get_user_meta($user->ID, 'linkedin', true)); ?>" class="regular-text" /><br />
+                    <span class="description"><?php _e("Enter your LinkedIn profile URL."); ?></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="twitter"><?php _e("X.com Profile"); ?></label></th>
+                <td>
+                    <input type="url" name="twitter" id="twitter" value="<?php echo esc_attr(get_user_meta($user->ID, 'twitter', true)); ?>" class="regular-text" /><br />
+                    <span class="description"><?php _e("Enter your X.com profile URL."); ?></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="website"><?php _e("Website"); ?></label></th>
+                <td>
+                    <input type="url" name="website" id="website" value="<?php echo esc_attr(get_user_meta($user->ID, 'website', true)); ?>" class="regular-text" /><br />
+                    <span class="description"><?php _e("Enter your website URL."); ?></span>
                 </td>
             </tr>
         </table>
         <?php
     }
 
-    // Save the "Company" field value
+    // Save the user profile fields
     public static function saveCompanyField($user_id) {
         if (!current_user_can('edit_user', $user_id)) { return false; }
         
+        // Standard fields
         if (isset($_POST['company'])) {
             update_user_meta($user_id, 'company', sanitize_text_field($_POST['company']));
-            error_log('Company field saved for user ID: ' . $user_id); // Debugging
-        } else {
-            error_log('Company field not set'); // Debugging
+        }
+        
+        // Attendee specific fields
+        if (isset($_POST['job_title'])) {
+            update_user_meta($user_id, 'job_title', sanitize_text_field($_POST['job_title']));
+        }
+        
+        if (isset($_POST['country'])) {
+            update_user_meta($user_id, 'country', sanitize_text_field($_POST['country']));
+        }
+        
+        if (isset($_POST['phone'])) {
+            update_user_meta($user_id, 'phone', sanitize_text_field($_POST['phone']));
+        }
+        
+        if (isset($_POST['attendee_type'])) {
+            update_user_meta($user_id, 'attendee_type', sanitize_text_field($_POST['attendee_type']));
+        }
+        
+        // Social media fields
+        if (isset($_POST['linkedin'])) {
+            update_user_meta($user_id, 'linkedin', esc_url_raw($_POST['linkedin']));
+        }
+        
+        if (isset($_POST['twitter'])) {
+            update_user_meta($user_id, 'twitter', esc_url_raw($_POST['twitter']));
+        }
+        
+        if (isset($_POST['website'])) {
+            update_user_meta($user_id, 'website', esc_url_raw($_POST['website']));
         }
     }
 }

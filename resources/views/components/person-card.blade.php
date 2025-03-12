@@ -1,6 +1,9 @@
 @props([
+    // Support both user and post type data
+    'user' => null,
+    'userType' => 'attendee',
     'person' => null,
-    'postType' => 'speaker', // or 'attendee'
+    'postType' => 'speaker',
     'link' => true,
     'showSocial' => true,
     'showContact' => true,
@@ -14,6 +17,9 @@
     'phone' => null,
     'linkedin' => null,
     'twitter' => null,
+    'website' => null,
+    'bio' => null,
+    'avatar' => null,
     
     // Attendee specific fields
     'fullName' => null,
@@ -31,45 +37,89 @@
   <!-- Avatar positioned to overlap header and content -->
   <div class="relative -mt-16 px-6 text-center">
     <div class="avatar flex justify-center mb-4">
-      @if(has_post_thumbnail($person->ID))
-        @if($link)
-          <a class="inline-block" href="{{ get_permalink($person->ID) }}">
+      @if($user)
+        {{-- User avatar handling --}}
+        @if($avatar)
+          @if($link)
+            <a class="inline-block" href="{{ get_author_posts_url($user->ID) }}">
+              <div class="w-32 h-32 mx-auto">
+                <img src="{{ $avatar }}" 
+                     alt="{{ $user->display_name }}" 
+                     class="object-cover w-full h-full rounded-full border-4 border-white dark:border-gray-800 hover:animate-pulse">
+              </div>
+            </a>
+          @else
+            <div class="w-32 h-32 mx-auto">
+              <img src="{{ $avatar }}" 
+                   alt="{{ $user->display_name }}" 
+                   class="object-cover w-full h-full rounded-full border-4 border-white dark:border-gray-800">
+            </div>
+          @endif
+        @else
+          @if($link)
+            <a href="{{ get_author_posts_url($user->ID) }}">
+              <div class="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center border-4 border-white dark:border-gray-800">
+                <span class="text-2xl text-gray-700">{{ strtoupper(substr($user->display_name, 0, 1)) }}</span>
+              </div>
+            </a>
+          @else
+            <div class="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center border-4 border-white dark:border-gray-800">
+              <span class="text-2xl text-gray-700">{{ strtoupper(substr($user->display_name, 0, 1)) }}</span>
+            </div>
+          @endif
+        @endif
+      @elseif($person)
+        {{-- Original post thumbnail handling --}}
+        @if(has_post_thumbnail($person->ID))
+          @if($link)
+            <a class="inline-block" href="{{ get_permalink($person->ID) }}">
+              <div class="w-32 h-32 mx-auto">
+                <img src="{{ get_the_post_thumbnail_url($person->ID, 'thumbnail') }}" 
+                     alt="{{ $person->post_title }}" 
+                     class="object-cover w-full h-full rounded-full border-4 border-white dark:border-gray-800 hover:animate-pulse">
+              </div>
+            </a>
+          @else
             <div class="w-32 h-32 mx-auto">
               <img src="{{ get_the_post_thumbnail_url($person->ID, 'thumbnail') }}" 
                    alt="{{ $person->post_title }}" 
-                   class="object-cover w-full h-full rounded-full border-4 border-white dark:border-gray-800 hover:animate-pulse">
+                   class="object-cover w-full h-full rounded-full border-4 border-white dark:border-gray-800">
             </div>
-          </a>
+          @endif
         @else
-          <div class="w-32 h-32 mx-auto">
-            <img src="{{ get_the_post_thumbnail_url($person->ID, 'thumbnail') }}" 
-                 alt="{{ $person->post_title }}" 
-                 class="object-cover w-full h-full rounded-full border-4 border-white dark:border-gray-800">
-          </div>
-        @endif
-      @else
-        @if($link)
-          <a href="{{ get_permalink($person->ID) }}">
+          @if($link)
+            <a href="{{ get_permalink($person->ID) }}">
+              <div class="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center border-4 border-white dark:border-gray-800">
+                <span class="text-2xl text-gray-700">{{ strtoupper(substr($person->post_title, 0, 1)) }}</span>
+              </div>
+            </a>
+          @else
             <div class="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center border-4 border-white dark:border-gray-800">
               <span class="text-2xl text-gray-700">{{ strtoupper(substr($person->post_title, 0, 1)) }}</span>
             </div>
-          </a>
-        @else
-          <div class="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center border-4 border-white dark:border-gray-800">
-            <span class="text-2xl text-gray-700">{{ strtoupper(substr($person->post_title, 0, 1)) }}</span>
-          </div>
+          @endif
         @endif
       @endif
     </div>
   
     <div class="text-center px-6 mb-6">
       <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-        @if($link)
-          <a href="{{ get_permalink($person->ID) }}" class="hover:underline">
+        @if($user)
+          @if($link)
+            <a href="{{ get_author_posts_url($user->ID) }}" class="hover:underline">
+              {{ $user->display_name }}
+            </a>
+          @else
+            {{ $user->display_name }}
+          @endif
+        @elseif($person)
+          @if($link)
+            <a href="{{ get_permalink($person->ID) }}" class="hover:underline">
+              {{ $postType === 'attendee' ? $fullName ?? $person->post_title : $person->post_title }}
+            </a>
+          @else
             {{ $postType === 'attendee' ? $fullName ?? $person->post_title : $person->post_title }}
-          </a>
-        @else
-          {{ $postType === 'attendee' ? $fullName ?? $person->post_title : $person->post_title }}
+          @endif
         @endif
       </h3>
 
@@ -97,16 +147,6 @@
           </a>
         @endif
 
-        <!-- Phone (Contact) -->
-        @if($showContact && $phone)
-          <a href="tel:{{ $phone }}" class="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400"
-             {{ $link ? 'onclick="event.stopPropagation();"' : '' }}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-            </svg>
-          </a>
-        @endif
-
         <!-- LinkedIn (Social) -->
         @if($showSocial && $linkedin)
           <a href="{{ $linkedin }}" class="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400" target="_blank"
@@ -122,46 +162,11 @@
           <a href="{{ $twitter }}" class="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400" target="_blank"
              {{ $link ? 'onclick="event.stopPropagation();"' : '' }}>
              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
           </a>
         @endif
       </div>
-
-      <!-- Additional Information for Attendees -->
-      @if(filter_var($showAdditionalInfo, FILTER_VALIDATE_BOOLEAN) && $postType === 'attendee')
-        <div class="mt-4 text-left">
-          @if($arrival_date)
-            <p class="text-gray-600 dark:text-gray-300">
-              <strong>Arrival Date:</strong> {{ $arrival_date }}
-            </p>
-          @endif
-
-          @if($hotel_name)
-            <p class="text-gray-600 dark:text-gray-300">
-              <strong>Hotel:</strong> {{ $hotel_name }}
-            </p>
-          @endif
-
-          @if($visa_required)
-            <p class="text-gray-600 dark:text-gray-300">
-              <strong>Visa Required:</strong> Yes
-            </p>
-          @endif
-
-          @if($dietary_restrictions)
-            <p class="text-gray-600 dark:text-gray-300">
-              <strong>Dietary Restrictions:</strong> {{ $dietary_restrictions }}
-            </p>
-          @endif
-
-          @if($accessibility_requirements)
-            <p class="text-gray-600 dark:text-gray-300">
-              <strong>Accessibility:</strong> {{ $accessibility_requirements }}
-            </p>
-          @endif
-        </div>
-      @endif
     </div>
   </div>
 </div>
