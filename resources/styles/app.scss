@@ -31,6 +31,12 @@ header.bg-transparent .menu-horizontal > li:not(.menu-title):not(.disabled) > :n
   background-color: oklch(25% 0 0) !important;
 }
 
+.menu-vertical>li:not(.menu-title)>details>ul {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
+}
+
 
 /* Menu Active States */
 .menu li > :not(ul):not(.menu-title):not(details):not(.btn).active,
