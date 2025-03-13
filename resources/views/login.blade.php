@@ -6,11 +6,11 @@
 
 @section('content')
 <div class="flex min-h-full">
-    <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+    <div class="flex flex-1 flex-col justify-center px-4 py-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div class="mx-auto w-full max-w-sm lg:w-96">
 
             <a class="btn btn-ghost hover:bg-transparent p-0" href="/">
-                <x-logo class="lg:h-12 h-10 fill-current dark:text-white font-normal" />
+                <x-logo class="lg:h-12 h-8 fill-current dark:text-white font-normal" />
             </a>
             <div class="mt-8">
                 @if (is_user_logged_in())
