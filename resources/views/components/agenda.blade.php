@@ -56,26 +56,26 @@
   
   @if($layout === 'horizontal')
     <div class="shadow-lg rounded-lg dark:bg-black/25">  
-      <!-- Horizontal Tabs Container -->
-      <div class="mb-8">
-        <div class="grid grid-cols-{{ count($days) }} w-full" role="tablist">
-          @foreach ($days as $dayKey => $dayLabel)
-            <button
-              @click="setActiveTab({{ $loop->iteration }})"
-              :class="{ 
-                'bg-orange-500 text-white': activeDay === {{ $loop->iteration }},
-                'bg-base-200 hover:bg-orange-400 hover:text-white': activeDay !== {{ $loop->iteration }}
-              }"
-              class="py-4 text-center focus:outline-none transition-colors duration-300 {{ $loop->first ? 'rounded-tl-lg' : '' }} {{ $loop->last ? 'rounded-tr-lg' : '' }}"
-              role="tab"
-              :aria-selected="activeDay === {{ $loop->iteration }}"
-              aria-controls="day-{{ $loop->iteration }}-content">
-              <div class="text-sm font-medium">Day {{ $loop->iteration }}</div>
-              <div class="text-lg font-semibold">{{ $dayLabel }}</div>
-            </button>
-          @endforeach
-        </div>
+    <!-- Horizontal Tabs Container -->
+    <div class="mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-{{ count($days) }} w-full overflow-hidden rounded-t-lg" role="tablist">
+        @foreach ($days as $dayKey => $dayLabel)
+          <button
+            @click="setActiveTab({{ $loop->iteration }})"
+            :class="{ 
+              'bg-orange-500 text-white': activeDay === {{ $loop->iteration }},
+              'bg-base-200 hover:bg-orange-400 hover:text-white': activeDay !== {{ $loop->iteration }}
+            }"
+            class="py-4 text-center focus:outline-none transition-colors duration-300 border-b sm:border-r md:border-none {{ $loop->first ? 'md:rounded-tl-lg' : '' }} {{ $loop->last ? 'md:rounded-tr-lg' : '' }}"
+            role="tab"
+            :aria-selected="activeDay === {{ $loop->iteration }}"
+            aria-controls="day-{{ $loop->iteration }}-content">
+            <div class="text-sm font-medium">Day {{ $loop->iteration }}</div>
+            <div class="text-lg font-semibold">{{ $dayLabel }}</div>
+          </button>
+        @endforeach
       </div>
+    </div>
 
       <!-- Tab Content Container -->
       <div class="w-full px-8 lg:px-16 relative">
@@ -403,9 +403,7 @@
     opacity: 1;
     transform: translateX(0);
   }
-</style>
 
-<style>
   .schedule-content {
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
@@ -414,6 +412,17 @@
   .schedule-content.active {
     opacity: 1;
   }
+
+  @media (max-width: 768px) {
+    [role="tablist"] button {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    [role="tablist"] button:last-child {
+      border-bottom: none;
+    }
+  }
+
 </style>
 
 <script>

@@ -49,7 +49,9 @@ const config = {
     'from-primary',
     'to-primary',
     'grid-cols-[5]',
-    'grid-cols-5'
+    'grid-cols-5',
+    'md:grid-cols-[5]',
+    'md:grid-cols-5'
   ],
   darkMode: ['class', '[data-theme="dark"]'],
   theme: {
