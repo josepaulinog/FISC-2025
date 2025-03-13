@@ -75,7 +75,7 @@ const MAP_DATA = {
   ],
   transportation: [
     {
-      position: [-8.549499729955766, 125.52493802567274],
+      position: [-8.54759825, 125.52229053330531],
       title: 'Presidente Nicolau Lobato International Airport',
       category: 'transportation',
       icon: 'airport',
@@ -86,7 +86,7 @@ const MAP_DATA = {
   ],
   landmarks: [
     {
-      position: [-8.52045106096694, 125.60838638644216],
+      position: [-8.5207017, 125.608143],
       title: 'Cristo Rei of Dili',
       category: 'landmarks',
       icon: 'landmark',
@@ -95,7 +95,7 @@ const MAP_DATA = {
       amenities: ['Scenic Views', 'Photography Spot', '570 Steps Climb']
     },
     {
-      position: [-8.556531, 125.571553],
+      position: [-8.55541575, 125.56306325],
       title: 'Government Palace',
       category: 'landmarks',
       icon: 'landmark',
@@ -113,22 +113,13 @@ const MAP_DATA = {
       amenities: ['Cultural Exhibits', 'Historical Artifacts']
     },
     {
-      position: [-8.553291, 125.579083],
+      position: [-8.5556454, 125.5775575],
       title: 'Resistance Museum',
       category: 'landmarks',
       icon: 'museum',
       address: 'Av. da Liberdade de Imprensa, Dili, Timor-Leste',
       description: 'Museum documenting Timor-Leste\'s struggle for independence',
       amenities: ['Historical Exhibits', 'Photography Displays']
-    },
-    {
-      position: [-8.556506, 125.574421],
-      title: 'Santa Cruz Cemetery',
-      category: 'landmarks',
-      icon: 'landmark',
-      address: 'Santa Cruz District, Dili, Timor-Leste',
-      description: 'Historic cemetery and site of the 1991 Santa Cruz massacre',
-      amenities: ['Memorial Site', 'Historical Significance']
     },
     {
       position: [-8.551541, 125.576869],
