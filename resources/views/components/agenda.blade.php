@@ -99,7 +99,7 @@
           <div 
             id="day-{{ $loop->iteration }}-content" 
             class="day-content w-full" 
-            style="display: {{ $loop->first ? 'block' : 'none' }};"
+            style="display: none;"
             role="tabpanel">
             <div class="space-y-8 mt-10">
               @if(count($events))
