@@ -47,7 +47,7 @@
               <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
           </div>
-          <ul tabindex="1" class="dropdown-content menu bg-base-100 p-2 rounded-box shadow-2xl bordered mt-2 z-10 ring-1 ring-black ring-opacity-5 z-20">
+          <ul tabindex="1" class="dropdown-content menu bg-base-100 p-2 rounded-box shadow-2xl bordered mt-2 z-10 ring-1 ring-black ring-opacity-5 z-20 min-w-[220px]">
             <li class="pointer-events-none">
               <div class="flex flex-col justify-start items-start"> <!-- Ensures left alignment -->
                 <span class="text-sm font-medium">{{ $current_user->display_name }}</span>

@@ -60,7 +60,7 @@
                 <img src="{{ $profile_avatar }}" alt="{{ $current_user->display_name }}'s Avatar" class="rounded-full header-avatar">
               </div>
             </div>
-            <ul tabindex="1" class="dropdown-content menu bg-base-100 p-2 rounded-box shadow-2xl bordered mt-2 z-10 ring-1 ring-black ring-opacity-5">
+            <ul tabindex="1" class="dropdown-content menu bg-base-100 p-2 rounded-box shadow-2xl bordered mt-2 z-10 ring-1 ring-black ring-opacity-5 min-w-[220px]">
               <li class="pointer-events-none">
                 <div class="flex flex-col justify-start items-start">
                   <span class="text-sm font-medium">{{ $current_user->display_name }}</span>
