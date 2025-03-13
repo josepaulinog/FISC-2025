@@ -19,11 +19,13 @@
   activeDay: 1,
   
   init() {
+    this.activeDay = parseInt(localStorage.getItem('fiscActiveDay')) || 1;
     this.$nextTick(() => this.setActiveContent(1));
   },
   
   setActiveTab(tab) {
     this.activeDay = tab;
+    localStorage.setItem('fiscActiveDay', tab);
     this.setActiveContent(tab);
   },
   
