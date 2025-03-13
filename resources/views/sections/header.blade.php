@@ -12,7 +12,7 @@
           class="btn btn-ghost hover:bg-transparent p-0"
           aria-label="Go to homepage"
         >
-          <x-logo class="lg:h-12 h-8 fill-current dark:text-white font-normal" />
+          <x-logo class="lg:h-10 h-8 fill-current dark:text-white font-normal" />
       </a>
 
       <div class="navbar-start">

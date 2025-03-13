@@ -76,10 +76,9 @@ $slideCount = count($slides);
             <div class="carousel w-full">
                 @foreach($slides as $index => $slide)
                 <div id="slide-{{ $index + 1 }}" class="carousel-item relative w-full">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-12 lg:mx-4 lg:my-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-12 lg:mx-4 lg:mt-3 mb-8">
                         @foreach($slide as $speaker)
-                        <!-- Speaker card code remains the same -->
-                        <div class="cursor-pointer speaker-card bg-white dark:bg-black/25 border dark:border-white/75 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 ease-in-out"
+                        <div class="cursor-pointer speaker-card bg-white dark:bg-black/25 border dark:border-white/75 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
                             onclick="window.location='{{ $speaker['permalink'] }}'">
                             <!-- Gray header background -->
                             <div class="h-24 bg-base-200/50 dark:bg-gray-700 relative"></div>
@@ -91,7 +90,7 @@ $slideCount = count($slides);
                                     @if($speaker['thumbnail'])
                                     <img src="{{ $speaker['thumbnail'] }}"
                                         alt="{{ $speaker['title'] }}"
-                                        class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white dark:border-gray-800 hover:animate-pulse">
+                                        class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white dark:border-gray-800">
                                     @else
                                     <div class="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center mx-auto border-4 border-white dark:border-gray-800">
                                         <span class="text-gray-500">No Image</span>
@@ -208,7 +207,7 @@ $slideCount = count($slides);
         @endif
 
         @if($showCTA)
-        <div class="text-center mt-8">
+        <div class="text-center mt-4">
             <a class="btn btn-outline px-8 border-gray-400" href="/speakers">View All Speakers</a>
         </div>
         @endif
