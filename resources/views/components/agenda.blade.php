@@ -11,7 +11,7 @@
   'organizer'    => 'FreeBalance',
   'venue'        => 'Dilli Conference center',
   'location'     => 'Timor Leste',
-  'layout'       => 'horizontal', // Add new prop for layout: 'horizontal' or 'vertical'
+  'layout'       => 'horizontal', 
 ])
 
 <!-- Alpine.js powered tab navigation with simple slide effect -->
@@ -19,12 +19,14 @@
   activeDay: 1,
   
   init() {
+    // Get saved tab from localStorage or default to 1
     this.activeDay = parseInt(localStorage.getItem('fiscActiveDay')) || 1;
-    this.$nextTick(() => this.setActiveContent(1));
+    this.$nextTick(() => this.setActiveContent(this.activeDay));
   },
   
   setActiveTab(tab) {
     this.activeDay = tab;
+    // Save active tab to localStorage
     localStorage.setItem('fiscActiveDay', tab);
     this.setActiveContent(tab);
   },
@@ -281,7 +283,7 @@
           <div 
             id="day-{{ $loop->iteration }}-content" 
             class="day-content" 
-            style="display: {{ $loop->first ? 'block' : 'none' }};"
+            style="display: none;"
             role="tabpanel">
             <div class="space-y-8">
               @if(count($events))
@@ -426,48 +428,3 @@
   }
 
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const tabs = document.querySelectorAll('[role="tab"]');
-    const contents = document.querySelectorAll('[role="tabpanel"]');
-
-    function activateTab(tab) {
-      // Deactivate all tabs.
-      tabs.forEach(t => {
-        t.setAttribute('aria-selected', 'false');
-        t.classList.remove('bg-orange-500', 'text-white');
-        t.classList.add('bg-base-200');
-      });
-
-      // Activate the selected tab.
-      tab.setAttribute('aria-selected', 'true');
-      tab.classList.remove('bg-base-200');
-      tab.classList.add('bg-orange-500', 'text-white');
-
-      // Fade out all contents.
-      contents.forEach(c => {
-        c.classList.remove('active');
-        setTimeout(() => c.classList.add('hidden'), 300); // Wait for the fade-out transition to complete
-      });
-
-      // Fade in the corresponding content.
-      const target = document.getElementById(tab.getAttribute('aria-controls'));
-      setTimeout(() => {
-        target.classList.remove('hidden');
-        setTimeout(() => target.classList.add('active'), 10); // Small delay to ensure the element is visible before fading in
-      }, 300);
-    }
-
-    // Assign event listeners.
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => activateTab(tab));
-      tab.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') activateTab(tab);
-      });
-    });
-
-    // Activate the first tab by default.
-    activateTab(tabs[0]);
-  });
-</script>

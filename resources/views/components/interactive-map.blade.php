@@ -35,7 +35,7 @@
     <div class="container mx-auto px-4">
         <div class="card bg-base-100 border shadow-xl overflow-hidden">
             <div class="card-body p-0">
-                <div id="map" class="h-[600px] w-full"></div>
+                <div id="map" class="h-[600px] w-full z-0"></div>
 
                 <div class="p-6 bg-base-200/50">
                   <h3 class="text-lg font-medium mb-4">Key Locations</h3>

@@ -4,7 +4,7 @@
 <!-- Enhanced Hero Section - Simplified -->
 <div class="hero bg-cover bg-center relative" style="background-image: url('http://fisc.freebalance.com/wp-content/uploads/2025/03/Timor-Leste.jpg')">
     <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-    <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4 py-16">
+    <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4 lg:py-16 py-8">
         <div class="inline-block py-1 px-3 bg-black bg-opacity-20 text-white text-sm rounded-full mb-6">FISC 2025</div>
         <h1 class="text-4xl md:text-6xl mb-4">Timor-Leste Delegate Guide</h1>
         <p class="text-xl mb-10">April 7-10, 2025 | Palm Springs Hotel Dili</p>
@@ -20,8 +20,8 @@
 </div>
 
 <!-- Clean Navigation Bar (Fixed) with Animated Item Indicator -->
-<div class="sticky top-0 z-50 bg-base-100 shadow-sm border-b border-base-200" style="z-index: 99999">
-    <div class="container mx-auto">
+<div class="sticky top-0 bg-base-100 shadow-sm border-b border-base-200 z-20">
+    <div class="container mx-auto mx-4 px-0">
         <div class="relative">
             <nav class="flex justify-between items-center h-14 px-4">
                 <div class="relative flex space-x-6" id="nav-container">
