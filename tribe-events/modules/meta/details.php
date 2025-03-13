@@ -235,7 +235,7 @@ if (!empty($tags) && !is_wp_error($tags)) {
                     <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
                 </svg>
                 <div>
-                    <dt class="font-medium"><?php esc_html_e('Event Categories:', 'the-events-calendar'); ?></dt>
+                    <dt class="font-medium"><?php esc_html_e('Categories:', 'the-events-calendar'); ?></dt>
                     <dd class="text-gray-600"><?php echo esc_html($categories_list); ?></dd>
                 </div>
             </div>
