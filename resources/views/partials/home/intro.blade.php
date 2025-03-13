@@ -172,7 +172,7 @@
 <x-carousel
   title="Speakers & Panelists"
   description="Meet the experts sharing insights at FISC 2025."
-  :limit="6"
+  :limit="8"
   bgClass="bg-base-200"
   showCTA="true" />
 <!-- Venue Location Section -->
