@@ -40,6 +40,8 @@ const config = {
     'aspect-video',
     'w-1/3',
     'w-2/3',
+    'md:w-2/3',
+    'md:w-1/3',
     'rounded-box',
     'flex',
     'flex-col',

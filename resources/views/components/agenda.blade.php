@@ -49,7 +49,7 @@
   <div class="text-center lg:mb-12">
     <h2 class="text-3xl mb-4">{{ $title }}</h2>
     <div class="w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
-    <p class="text-lg max-w-2xl mx-auto text-neutral-500 dark:text-neutral-400 lg:mb-12">
+    <p class="text-lg max-w-2xl mx-auto text-neutral-500 dark:text-neutral-400 lg:mb-12 mb-4">
       {{ $description }}
     </p>
   </div>

@@ -34,11 +34,11 @@
             {{ $paragraph2 }}
           </p>
           @if (!empty($items))
-            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
+            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400 mb-8 md:mb-0">
               @foreach ($items as $item)
                 <li class="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg class="shrink-0 w-4 h-4 text-secondary dark:text-secondary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M1 5.917 5.724 10.5 15 1.5"/>
                 </svg>  
                 <span>{{ $item }}</span></li>
               @endforeach
@@ -59,11 +59,11 @@
           </p>
           @endif
           @if (!empty($items))
-            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
+            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400 mb-8 md:mb-0">
               @foreach ($items as $item)
                 <li class="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg class="shrink-0 w-4 h-4 text-secondary dark:text-secondary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M1 5.917 5.724 10.5 15 1.5"/>
                 </svg>  
                 <span>{{ $item }}</span></li>
               @endforeach
@@ -92,11 +92,11 @@
           </p>
           @endif
           @if (!empty($items))
-            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
+            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-40 mb-80">
               @foreach ($items as $item)
                 <li class="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg class="shrink-0 w-4 h-4 text-secondary dark:text-secondary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M1 5.917 5.724 10.5 15 1.5"/>
                 </svg>  
                 <span>{{ $item }}</span></li>
               @endforeach
@@ -118,11 +118,11 @@
           @endif
 
           @if (!empty($items))
-            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
+            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400 mb-8 md:mb-0">
               @foreach ($items as $item)
                 <li class="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg class="shrink-0 w-4 h-4 text-secondary dark:text-secondary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M1 5.917 5.724 10.5 15 1.5"/>
                 </svg>  
                 <span>{{ $item }}</span></li>
               @endforeach
