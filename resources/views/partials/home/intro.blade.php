@@ -129,7 +129,7 @@
   imageAlt="Illustration of FreeBalance Partner Portal"
   imagePosition="vectorRight"
   title="Welcome to the FISC 2025 Event Portal"
-  paragraph1="This portal is designed exclusively for event participants attending FISC 2025. Here, you can:"
+  paragraph1="This portal is designed exclusively for event participants attending the FreeBalance International Steering Committee (FISC) 2025. Here, you can:"
   :items="[
     'Access the event agenda and session details.',
     'Watch recorded sessions after the event.',
@@ -143,8 +143,8 @@
   imageUrl="https://freebalance.com/wp-content/uploads/2021/06/FISC-2019_Day-02_A013.jpg"
   imageAlt="Illustration of FreeBalance Partner Portal"
   imagePosition="left"
-  title="Event Overview"
-  paragraph1="FISC is an interactive global forum where government leaders, finance professionals, and technology innovators collaborate on Public Financial Management (PFM) best practices. The event includes:"
+  title="About FISC"
+  paragraph1="The FreeBalance International Steering Committee (FISC) is an annual interactive forum. FISC attendees consider public finance, government performance and policy and public sector implications of new agile processes and new technologies. The event includes:"
   :items="[
     'Expert keynotes & panel discussions.',
     'Workshops on digital finance transformation.',

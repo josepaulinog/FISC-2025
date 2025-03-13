@@ -143,7 +143,7 @@
   imageUrl="https://freebalance.com/wp-content/uploads/2021/06/FISC-2019_Day-02_A013.jpg"
   imageAlt="Illustration of FreeBalance Partner Portal"
   imagePosition="left"
-  title="Event Overview"
+  title="About FISC"
   paragraph1="FISC is an interactive global forum where government leaders, finance professionals, and technology innovators collaborate on Public Financial Management (PFM) best practices. The event includes:"
   :items="[
     'Expert keynotes & panel discussions.',
