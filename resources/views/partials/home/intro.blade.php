@@ -144,7 +144,7 @@
   imageAlt="Illustration of FreeBalance Partner Portal"
   imagePosition="left"
   title="About FISC"
-  paragraph1="The FreeBalance International Steering Committee (FISC) is an annual interactive forum. FISC attendees consider public finance, government performance and policy and public sector implications of new agile processes and new technologies. The event includes:"
+  paragraph1="The FreeBalance International Steering Committee (FISC) is an annual interactive forum where government leaders, finance professionals, and technology innovators collaborate on Public Financial Management (PFM) best practices. The event includes:"
   :items="[
     'Expert keynotes & panel discussions.',
     'Workshops on digital finance transformation.',
