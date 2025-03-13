@@ -1,7 +1,7 @@
 <div class="bg-base-200">
 <footer class="footer container text-base-content px-4 py-16">
   <aside>
-  <a class="btn btn-ghost text-xl hover:bg-base-100 p-0 " href="{{ home_url('/') }}">
+  <a class="btn btn-ghost hover:bg-transparent p-0 " href="{{ home_url('/') }}">
         <svg class="lg:h-12 h-9 fill-current dark:text-white font-normal" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 324.2 69.4">
           <defs>
             <style>

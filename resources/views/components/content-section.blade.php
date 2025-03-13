@@ -92,7 +92,7 @@
           </p>
           @endif
           @if (!empty($items))
-            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-40 mb-8">
+            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-40 lg:mb-8">
               @foreach ($items as $item)
                 <li class="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg class="shrink-0 w-4 h-4 text-secondary dark:text-secondary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
