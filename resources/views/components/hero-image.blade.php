@@ -85,9 +85,6 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .hero {
-    min-height: 450px;
-  }
   
   .hero .absolute.inset-0.bg-cover {
     background-attachment: scroll; /* Disable fixed background on mobile */
