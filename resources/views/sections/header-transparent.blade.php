@@ -9,7 +9,7 @@
       <nav class="navbar px-0" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
           <label 
             for="my-drawer" 
-            class="btn btn-square btn-ghost lg:hidden me-5"
+            class="btn btn-square btn-ghost lg:hidden me-4"
             :class="{ 'text-gray-800': isScrolled, 'text-white': !isScrolled }"
             aria-label="open sidebar"
           >
