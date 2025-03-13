@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Enhanced Hero Section - Simplified -->
-<div class="hero bg-cover bg-center relative" style="background-image: url('https://www.fisc.local/wp-content/uploads/2025/02/Timor-Leste.jpg')">
+<div class="hero bg-cover bg-center relative" style="background-image: url('http://fisc.freebalance.com/wp-content/uploads/2025/03/Timor-Leste.jpg')">
     <div class="absolute inset-0 bg-black bg-opacity-60"></div>
     <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4 py-16">
         <div class="inline-block py-1 px-3 bg-black bg-opacity-20 text-white text-sm rounded-full mb-6">FISC 2025</div>

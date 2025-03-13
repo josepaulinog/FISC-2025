@@ -125,7 +125,7 @@
 
 <x-content-section
   bgClass=""
-  imageUrl="https://www.fisc.local/wp-content/themes/fisc2025/resources/images/pic2.svg"
+  imageUrl="http://fisc.freebalance.com/wp-content/uploads/2025/03/pic2.svg"
   imageAlt="Illustration of FreeBalance Partner Portal"
   imagePosition="vectorRight"
   title="Welcome to the FISC 2025 Event Portal"
