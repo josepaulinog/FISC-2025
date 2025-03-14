@@ -197,3 +197,65 @@ function tribe_link_next_class($format) {
     return $format;
 }
 add_filter('tribe_the_next_event_link', 'tribe_link_next_class');
+
+// Add these functions to display and save custom user fields
+function display_custom_user_fields($user) {
+    ?>
+    <h3><?php _e("FISC 2025 Attendee Information", "sage"); ?></h3>
+    <table class="form-table">
+        <tr>
+            <th><label for="job_title"><?php _e("Job Title"); ?></label></th>
+            <td>
+                <input type="text" name="job_title" id="job_title" value="<?php echo esc_attr(get_user_meta($user->ID, 'job_title', true)); ?>" class="regular-text" />
+            </td>
+        </tr>
+        <tr>
+            <th><label for="company"><?php _e("Organization"); ?></label></th>
+            <td>
+                <input type="text" name="company" id="company" value="<?php echo esc_attr(get_user_meta($user->ID, 'company', true)); ?>" class="regular-text" />
+            </td>
+        </tr>
+        <tr>
+            <th><label for="country"><?php _e("Country"); ?></label></th>
+            <td>
+                <input type="text" name="country" id="country" value="<?php echo esc_attr(get_user_meta($user->ID, 'country', true)); ?>" class="regular-text" />
+            </td>
+        </tr>
+        <tr>
+            <th><label for="linkedin"><?php _e("LinkedIn Profile"); ?></label></th>
+            <td>
+                <input type="url" name="linkedin" id="linkedin" value="<?php echo esc_attr(get_user_meta($user->ID, 'linkedin', true)); ?>" class="regular-text" />
+            </td>
+        </tr>
+        <tr>
+            <th><label for="twitter"><?php _e("X.com Profile"); ?></label></th>
+            <td>
+                <input type="url" name="twitter" id="twitter" value="<?php echo esc_attr(get_user_meta($user->ID, 'twitter', true)); ?>" class="regular-text" />
+            </td>
+        </tr>
+        <tr>
+            <th><label for="website"><?php _e("Website"); ?></label></th>
+            <td>
+                <input type="url" name="website" id="website" value="<?php echo esc_attr(get_user_meta($user->ID, 'website', true)); ?>" class="regular-text" />
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+
+function save_custom_user_fields($user_id) {
+    if (!current_user_can('edit_user', $user_id)) return false;
+    
+    update_user_meta($user_id, 'job_title', sanitize_text_field($_POST['job_title'] ?? ''));
+    update_user_meta($user_id, 'company', sanitize_text_field($_POST['company'] ?? ''));
+    update_user_meta($user_id, 'country', sanitize_text_field($_POST['country'] ?? ''));
+    update_user_meta($user_id, 'linkedin', esc_url_raw($_POST['linkedin'] ?? ''));
+    update_user_meta($user_id, 'twitter', esc_url_raw($_POST['twitter'] ?? ''));
+    update_user_meta($user_id, 'website', esc_url_raw($_POST['website'] ?? ''));
+}
+
+// Register the hooks directly in functions.php
+add_action('show_user_profile', 'display_custom_user_fields');
+add_action('edit_user_profile', 'display_custom_user_fields');
+add_action('personal_options_update', 'save_custom_user_fields');
+add_action('edit_user_profile_update', 'save_custom_user_fields');
