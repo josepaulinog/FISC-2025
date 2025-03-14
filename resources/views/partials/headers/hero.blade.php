@@ -10,7 +10,7 @@
             $subheading = get_field('subheading');
             @endphp
             @if($subheading)
-            <p class="mt-3 text-neutral-500 dark:text-neutral-400">{{ $subheading }}</p>
+            <p class="mt-3 text-neutral-600 dark:text-neutral-400">{{ $subheading }}</p>
             @endif
             <!-- End Title -->
         </div>

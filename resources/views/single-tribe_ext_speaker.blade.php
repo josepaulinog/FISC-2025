@@ -7,7 +7,7 @@
 @endphp
 
 @section('content')
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-neutral-600">
     @while(have_posts())
       @php
           // Set up the post data and retrieve custom meta values.

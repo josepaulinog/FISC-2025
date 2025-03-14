@@ -67,7 +67,7 @@
                 <h3 class="text-xl font-semibold mb-4">
                   <a href="{{ $result['link'] }}" class="hover:text-primary dark:text-neutral-200">{{ html_entity_decode($result['title']) }}</a>
                 </h3>
-                <p class="mt-2 text-xs text-gray-500 dark:text-neutral-500">Published on {{ $result['date'] }}</p>
+                <p class="mt-2 text-xs text-gray-500 dark:text-neutral-600">Published on {{ $result['date'] }}</p>
                 @if($is_locked)
                   <button class="inline-block bg-gray-300 text-gray-600 font-bold py-2 px-4 rounded cursor-not-allowed mt-4" title="You don't have permission to access this content">Locked</button>
                 @else

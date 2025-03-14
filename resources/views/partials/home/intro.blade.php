@@ -231,7 +231,7 @@ $faqItems = [
     <div class="text-center mb-6">
       <h2 class="text-3xl mb-4">Contact Us</h2>
       <div class="w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
-      <p class="text-lg max-w-2xl mx-auto text-neutral-500">
+      <p class="text-lg max-w-2xl mx-auto text-neutral-600">
         Please reach out to our team with any questions about FISC 2025.
       </p>
     </div>

@@ -60,7 +60,7 @@ function createResultHTML(result) {
                 <h3 class="text-xl font-semibold mb-4">
                     <a href="${result.link}" class="hover:underline">${result.title}</a>
                 </h3>
-                <p class="mt-2 text-xs text-gray-500 dark:text-neutral-500">Published on ${result.date}</p>
+                <p class="mt-2 text-xs text-gray-500 dark:text-neutral-600">Published on ${result.date}</p>
                 ${isLocked ?
                     `<button class="inline-block bg-gray-300 text-gray-600 font-bold py-2 px-4 rounded cursor-not-allowed mt-4" title="You don't have permission to access this content">Locked</button>` :
                     `<a href="${result.link}" class="font-bold text-primary dark:text-primary-dark hover:underline transition duration-300 mt-3 block">Read More <svg class="inline w-3.5 h-3.5 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

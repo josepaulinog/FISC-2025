@@ -13,8 +13,8 @@
         <a href="#about-timor" class="btn btn-primary text-white text-white">
             Get Started
             <svg class="w-3 h-3 text-white transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"></path>
-          </svg>
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"></path>
+            </svg>
         </a>
     </div>
 </div>
@@ -240,6 +240,114 @@
 
 <main class="mx-auto">
 
+    <!-- Minimalist Welcome Section - Place after hero section and before sticky navigation -->
+    <section id="welcome-fisc" class="py-12 bg-base-100">
+        <div class="container mx-auto px-4">
+            <!-- Clean, Minimalist Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Left Column: Essential Information -->
+                <div>
+                    <div class="mb-4">
+                        <h2 class="text-3xl text-gray-800 dark:text-white mb-4">Welcome to FISC 2025</h2>
+
+                        <div class="max-w-3xl mb-2">
+                            <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">We are looking forward to welcoming you in Dili for the 2025 FreeBalance International Steering Committee (FISC) event in April. We're confident that this year's event will leave you with many great takeaways and best practices to bring back to your country.</p>
+
+                            <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">The overall theme for FISC 2025, <span class="italic">"The Digital Transformation of Public Financial Management"</span> is focused on providing insights into leveraging digital solutions to enhance Public Financial Management systems. PFM is the core to effective government operations and sustainable development. Attendees will engage FreeBalance executives in the adjustment of the product roadmap in the context of digital transformation.</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-medium mb-4">Event Information</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span class="text-neutral-600 dark:text-neutral-400">April 7-10, 2025 at Palm Springs Hotel Dili</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="text-neutral-600 dark:text-neutral-400">Theme: Advancing Digital Transformation through Public Financial Management</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <div class="text-neutral-600 dark:text-neutral-400">
+                                    <div>Zero IV, Fatuhada</div>
+                                    <div>Dom Aleixo, Timor-Leste</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-medium mb-3">Airport Arrival</h3>
+                        <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">Upon exiting the customs area at Presidente Nicolau Lobato International Airport, look out for a driver with a sign with your name. The driver will take you directly to your hotel. The Palm Springs Hotel Dili is approximately 15-20 minutes from the airport depending on traffic.</p>
+
+                        <p class="text-sm mb-2">In the event you don’t see your driver or you separate from your group, please call, text or WhatsApp:</p>
+                        <p><a href="tel:+6707723488" class="text-primary">Ludmila: +1 786 521-1544</a></p>
+                        <p><a href="tel:+6707723566" class="text-primary">Carolyn: +670 7723 5566</a></p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Contacts -->
+                <div>
+                    <div class="mb-8 p-4 bg-base-200/50 rounded-md">
+                        <h3 class="text-lg font-medium mb-4">Emergency Contacts</h3>
+
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-medium">BCD Travel Support</p>
+                                <p><a href="tel:+19055074445" class="text-primary">+1 905 507-4445</a></p>
+                                <p class="text-sm text-gray-500 mt-1">Office hours: 8:30am-5:00pm EST Mon-Fri</p>
+                            </div>
+
+                            <div>
+                                <p class="font-medium">After Hours Support</p>
+                                <p><a href="tel:+18553814440" class="text-primary">+1 855-381-4440</a> (Toll Free)</p>
+                                <p><a href="tel:+19055077909" class="text-primary">+1 905-507-7909</a> (International)</p>
+                                <p class="text-sm text-gray-500 mt-1">Executive Code: TL25</p>
+                            </div>
+
+                            <div>
+                                <p class="font-medium">Local Support</p>
+                                <p><a href="tel:+6707723488" class="text-primary">Ludmila: +1 786 521-1544</a></p>
+                                <p><a href="tel:+6707723566" class="text-primary">Carolyn: +670 7723 5566</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-medium mb-4">Need Assistance?</h3>
+                        <p class="mb-4">If you have any questions, please do not hesitate to contact:</p>
+
+                        <div class="flex items-center mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <a href="mailto:lpatralska@freebalance.com" class="text-primary">lpatralska@freebalance.com</a>
+                        </div>
+
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <a href="tel:+6707723488" class="text-primary">+1 786 521-1544</a>
+                        </div>
+                        <p class="mt-6 text-md text-gray-600 font-medium">Ludmila Patralska</p>
+                        <p class="mt-0 text-sm text-gray-500">Director of Affairs, Office of the CEO</p>
+
+                        <p class="mt-6 text-sm text-gray-600">We look forward to a successful and enjoyable event in Dili. We know that the program we have planned will provide you with valuable information to drive better PFM reform and modernization efforts when you return home.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Timor-Leste Section -->
     <section id="about-timor" class="py-16 bg-base-200">
         <div class="container mx-auto px-4">
@@ -252,7 +360,7 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Key Facts Card -->
                 <div class="card bg-white shadow-lg">
                     <div class="card-body">
@@ -817,12 +925,6 @@
                                                 <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
-                                                <span>Compact umbrella provided in welcome pack</span>
-                                            </li>
-                                            <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
-                                                </svg>
                                                 <span>Light jacket recommended for air-conditioned venues</span>
                                             </li>
                                             <li class="flex items-start gap-2">
@@ -999,6 +1101,12 @@
                                         Currency & Banking
                                     </h3>
 
+                                    <div class="mb-4 p-2 bg-blue-50 rounded-lg border border-blue-100">
+                                        <p class="text-blue-800 text-sm">
+                                            <span class="font-medium">Note:</span> All event expenses are covered. This information is for personal purchases only.
+                                        </p>
+                                    </div>
+
                                     <div class="space-y-4">
                                         <div class="flex items-start gap-4 pb-3 border-b">
                                             <div class="bg-primary/10 text-primary rounded-full p-2 shrink-0">
@@ -1008,7 +1116,7 @@
                                             </div>
                                             <div>
                                                 <h4 class="font-medium">Cash</h4>
-                                                <p class="text-sm text-gray-600">Bring crisp, new USD bills if possible. Damaged or old notes may not be accepted. Smaller denominations ($1, $5, $10, $20) are most useful for daily expenses.</p>
+                                                <p class="text-sm text-gray-600">U.S. Dollar is the official currency. Bring crisp, new bills - smaller denominations recommended.</p>
                                             </div>
                                         </div>
 
@@ -1020,7 +1128,7 @@
                                             </div>
                                             <div>
                                                 <h4 class="font-medium">Credit Cards</h4>
-                                                <p class="text-sm text-gray-600">Major hotels, restaurants, and some shops accept Visa and Mastercard. Always have cash as backup, especially in smaller establishments and markets.</p>
+                                                <p class="text-sm text-gray-600">Visa and Mastercard accepted at major establishments. Carry cash as backup.</p>
                                             </div>
                                         </div>
 
@@ -1032,21 +1140,20 @@
                                             </div>
                                             <div>
                                                 <h4 class="font-medium">ATMs</h4>
-                                                <p class="text-sm text-gray-600">Available at banks and major hotels in Dili. Recommended banks include ANZ and BNU with international networks. Withdrawal limits may apply.</p>
+                                                <p class="text-sm text-gray-600">Available at banks and major hotels. ANZ and BNU offer international networks.</p>
                                             </div>
                                         </div>
 
-                                        <div class="alert alert-warning bg-amber-50 border-amber-100 text-amber-800 mt-4 text-sm">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <div class="alert alert-warning bg-amber-50 border-amber-100 text-amber-800 mt-4 text-xs py-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                             </svg>
                                             <div>
-                                                <p>Important: Inform your bank about your travel to Timor-Leste before departure to prevent card blocks.</p>
+                                                <p>Tip: Inform your bank about travel plans to prevent card blocks.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- Expenses & Tipping -->
                                 <div class="border bg-base-100 p-5 rounded-lg">
                                     <h3 class="font-semibold text-lg mb-4 flex items-center">
@@ -1224,7 +1331,6 @@
 </main>
 
 <script>
-
     // This code should be included in your Sage 10 theme's JavaScript files
     // e.g., in resources/scripts/app.js or a custom module
 

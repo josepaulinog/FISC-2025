@@ -27,14 +27,14 @@
         <!-- Text Content on the right -->
         <div class="w-full lg:w-1/2">
           <h2 class="text-3xl text-gray-800 dark:text-white mb-4">{{ $title }}</h2>
-          <p class="py-4 leading-relaxed text-neutral-500 dark:text-neutral-400">
+          <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph1 }}
           </p>
-          <p class="mb-6 leading-relaxed text-neutral-500 dark:text-neutral-400">
+          <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph2 }}
           </p>
           @if (!empty($items))
-            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400 mb-8 md:mb-0 ms-4">
+            <ul class="space-y-4 text-left text-neutral-600 dark:text-gray-400 mb-8 md:mb-0 ms-4">
               @foreach ($items as $item)
                 <li class="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg class="shrink-0 w-4 h-4 text-secondary dark:text-secondary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
@@ -50,16 +50,16 @@
         <!-- Text Content on the left -->
         <div class="w-full lg:w-1/2">
           <h2 class="text-3xl text-gray-800 dark:text-white mb-4">{{ $title }}</h2>
-          <p class="py-4 leading-relaxed text-neutral-500 dark:text-neutral-400">
+          <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph1 }}
           </p>
           @if (!empty($paragraph2))
-          <p class="mb-6 leading-relaxed text-neutral-500 dark:text-neutral-400">
+          <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph2 }}
           </p>
           @endif
           @if (!empty($items))
-            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400 mb-8 md:mb-0 ms-4">
+            <ul class="space-y-4 text-left text-neutral-600 dark:text-gray-400 mb-8 md:mb-0 ms-4">
               @foreach ($items as $item)
                 <li class="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg class="shrink-0 w-4 h-4 text-secondary dark:text-secondary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
@@ -83,16 +83,16 @@
         <!-- Text Content on the right -->
         <div class="w-full lg:w-1/2">
           <h2 class="text-3xl text-gray-800 dark:text-white mb-4">{{ $title }}</h2>
-          <p class="py-4 leading-relaxed text-neutral-500 dark:text-neutral-400">
+          <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph1 }}
           </p>
           @if (!empty($paragraph2))
-          <p class="mb-6 leading-relaxed text-neutral-500 dark:text-neutral-400">
+          <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph2 }}
           </p>
           @endif
           @if (!empty($items))
-            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-40 lg:mb-8 ms-4">
+            <ul class="space-y-4 text-left text-neutral-600 dark:text-gray-40 lg:mb-8 ms-4">
               @foreach ($items as $item)
                 <li class="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg class="shrink-0 w-4 h-4 text-secondary dark:text-secondary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
@@ -108,17 +108,17 @@
         <!-- Text Content on the left -->
         <div class="w-full lg:w-1/2">
           <h2 class="text-3xl text-gray-800 dark:text-white mb-4">{{ $title }}</h2>
-          <p class="py-4 leading-relaxed text-neutral-500 dark:text-neutral-400">
+          <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph1 }}
           </p>
           @if (!empty($paragraph2))
-          <p class="mb-6 leading-relaxed text-neutral-500 dark:text-neutral-400">
+          <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph2 }}
           </p>
           @endif
 
           @if (!empty($items))
-            <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400 mb-8 md:mb-0 ms-4">
+            <ul class="space-y-4 text-left text-neutral-600 dark:text-gray-400 mb-8 md:mb-0 ms-4">
               @foreach ($items as $item)
                 <li class="flex items-center space-x-3 rtl:space-x-reverse">
                 <svg class="shrink-0 w-4 h-4 text-secondary dark:text-secondary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">

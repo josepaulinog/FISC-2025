@@ -171,7 +171,7 @@
     <h6 class="footer-title">Stay Connected</h6>
     <fieldset class="form-control w-80">
       <label class="label">
-        <span class="mb-4 text-neutral-500 dark:text-neutral-400">Enter your email address to sign up to the FreeBalance email newsletter.</span>
+        <span class="mb-4 text-neutral-600 dark:text-neutral-400">Enter your email address to sign up to the FreeBalance email newsletter.</span>
       </label>
       <div class="join">
         <input
