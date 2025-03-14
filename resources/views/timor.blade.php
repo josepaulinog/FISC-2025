@@ -1,3 +1,7 @@
+{{--
+  Template Name:Guide Template
+--}}
+
 @extends('layouts.app')
 
 @section('content')
