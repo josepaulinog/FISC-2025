@@ -177,10 +177,6 @@ $faqItems = [
 'question' => 'What is the agenda for FISC 2025?',
 'answer' => 'The agenda includes keynote speeches, panel discussions, workshops, and networking sessions focused on public financial management, digital transformation, and governance transparency. A detailed schedule will be shared closer to the event.'
 ],
-[
-'question' => 'Are there any social or cultural events during FISC 2025?',
-'answer' => 'Yes, FISC 2025 will feature cultural events, networking dinners, and excursions to showcase the rich heritage of Timor-Leste. These events are designed to foster collaboration and provide a memorable experience for attendees.'
-],
 ];
 @endphp
 
