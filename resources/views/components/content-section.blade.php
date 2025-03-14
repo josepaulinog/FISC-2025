@@ -18,7 +18,7 @@
 
 <section class="py-16 {{ $bgClass }}">
   <div class="container mx-auto px-4">
-    <div class="flex flex-col lg:flex-row w-full lg:gap-32">
+    <div class="flex flex-col lg:flex-row w-full lg:gap-16">
       @if($imagePosition === 'vectorLeft')
         <!-- Illustration on the left -->
         <div class="w-full lg:w-1/2">
