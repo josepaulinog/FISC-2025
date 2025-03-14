@@ -12,7 +12,7 @@
         <h2 class="text-3xl mb-4">Video Gallery</h2>
         <div class="w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
         <p class="text-lg max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400 lg:mb-8">
-            Missed a session? Watch expert discussions and key insights from FISC 2025, featuring top voices in government finance, technology, and policy.
+            Missed a session? Watch expert discussions and key insights from FISC 2025.
         </p>
     </div>
 
@@ -82,12 +82,6 @@ uasort($event_categories, function($a, $b) {
 
 <!-- Day Tabs -->
 <div class="tabs tabs-boxed mb-10">
-    <a class="h-10 tab tab-bordered day-tab" 
-       :class="activeDay === 'all' ? 'tab-active text-primary' : ''" 
-       data-day="all" 
-       @click="setDayFilter('all')">
-        All Days
-    </a>
     @foreach($custom_days as $day_key => $day_info)
         <a class="h-10 tab tab-bordered day-tab" 
            :class="activeDay === '{{ $day_key }}' ? 'tab-active text-primary' : ''" 
@@ -399,7 +393,7 @@ uasort($event_categories, function($a, $b) {
             currentVideoDescription: '',
             currentVideoEventUrl: '',
             currentVideoCategories: [],
-            activeDay: 'all',
+            activeDay: '2025-04-07',
             activeCategory: 'all',
             searchQuery: '',
             isLoading: false,
@@ -448,15 +442,15 @@ uasort($event_categories, function($a, $b) {
             },
 
             isVisible(day, categories, title) {
-                // Day filter - check if we should show all days or this specific day
-                const dayMatch = this.activeDay === 'all' || day === this.activeDay;
-
-                // Category filter
+                // Day filter - now simply checking if day matches activeDay
+                const dayMatch = day === this.activeDay;
+                
+                // Category filter (unchanged)
                 const categoryMatch = this.activeCategory === 'all' || categories.includes(this.activeCategory);
-
-                // Search filter
+                
+                // Search filter (unchanged)
                 const searchMatch = this.searchQuery === '' || title.includes(this.searchQuery.toLowerCase());
-
+                
                 return dayMatch && categoryMatch && searchMatch;
             },
 
@@ -492,7 +486,7 @@ uasort($event_categories, function($a, $b) {
 
             resetFilters() {
                 this.isLoading = true;
-                this.activeDay = 'all';
+                this.activeDay = '2025-04-07'; 
                 this.activeCategory = 'all';
                 this.searchQuery = '';
 
