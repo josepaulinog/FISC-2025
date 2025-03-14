@@ -289,8 +289,8 @@
                     </div>
 
                     <div>
-                        <h3 class="text-lg font-medium mb-3">Airport Arrival</h3>
-                        <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">Upon exiting the customs area at Presidente Nicolau Lobato International Airport, look out for a driver with a sign with your name. The driver will take you directly to your hotel. The Palm Springs Hotel Dili is approximately 15-20 minutes from the airport depending on traffic.</p>
+                        <h3 class="text-lg font-medium">Airport Arrival</h3>
+                        <p class="pt-0 py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">Upon exiting the customs area at Presidente Nicolau Lobato International Airport, look out for a driver with a sign with your name. The driver will take you directly to your hotel. The Palm Springs Hotel Dili is approximately 15-20 minutes from the airport depending on traffic.</p>
 
                         <p class="text-sm mb-2">In the event you don’t see your driver or you separate from your group, please call, text or WhatsApp:</p>
                         <p><a href="tel:+6707723488" class="text-primary">Ludmila: +1 786 521-1544</a></p>
