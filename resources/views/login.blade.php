@@ -28,7 +28,7 @@
                 <div class="mb-8">
                     <h2 class="text-2xl tracking-tight text-gray-900">{{ __('Login to your Fisc account', 'sage') }}</h2>
                     <p class="mt-2 text-sm text-gray-600">
-                        Access your dashboard to manage your account.
+                    Login to access agenda, videos, materials, and networking.
                     </p>
                 </div>
 
