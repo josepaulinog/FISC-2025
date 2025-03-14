@@ -26,7 +26,7 @@
         </div>
         <!-- Text Content on the right -->
         <div class="w-full lg:w-1/2">
-          <h2 class="text-3xl text-gray-800 dark:text-white mb-4">{{ $title }}</h2>
+          <h2 class="text-3xl text-gray-800 dark:text-white mb-2">{{ $title }}</h2>
           <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph1 }}
           </p>
@@ -49,7 +49,7 @@
        @elseif($imagePosition === 'vectorRight')
         <!-- Text Content on the left -->
         <div class="w-full lg:w-1/2">
-          <h2 class="text-3xl text-gray-800 dark:text-white mb-4">{{ $title }}</h2>
+          <h2 class="text-3xl text-gray-800 dark:text-white mb-2">{{ $title }}</h2>
           <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph1 }}
           </p>
@@ -82,7 +82,7 @@
         </div>
         <!-- Text Content on the right -->
         <div class="w-full lg:w-1/2">
-          <h2 class="text-3xl text-gray-800 dark:text-white mb-4">{{ $title }}</h2>
+          <h2 class="text-3xl text-gray-800 dark:text-white mb-2">{{ $title }}</h2>
           <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph1 }}
           </p>
@@ -107,7 +107,7 @@
       @else
         <!-- Text Content on the left -->
         <div class="w-full lg:w-1/2">
-          <h2 class="text-3xl text-gray-800 dark:text-white mb-4">{{ $title }}</h2>
+          <h2 class="text-3xl text-gray-800 dark:text-white mb-2">{{ $title }}</h2>
           <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">
             {{ $paragraph1 }}
           </p>
