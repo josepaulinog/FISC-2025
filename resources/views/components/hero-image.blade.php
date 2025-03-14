@@ -1,4 +1,4 @@
-<section class="hero min-h-[550px] relative overflow-hidden">
+<section class="hero min-h-[500px] relative overflow-hidden">
   @php
     // Set default image if not provided
     $backgroundImage = $backgroundImage ?? 'https://replicate.delivery/xezq/RvPsYyTIquoYMlykr5JTw8yMyNz5eNemQb2Mui7QwGIX5oXUA/tmpdx5k9d5d.png';
