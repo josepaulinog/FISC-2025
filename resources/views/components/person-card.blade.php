@@ -73,7 +73,7 @@
               <div class="w-32 h-32 mx-auto">
                 <img src="{{ $avatar }}" 
                      alt="{{ $user->display_name }}" 
-                     class="object-cover w-full h-full rounded-full border-4 border-white dark:border-gray-800 hover:animate-pulse">
+                     class="object-cover w-full h-full rounded-full border-4 border-white dark:border-gray-800">
               </div>
             </a>
           @else
@@ -97,7 +97,7 @@
               <div class="w-32 h-32 mx-auto">
                 <img src="{{ get_the_post_thumbnail_url($person->ID, 'thumbnail') }}" 
                      alt="{{ $person->post_title }}" 
-                     class="object-cover w-full h-full rounded-full border-4 border-white dark:border-gray-800 hover:animate-pulse">
+                     class="object-cover w-full h-full rounded-full border-4 border-white dark:border-gray-800">
               </div>
             </a>
           @else
