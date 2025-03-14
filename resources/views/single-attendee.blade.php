@@ -52,7 +52,7 @@
 
               <!-- Attendee Information -->
               <div class="md:col-span-2">
-                <h1 class="text-4xl text-gray-900 mb-12">{{ get_the_title() }}</h1>
+                <h1 class="text-4xl text-gray-900 mb-8">{{ get_the_title() }}</h1>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                   @if($job_title)

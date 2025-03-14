@@ -56,7 +56,7 @@
 
             <!-- Attendee Info Section -->
             <div class="md:col-span-2">
-              <h1 class="text-4xl text-gray-900 mb-12">{{ $author->display_name }}</h1>
+              <h1 class="text-4xl text-gray-900 mb-8">{{ $author->display_name }}</h1>
 
               <!-- Customized Contact Information -->
               <div class="space-y-3">

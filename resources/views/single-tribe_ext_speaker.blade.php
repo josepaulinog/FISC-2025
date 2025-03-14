@@ -58,7 +58,7 @@
               <!-- Speaker Info Section -->
               <div class="md:col-span-2">
                 @php(do_action('tribe_events_single_' . get_post_type() . '_before_title'))
-                <h1 class="text-4xl text-gray-900 mb-12">{{ get_the_title() }}</h1>
+                <h1 class="text-4xl text-gray-900 mb-8">{{ get_the_title() }}</h1>
                 @php(do_action('tribe_events_single_' . get_post_type() . '_after_title'))
 
                 <!-- Customized Contact Information -->
