@@ -113,12 +113,7 @@
                                 <svg class="w-3 h-3 text-white transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"></path>
                                 </svg>
-
                             </button>
-                            <div class="text-center mt-4 hidden">
-                                <span class="text-primary underline text-sm cursor-pointer" onclick="helpModal.showModal()">Need help in Login?</span>
-                            </div>
-
                         </div>
                         @php do_action('login_form_bottom') @endphp
                     </form>
@@ -140,7 +135,6 @@
 
         <!-- Header Section with Icon -->
         <div class="flex items-center space-x-4 text-center">
-            <img class="w-12 h-12 rounded-full ms-4 hidden d-none" src="https://via.placeholder.com/50" alt="User Icon">
             <div class="flex-1">
                 <h2 class="font-semibold text-2xl text-gray-900 mb-4">We're happy to help.</h2>
                 <p class="text-sm text-gray-500">Get in touch using any of the mediums below.</p>
