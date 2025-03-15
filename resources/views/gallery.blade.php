@@ -39,7 +39,7 @@
       @foreach($years as $year)
         <div id="year-{{ $year['year'] }}" class="gallery-year mb-20" data-year="{{ $year['year'] }}" style="display: none;">
           <!-- Day Tabs -->
-          <div class="tabs tabs-boxed mb-10">
+          <div class="tabs tabs-boxed mb-10 p-2">
             @for($i = 1; $i <= 4; $i++)
               <a class="h-10 tab tab-bordered day-tab {{ $i === 1 ? 'tab-active' : '' }}" 
                  data-day="{{ $i }}" 
@@ -51,8 +51,8 @@
 
           <h3 class="text-lg font-medium mb-3">Filter by Category</h3>
           
-          <!-- Category Filter Tabs -->
-          <div role="tablist" class="mb-6 filter-tabs tabs tabs-lifted tabs-lg" data-year="{{ $year['year'] }}">
+          <!-- Desktop Category Filter Tabs (hidden on mobile) -->
+          <div role="tablist" class="hidden md:flex mb-6 filter-tabs tabs tabs-lifted tabs-lg" data-year="{{ $year['year'] }}">
             <a class="tab tab-bordered filter-tab tab-active" data-filter="all" data-year="{{ $year['year'] }}">
               All
             </a>
@@ -68,6 +68,17 @@
             <a class="tab tab-bordered filter-tab" data-filter="social" data-year="{{ $year['year'] }}">
               Social
             </a>
+          </div>
+          
+          <!-- Mobile Filter Dropdown (visible only on mobile) -->
+          <div class="md:hidden mb-6">
+            <select id="mobile-filter-{{ $year['year'] }}" class="select select-bordered w-full" data-year="{{ $year['year'] }}">
+              <option value="all" selected>All Categories</option>
+              <option value="sessions">Sessions</option>
+              <option value="opening">Opening</option>
+              <option value="closing">Closing</option>
+              <option value="social">Social</option>
+            </select>
           </div>
           
           <!-- Download Album Button (hidden by default) -->
@@ -131,31 +142,28 @@
       </div>
     @endif
 
-
-
-     
-                <!-- Social Media & Follow -->
-                <div class="mt-16 text-center">
-                    <h3 class="text-2xl mb-4">Connect With Us</h3>
-                    <p class="mb-6 max-w-2xl mx-auto">Follow the conversation and get the latest updates on FISC 2025</p>
-                    
-                    <div class="flex justify-center space-x-4 mb-4">
-                        <a target="_blank" href="https://x.com/FreeBalance" class="btn btn-circle btn-outline border-gray-400">
-                            <svg width="24" height="24" class="w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                        </a>
-                        <a target="_blank" href="https://www.linkedin.com/company/freebalance/" class="btn btn-circle btn-outline border-gray-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                    
-                    <a target="_blank" href="https://x.com/hashtag/FISC2025?src=hashtag_click" class="mt-4">
-                        <span class="badge badge-secondary badge-lg text-white">#FISC2025</span>
-                    </a>
-                </div>
+    <!-- Social Media & Follow -->
+    <div class="mt-16 text-center">
+        <h3 class="text-2xl mb-4">Connect With Us</h3>
+        <p class="mb-6 max-w-2xl mx-auto">Follow the conversation and get the latest updates on FISC 2025</p>
+        
+        <div class="flex justify-center space-x-4 mb-4">
+            <a target="_blank" href="https://x.com/FreeBalance" class="btn btn-circle btn-outline border-gray-400">
+                <svg width="24" height="24" class="w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/company/freebalance/" class="btn btn-circle btn-outline border-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                </svg>
+            </a>
+        </div>
+        
+        <a target="_blank" href="https://x.com/hashtag/FISC2025?src=hashtag_click" class="mt-4">
+            <span class="badge badge-secondary badge-lg text-white">#FISC2025</span>
+        </a>
+    </div>
   </div>
 
 <!-- Modal Toggle (Hidden Input) -->
@@ -208,6 +216,55 @@
   </div>
 </div>
 
+<!-- JavaScript to handle mobile dropdown filter -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get all mobile filter dropdowns
+    const mobileFilters = document.querySelectorAll('[id^="mobile-filter-"]');
+    
+    // Add change event listener to each dropdown
+    mobileFilters.forEach(dropdown => {
+      dropdown.addEventListener('change', function() {
+        const year = this.getAttribute('data-year');
+        const filterValue = this.value;
+        
+        // Find the corresponding desktop tab and trigger a click on it
+        const correspondingTab = document.querySelector(`.filter-tab[data-filter="${filterValue}"][data-year="${year}"]`);
+        if (correspondingTab) {
+          correspondingTab.click();
+        } else {
+          // Direct filtering if tab can't be found
+          filterGallery(year, filterValue);
+        }
+      });
+    });
+    
+    // Function to filter gallery directly if needed
+    function filterGallery(year, category) {
+      const allItems = document.querySelectorAll(`#grid-${year} .js-item`);
+      
+      allItems.forEach(item => {
+        const itemGroups = JSON.parse(item.getAttribute('data-groups'));
+        const currentDay = document.querySelector(`.day-tab.tab-active[data-year="${year}"]`).getAttribute('data-day');
+        const itemDay = item.getAttribute('data-day');
+        
+        if (category === 'all') {
+          if (itemDay === currentDay) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        } else {
+          if (itemGroups.includes(category) && itemDay === currentDay) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+</script>
 
 @endsection
 
@@ -292,5 +349,42 @@
     max-width: none;
     height: 100%;
     object-fit: cover;
+  }
+  
+  /* Additional responsive styling for mobile */
+  @media (max-width: 768px) {
+    .column {
+      width: 50%; /* Two columns on small devices */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .column {
+      width: 100%; /* One column on very small devices */
+      padding-left: 5px;
+      padding-right: 5px;
+      margin-top: 10px;
+    }
+  }
+  
+  /* Improve day tabs on mobile */
+  @media (max-width: 640px) {
+    .tabs-boxed {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+  }
+  
+  /* Make modal controls more touch-friendly */
+  @media (max-width: 768px) {
+    #prev-button, #next-button {
+      padding: 15px;
+    }
+    
+    .modal-box button.btn-circle {
+      width: 3rem;
+      height: 3rem;
+    }
   }
 </style>

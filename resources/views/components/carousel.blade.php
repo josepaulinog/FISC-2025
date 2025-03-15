@@ -76,9 +76,9 @@ $slideCount = count($slides);
             <div class="carousel w-full">
                 @foreach($slides as $index => $slide)
                 <div id="slide-{{ $index + 1 }}" class="carousel-item relative w-full">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-12 lg:mx-4 lg:mt-3 mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full px-12 md:px-12 lg:mx-4 lg:mt-3 mb-8">
                         @foreach($slide as $speaker)
-                        <div class="cursor-pointer speaker-card bg-white dark:bg-black/25 border dark:border-white/75 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
+                        <div class="cursor-pointer speaker-card mx-auto max-w-sm w-full bg-white dark:bg-black/25 border dark:border-white/75 rounded-2xl shadow-lg transform lg:hover:scale-105 transition-all duration-300 ease-in-out"
                             onclick="window.location='{{ $speaker['permalink'] }}'">
                             <!-- Gray header background -->
                             <div class="h-24 bg-base-200/50 dark:bg-gray-700 relative"></div>
@@ -214,3 +214,18 @@ $slideCount = count($slides);
 
     </div>
 </section>
+
+<style>
+    /* Hide second and third cards on mobile */
+    @media (max-width: 767px) {
+        .carousel-item .grid > div:not(:first-child) {
+            display: none;
+        }
+        
+        /* Center the single visible card */
+        .carousel-item .grid > div:first-child {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>

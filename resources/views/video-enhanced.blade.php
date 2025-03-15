@@ -81,7 +81,7 @@ uasort($event_categories, function($a, $b) {
 @endphp
 
 <!-- Day Tabs -->
-<div class="tabs tabs-boxed mb-10">
+<div class="tabs tabs-boxed mb-10 p-2">
     @foreach($custom_days as $day_key => $day_info)
         <a class="h-10 tab tab-bordered day-tab" 
            :class="activeDay === '{{ $day_key }}' ? 'tab-active text-primary' : ''" 
