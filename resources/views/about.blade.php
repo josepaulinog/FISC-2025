@@ -87,7 +87,7 @@
         paragraph1="This year’s theme emphasizes how governments can leverage technology to improve
 transparency, efficiency, and service delivery. Discussions will focus on:"
         :items="[
-            'Modernizing public financial systems through digital platforms and AI-driven solutions..',
+            'Modernizing public financial systems through digital platforms and AI-driven solutions.',
             'Enhancing fiscal transparency and accountability using real-time data and automation.',
             'Strengthening cybersecurity and data governance to protect national financial assets.',
             'Developing agile and adaptive financial management strategies in an evolving global
@@ -100,7 +100,7 @@ landscape.'
     <section class="py-16">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl mb-4">Key Benefits of Fisc 2025</h2>
+                <h2 class="text-3xl mb-4">Key Benefits of FISC 2025</h2>
                 <div class="w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
                 <p class="text-lg max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400 mb-8">
                     FISC brings together customers at all stages of their PFM modernization journey. Some have been using FreeBalance solutions for over 25 years, while others are just beginning. FISC creates a dynamic environment where delegates share stories, lessons learned, and good practices. Attendees benefit from:
@@ -121,7 +121,7 @@ landscape.'
                     <div>
                         <h3 class="text-lg font-semibold mb-2 text-gray-800 dark:text-white">Peer-to-peer knowledge exchange</h3>
                         <p class="text-neutral-600 dark:text-neutral-300  mb-8">
-                            Attendees learn from one another about managing organizational change, overcoming obstacles, and effective governance strategies.
+                        Attendees learn from one another about managing organizational change, overcoming obstacles, and leading effective governance strategies.
                         </p>
                     </div>
                 </div>
@@ -307,31 +307,28 @@ landscape.'
     </section>
 
     <!-- FAQs Section -->
+
     @php
     $faqItems = [
     [
     'question' => 'What is FISC 2025?',
-    'answer' => 'FISC 2025 is a forum focused on Public Financial Management (PFM) that will bring together government officials, finance professionals, and technology specialists in Timor-Leste from April 7-10, 2025 to discuss fiscal management approaches, transparency mechanisms, and technology integration.'
+    'answer' => 'FISC is a premier global forum where government leaders, policymakers, and public financial management (PFM) experts collaborate to shape the future of public finance, governance, and digital transformation. Since its inception in 2007, FISC has provided FreeBalance customers with an exclusive opportunity to exchange knowledge, explore good practices, and directly influence the FreeBalance product and services roadmap through discussion with FreeBalance decision-makers.'
     ],
     [
-    'question' => 'Who will be presenting at FISC 2025?',
-    'answer' => 'FISC 2025 will feature presentations from FreeBalance senior leaders, technical specialists, and selected guest speakers with expertise in various aspects of public financial management.'
+    'question' => 'Who can attend FISC 2025?',
+    'answer' => 'FISC 2025 is an exclusive, invitation-only event for FreeBalance customers and official guests, including government officials, finance professionals, and technology innovators.'
     ],
     [
-    'question' => 'Where and when will FISC 2025 be held?',
-    'answer' => 'FISC 2025 will be held at the Palm Springs Hotel in Dili, Timor-Leste from April 7-10, 2025.'
+    'question' => 'Where will FISC 2025 be held?',
+    'answer' => 'FISC 2025 will be held at the Palm Springs Hotel in Dili, Timor-Leste.'
     ],
     [
-    'question' => 'How does FISC contribute to PFM practices?',
-    'answer' => 'FISC facilitates knowledge exchange between participants, allowing them to learn from each other\'s experiences with implementing financial systems. The discussions and recommendations from FISC often contribute to product development and implementation strategies for financial management solutions.'
+    'question' => 'How does FISC contribute to global PFM practices?',
+    'answer' => 'FISC is a customer-driven steering committee that plays a direct role in shaping the future of FreeBalance. No other software vendor conference provides this level of engagement and influence. And there is no selling at FISC: just focused, strategic engagement on what matters most to customers.'
     ],
     [
-    'question' => 'What topics will be covered at FISC 2025?',
-    'answer' => 'FISC 2025 will include sessions on public financial management practices, digital transformation in government finance, transparency mechanisms, and financial system implementation strategies. Visit the Agenda page to see the latest session information. Please note that the agenda is subject to change.'
-    ],
-    [
-    'question' => 'Will there be cultural activities during FISC 2025?',
-    'answer' => 'Yes, FISC 2025 will include selected cultural activities and networking events to showcase Timor-Leste\'s heritage and provide opportunities for informal discussions among participants.'
+    'question' => 'What is the agenda for FISC 2025?',
+    'answer' => 'The agenda includes keynote speeches, panel discussions, workshops, and networking sessions focused on public financial management, digital transformation, and governance transparency. A detailed schedule will be shared closer to the event.'
     ],
     ];
     @endphp

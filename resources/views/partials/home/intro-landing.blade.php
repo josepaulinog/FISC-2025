@@ -159,11 +159,11 @@
 $faqItems = [
 [
 'question' => 'What is FISC 2025?',
-'answer' => 'FISC 2025 is the global forum for Public Financial Management (PFM), bringing together government leaders, finance experts, and technology innovators to discuss the latest trends in fiscal sustainability, governance transparency, and digital transformation.'
+'answer' => 'FISC is a premier global forum where government leaders, policymakers, and public financial management (PFM) experts collaborate to shape the future of public finance, governance, and digital transformation. Since its inception in 2007, FISC has provided FreeBalance customers with an exclusive opportunity to exchange knowledge, explore good practices, and directly influence the FreeBalance product and services roadmap through discussion with FreeBalance decision-makers.'
 ],
 [
 'question' => 'Who can attend FISC 2025?',
-'answer' => 'FISC 2025 is an exclusive event for delegates and official guests, including government officials, finance professionals, and technology innovators.'
+'answer' => 'FISC 2025 is an exclusive, invitation-only event for FreeBalance customers and official guests, including government officials, finance professionals, and technology innovators.'
 ],
 [
 'question' => 'Where will FISC 2025 be held?',
@@ -171,7 +171,7 @@ $faqItems = [
 ],
 [
 'question' => 'How does FISC contribute to global PFM practices?',
-'answer' => 'FISC plays a crucial role in shaping global PFM practices by facilitating knowledge exchange between countries, international organizations, and PFM experts. Discussions and recommendations from FISC often inform policy decisions, contribute to the development of international PFM standards, and guide the implementation of PFM reforms worldwide.'
+'answer' => 'FISC is a customer-driven steering committee that plays a direct role in shaping the future of FreeBalance. No other software vendor conference provides this level of engagement and influence. And there is no selling at FISC: just focused, strategic engagement on what matters most to customers.'
 ],
 [
 'question' => 'What is the agenda for FISC 2025?',
