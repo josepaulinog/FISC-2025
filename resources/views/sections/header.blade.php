@@ -39,7 +39,7 @@
         }
         @endphp
         <div class="dropdown dropdown-end">
-          <div tabindex="1" role="button" class="btn btn-ghost btn-circle avatar flex flex-col items-center">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar flex flex-col items-center">
             <div class="rounded-full">
               <img src="{{ $profile_avatar }}" alt="{{ $current_user->display_name }}'s Avatar" class="rounded-full header-avatar border">
             </div>
@@ -47,7 +47,7 @@
               <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
           </div>
-          <ul tabindex="1" class="dropdown-content menu bg-base-100 p-2 rounded-box shadow-2xl bordered mt-2 z-10 ring-1 ring-black ring-opacity-5 z-20 min-w-[220px]">
+          <ul tabindex="0" class="dropdown-content menu bg-base-100 p-2 rounded-box shadow-2xl bordered mt-2 z-10 ring-1 ring-black ring-opacity-5 z-20 min-w-[220px]">
             <li class="pointer-events-none">
               <div class="flex flex-col justify-start items-start"> <!-- Ensures left alignment -->
                 <span class="text-sm font-medium">{{ $current_user->display_name }}</span>
@@ -75,7 +75,7 @@
             <li class="pointer-events-none">
               <hr class="my-2 border-t border-gray-200 w-full mx-auto p-0">
             </li>
-            <li><a href="{{ wp_logout_url(home_url('/')) . '&_wpnonce=' . wp_create_nonce('log-out') }}">Logout</a></li>
+            <li><a href="{{ wp_logout_url(home_url('/')) }}">Logout</a></li>
           </ul>
         </div>
         @else
