@@ -1,9 +1,9 @@
-<header class="bg-base-100 shadow-md">
-  <div class="container mx-auto py-4 px-4 flex justify-between items-center">
+<header class="fixed w-full z-20 transition-all duration-300 transparent-header">
+  <div class="container mx-auto py-4 px-4">
     @if (has_nav_menu('primary_navigation'))
     <nav class="navbar px-0" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
-      <label for="my-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost lg:hidden me-4">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 stroke-current">
+      <label for="my-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost lg:hidden me-4 text-white header-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 stroke-current text-white header-icon">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </label>
@@ -12,12 +12,12 @@
           class="btn btn-ghost hover:bg-transparent p-0"
           aria-label="Go to homepage"
         >
-          <x-logo class="lg:h-12 h-10 fill-current dark:text-white font-normal transition-colors duration-300" />
+          <x-logo class="lg:h-12 h-10 fill-current text-white font-normal transition-colors duration-300 header-logo" />
       </a>
 
       <div class="navbar-start">
       </div>
-      <div class="navbar-center hidden lg:block">
+      <div class="navbar-center hidden lg:block text-white header-nav">
         @if (is_user_logged_in())
         {!! $navigation !!}
         @endif
@@ -43,9 +43,6 @@
             <div class="rounded-full">
               <img src="{{ $profile_avatar }}" alt="{{ $current_user->display_name }}'s Avatar" class="rounded-full header-avatar border">
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 text-gray-400 d-inline hidden d-none" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
           </div>
           <ul tabindex="0" class="dropdown-content menu bg-base-100 p-2 rounded-box shadow-2xl bordered mt-2 z-10 ring-1 ring-black ring-opacity-5 z-20 min-w-[220px]">
             <li class="pointer-events-none">
@@ -79,7 +76,7 @@
           </ul>
         </div>
         @else
-        <a href="{{ home_url('/login') }}" class="btn btn-primary px-4 py-2 text-white">
+        <a href="{{ home_url('/login') }}" class="btn btn-ghost border-white text-white hover:bg-white hover:text-black transition-colors duration-300 login-button">
           Login
 
           <svg class="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
@@ -92,3 +89,92 @@
     @endif
   </div>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('.transparent-header');
+    const headerLogo = document.querySelector('.header-logo');
+    const headerNav = document.querySelector('.header-nav');
+    const headerToggle = document.querySelector('.header-toggle');
+    const headerIcon = document.querySelector('.header-icon');
+    const loginButton = document.querySelector('.login-button');
+    
+    let ticking = false;
+    
+    function handleScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          const isScrolled = window.pageYOffset > 20;
+          
+          if (isScrolled) {
+            // Add scrolled state classes
+            header.classList.add('bg-white', 'shadow-md');
+            
+            if (headerLogo) {
+              headerLogo.classList.remove('text-white');
+              headerLogo.classList.add('text-gray-800');
+            }
+            
+            if (headerNav) {
+              headerNav.classList.remove('text-white');
+              headerNav.classList.add('text-gray-800');
+            }
+            
+            if (headerToggle) {
+              headerToggle.classList.remove('text-white');
+              headerToggle.classList.add('text-gray-800');
+            }
+            
+            if (headerIcon) {
+              headerIcon.classList.remove('text-white');
+              headerIcon.classList.add('text-gray-800');
+            }
+            
+            if (loginButton) {
+              loginButton.classList.remove('border-white', 'text-white', 'hover:bg-white', 'hover:text-black');
+              loginButton.classList.add('border-gray-800', 'text-gray-800', 'hover:bg-gray-800', 'hover:text-white');
+            }
+          } else {
+            // Remove scrolled state classes
+            header.classList.remove('bg-white', 'shadow-md');
+            
+            if (headerLogo) {
+              headerLogo.classList.add('text-white');
+              headerLogo.classList.remove('text-gray-800');
+            }
+            
+            if (headerNav) {
+              headerNav.classList.add('text-white');
+              headerNav.classList.remove('text-gray-800');
+            }
+            
+            if (headerToggle) {
+              headerToggle.classList.add('text-white');
+              headerToggle.classList.remove('text-gray-800');
+            }
+            
+            if (headerIcon) {
+              headerIcon.classList.add('text-white');
+              headerIcon.classList.remove('text-gray-800');
+            }
+            
+            if (loginButton) {
+              loginButton.classList.add('border-white', 'text-white', 'hover:bg-white', 'hover:text-black');
+              loginButton.classList.remove('border-gray-800', 'text-gray-800', 'hover:bg-gray-800', 'hover:text-white');
+            }
+          }
+          
+          ticking = false;
+        });
+        
+        ticking = true;
+      }
+    }
+    
+    // Initialize scroll handler to set correct initial state
+    handleScroll();
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+  });
+</script>
