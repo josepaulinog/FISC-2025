@@ -1,9 +1,9 @@
-<header class="fixed w-full z-20 transition-all duration-300 transparent-header">
+<header class="bg-transparent">
   <div class="container mx-auto py-4 px-4">
     @if (has_nav_menu('primary_navigation'))
     <nav class="navbar px-0" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
-      <label for="my-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost lg:hidden me-4 text-white header-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 stroke-current text-white header-icon">
+      <label for="my-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost lg:hidden me-4 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 stroke-current text-white">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </label>
@@ -12,12 +12,12 @@
           class="btn btn-ghost hover:bg-transparent p-0"
           aria-label="Go to homepage"
         >
-          <x-logo class="lg:h-12 h-10 fill-current text-white font-normal transition-colors duration-300 header-logo" />
+          <x-logo class="lg:h-12 h-10 fill-current text-white font-normal transition-colors duration-300" />
       </a>
 
       <div class="navbar-start">
       </div>
-      <div class="navbar-center hidden lg:block text-white header-nav">
+      <div class="navbar-center hidden lg:block text-white">
         @if (is_user_logged_in())
         {!! $navigation !!}
         @endif
@@ -76,7 +76,7 @@
           </ul>
         </div>
         @else
-        <a href="{{ home_url('/login') }}" class="btn btn-ghost border-white text-white hover:bg-white hover:text-black transition-colors duration-300 login-button">
+        <a href="{{ home_url('/login') }}" class="btn btn-ghost border-white text-white hover:bg-white hover:text-black transition-colors duration-300">
           Login
 
           <svg class="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
@@ -89,92 +89,3 @@
     @endif
   </div>
 </header>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const header = document.querySelector('.transparent-header');
-    const headerLogo = document.querySelector('.header-logo');
-    const headerNav = document.querySelector('.header-nav');
-    const headerToggle = document.querySelector('.header-toggle');
-    const headerIcon = document.querySelector('.header-icon');
-    const loginButton = document.querySelector('.login-button');
-    
-    let ticking = false;
-    
-    function handleScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(function() {
-          const isScrolled = window.pageYOffset > 20;
-          
-          if (isScrolled) {
-            // Add scrolled state classes
-            header.classList.add('bg-white', 'shadow-md');
-            
-            if (headerLogo) {
-              headerLogo.classList.remove('text-white');
-              headerLogo.classList.add('text-gray-800');
-            }
-            
-            if (headerNav) {
-              headerNav.classList.remove('text-white');
-              headerNav.classList.add('text-gray-800');
-            }
-            
-            if (headerToggle) {
-              headerToggle.classList.remove('text-white');
-              headerToggle.classList.add('text-gray-800');
-            }
-            
-            if (headerIcon) {
-              headerIcon.classList.remove('text-white');
-              headerIcon.classList.add('text-gray-800');
-            }
-            
-            if (loginButton) {
-              loginButton.classList.remove('border-white', 'text-white', 'hover:bg-white', 'hover:text-black');
-              loginButton.classList.add('border-gray-800', 'text-gray-800', 'hover:bg-gray-800', 'hover:text-white');
-            }
-          } else {
-            // Remove scrolled state classes
-            header.classList.remove('bg-white', 'shadow-md');
-            
-            if (headerLogo) {
-              headerLogo.classList.add('text-white');
-              headerLogo.classList.remove('text-gray-800');
-            }
-            
-            if (headerNav) {
-              headerNav.classList.add('text-white');
-              headerNav.classList.remove('text-gray-800');
-            }
-            
-            if (headerToggle) {
-              headerToggle.classList.add('text-white');
-              headerToggle.classList.remove('text-gray-800');
-            }
-            
-            if (headerIcon) {
-              headerIcon.classList.add('text-white');
-              headerIcon.classList.remove('text-gray-800');
-            }
-            
-            if (loginButton) {
-              loginButton.classList.add('border-white', 'text-white', 'hover:bg-white', 'hover:text-black');
-              loginButton.classList.remove('border-gray-800', 'text-gray-800', 'hover:bg-gray-800', 'hover:text-white');
-            }
-          }
-          
-          ticking = false;
-        });
-        
-        ticking = true;
-      }
-    }
-    
-    // Initialize scroll handler to set correct initial state
-    handleScroll();
-    
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
-  });
-</script>
