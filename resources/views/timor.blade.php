@@ -11,7 +11,7 @@
     <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4 lg:py-10 py-12">
         <div class="inline-block py-1 px-3 bg-black bg-opacity-20 text-white text-sm rounded-full mb-3">FISC 2025</div>
         <h1 class="text-4xl md:text-6xl mb-4">Timor-Leste Delegate Guide</h1>
-        <p class="text-xl mb-10">April 7-10, 2025 | Palm Springs Hotel Dili</p>
+        <p class="text-xl mb-4">April 7-10, 2025 | Palm Springs Hotel Dili</p>
 
         <!-- Single Primary Call-to-Action -->
         <a href="#about-timor" class="btn btn-primary text-white text-white">
