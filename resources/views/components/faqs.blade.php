@@ -19,7 +19,9 @@
     </div>
     <div class="max-w-3xl mx-auto">
       @foreach($faqs as $faq)
-        
+        <div class="collapse collapse-arrow shadow-lg mb-4 rounded-md p-2 border bg-white dark:bg-black/25">
+          
+        </div>
       @endforeach
     </div>
   </div>
