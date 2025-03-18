@@ -30,7 +30,7 @@
             <nav class="flex justify-between items-center h-14 px-4">
                 <div class="relative flex space-x-6" id="nav-container">
                     <!-- Animated indicator that moves between menu items -->
-                    <div id="nav-indicator" class="absolute bottom-0 left-0 h-1 bg-primary" style="width: 0; transition: all 0.3s ease;"></div>
+                    <div id="nav-indicator" class="absolute bottom-0 left-0 h-1 bg-primary"></div>
 
                     <a href="#about-timor" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="about-timor">
                         About
