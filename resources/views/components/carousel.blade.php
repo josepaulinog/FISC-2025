@@ -78,7 +78,7 @@ $slideCount = count($slides);
                 <div id="slide-{{ $index + 1 }}" class="carousel-item relative w-full">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full px-12 md:px-12 lg:mx-4 lg:mt-3 mb-8">
                         @foreach($slide as $speaker)
-                        <div class="cursor-pointer speaker-card mx-auto max-w-sm w-full bg-white dark:bg-black/25 border dark:border-white/75 rounded-2xl shadow-lg transform lg:hover:scale-105 transition-all"
+                        <div class="cursor-pointer speaker-card mx-auto max-w-sm w-full bg-white dark:bg-black/25 border dark:border-white/75 rounded-2xl shadow-lg transform lg:hover:scale-105"
                             onclick="window.location='{{ $speaker['permalink'] }}'">
                             <!-- Gray header background -->
                             <div class="h-24 bg-base-200/50 dark:bg-gray-700 relative"></div>
