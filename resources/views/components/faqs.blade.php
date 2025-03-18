@@ -24,7 +24,7 @@
           <div class="">
             {{ $faq['question'] }}
           </div>
-          <div class="">
+          <div class="collapse-content text-gray-600 dark:text-white/75">
             <p>{{ $faq['answer'] }}</p>
           </div>
         </div>
