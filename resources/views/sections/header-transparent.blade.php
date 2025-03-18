@@ -76,7 +76,7 @@
               <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
             </li>
           </ul>
-          <form id="logout-form" action="{{ wp_logout_url(home_url('/')) }}" method="POST" style="display: none;">
+          <form class="hidden" id="logout-form" action="{{ wp_logout_url(home_url('/')) }}" method="POST">
             <?php wp_nonce_field('log-out'); ?>
             <input type="hidden" name="action" value="logout">
             <input type="hidden" name="redirect_to" value="{{ home_url('/') }}">
