@@ -50,6 +50,156 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Simpler direct approach to manipulate the indicator
+        const navIndicator = document.getElementById('nav-indicator');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Simple function to position the indicator
+        function setActiveLink(link) {
+            // Remove active class from all links
+            navLinks.forEach(l => l.classList.remove('active'));
+
+            // Add active class to the current link
+            link.classList.add('active');
+
+            // Position the indicator directly using the link's offsetLeft and width
+            navIndicator.style.width = link.offsetWidth + 'px';
+            navIndicator.style.left = link.offsetLeft + 'px';
+
+            // Debug to console
+            console.log(`Active link: ${link.textContent.trim()}, Position: ${link.offsetLeft}px, Width: ${link.offsetWidth}px`);
+        }
+
+        // Handle clicks on navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Set this as the active link
+                setActiveLink(this);
+
+                // Smooth scroll to the target section
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                if (targetSection) {
+                    const headerHeight = 70; // Adjust based on your header height
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Find which section is currently visible when scrolling
+        function updateOnScroll() {
+            const scrollPosition = window.pageYOffset + 100; // Add offset for header
+
+            // Find the section that's currently in view
+            let activeSection = null;
+
+            // Check each section from bottom to top (reverse order)
+            // This ensures we pick the topmost visible section when multiple are in view
+            for (let i = navLinks.length - 1; i >= 0; i--) {
+                const link = navLinks[i];
+                const sectionId = link.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+
+                if (section) {
+                    const sectionTop = section.offsetTop - 150; // Higher offset for better UX
+
+                    if (scrollPosition >= sectionTop) {
+                        activeSection = link;
+                        break; // Use the first section that matches
+                    }
+                }
+            }
+
+            // If no section is active and we're at the top, default to first section
+            if (!activeSection && scrollPosition < 300 && navLinks.length > 0) {
+                activeSection = navLinks[0];
+            }
+
+            // Set the active section if found
+            if (activeSection) {
+                setActiveLink(activeSection);
+            }
+        }
+
+        // Currency Converter functionality
+        const currencyAmount = document.getElementById('currency-amount');
+        const currencyFrom = document.getElementById('currency-from');
+        const currencyResult = document.getElementById('currency-result');
+
+        // Exchange rates relative to USD (since USD is the official currency of Timor-Leste)
+        const exchangeRates = {
+            'USD': 1.00,
+            'EUR': 0.91,
+            'GBP': 0.78,
+            'AUD': 1.47
+        };
+
+        function updateCurrencyConversion() {
+            if (!currencyAmount || !currencyFrom || !currencyResult) return;
+
+            const amount = parseFloat(currencyAmount.value) || 0;
+            const fromCurrency = currencyFrom.value;
+            const rate = exchangeRates[fromCurrency];
+
+            if (rate) {
+                // Since USD is the currency of Timor-Leste, we convert to USD
+                const resultInUSD = amount * (1 / rate);
+                currencyResult.textContent = `${amount} ${fromCurrency} = ${resultInUSD.toFixed(2)} USD`;
+            }
+        }
+
+        // Add event listeners for currency converter
+        if (currencyAmount && currencyFrom) {
+            currencyAmount.addEventListener('input', updateCurrencyConversion);
+            currencyFrom.addEventListener('change', updateCurrencyConversion);
+
+            // Initial calculation
+            updateCurrencyConversion();
+        }
+
+        // Initialize the indicator position (after a small delay to ensure DOM is ready)
+        setTimeout(() => {
+            // Default to first link
+            if (navLinks.length > 0) {
+                setActiveLink(navLinks[0]);
+            }
+
+            // Then update based on scroll position
+            updateOnScroll();
+        }, 100);
+
+        // Add scroll listener with throttling to prevent performance issues
+        let isScrolling = false;
+        window.addEventListener('scroll', function() {
+            if (!isScrolling) {
+                window.requestAnimationFrame(function() {
+                    updateOnScroll();
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        });
+
+        // Also update on window resize
+        window.addEventListener('resize', function() {
+            // Find current active link and reposition indicator
+            const activeLink = document.querySelector('.nav-link.active') || navLinks[0];
+            if (activeLink) {
+                setActiveLink(activeLink);
+            }
+        });
+    });
+</script>
 
 <main class="mx-auto">
 
