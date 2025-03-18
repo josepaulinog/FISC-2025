@@ -364,6 +364,10 @@ $faqItems = [
       </div>
 
       <style>
+        /* Add smooth slide transitions */
+        .carousel-item {
+          transition: transform 0.5s ease-in-out;
+        }
 
         /* Highlight navigation buttons on hover */
         .slide-nav:hover {
