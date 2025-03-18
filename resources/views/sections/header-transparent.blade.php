@@ -72,8 +72,15 @@
             <li class="pointer-events-none">
               <hr class="my-2 border-t border-gray-200 w-full mx-auto p-0">
             </li>
-            <li><a href="{{ wp_logout_url(home_url('/')) }}">Logout</a></li>
+            <li>
+              <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            </li>
           </ul>
+          <form id="logout-form" action="{{ wp_logout_url(home_url('/')) }}" method="POST" style="display: none;">
+            <?php wp_nonce_field('log-out'); ?>
+            <input type="hidden" name="action" value="logout">
+            <input type="hidden" name="redirect_to" value="{{ home_url('/') }}">
+          </form>
         </div>
         @else
         <a href="{{ home_url('/login') }}" class="btn btn-ghost border-white text-white hover:bg-white hover:text-black transition-colors duration-300">
