@@ -10,10 +10,14 @@
 ])
 
 <style>
-/* Target specifically the transition property to override */
-.collapse-title {
-  transition: none !important;
-  background: transparent !important;
+/* Override the problematic transition in collapse-title */
+.custom-collapse-title {
+  position: relative;
+  padding: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  cursor: pointer;
 }
 </style>
 
@@ -30,7 +34,7 @@
       @foreach($faqs as $faq)
         <div class="collapse collapse-arrow shadow-lg mb-4 rounded-md p-2 border bg-white dark:bg-black/25">
           <input type="checkbox" @if($loop->first) checked @endif />
-          <div class="collapse-title text-xl text-gray-800 dark:text-white">
+          <div class="custom-collapse-title text-xl text-gray-800 dark:text-white">
             {{ $faq['question'] }}
           </div>
           <div class="collapse-content text-gray-600 dark:text-white/75">
