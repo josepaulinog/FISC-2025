@@ -22,7 +22,7 @@
       @if($imagePosition === 'vectorLeft')
         <!-- Illustration on the left -->
         <div class="w-full lg:w-1/2">
-          <img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" class="mx-auto mb-4 lg:mb-0" />
+          <img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" class="mx-auto mb-8 lg:mb-0" />
         </div>
         <!-- Text Content on the right -->
         <div class="w-full lg:w-1/2">
@@ -78,7 +78,7 @@
       @elseif($imagePosition === 'left')
         <!-- Illustration on the left -->
         <div class="w-full lg:w-1/2">
-          <img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" class="lg:max-w-md mx-auto rounded-lg shadow-lg mb-4 lg:mb-0" />
+          <img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" class="lg:max-w-md mx-auto rounded-lg shadow-lg mb-8 lg:mb-0" />
         </div>
         <!-- Text Content on the right -->
         <div class="w-full lg:w-1/2">
