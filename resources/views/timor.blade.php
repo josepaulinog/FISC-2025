@@ -6,34 +6,6 @@
 
 @section('content')
 
-
-<!-- Clean Navigation Bar (Fixed) with Animated Item Indicator -->
-<div class="sticky top-0 bg-base-100 shadow-sm border-b border-base-200 z-20">
-    <div class="container mx-auto mx-4 px-0">
-        <div class="relative">
-            <nav class="flex justify-between items-center h-14 px-4">
-                <div class="relative flex space-x-6" id="nav-container">
-                    <!-- Animated indicator that moves between menu items -->
-                    <div id="nav-indicator" class="absolute bottom-0 left-0 h-1 bg-primary" style="width: 0; transition: all 0.3s ease;"></div>
-
-                    <a href="#about-timor" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="about-timor">
-                        About
-                    </a>
-                    <a href="#pre-arrival" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="pre-arrival">
-                        Pre-Arrival
-                    </a>
-                    <a href="#essentials" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="essentials">
-                        Essentials
-                    </a>
-                    <a href="#location" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="location">
-                        Location
-                    </a>
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
-
 <style>
     /* Fix for the hover border causing menu items to jump */
     .nav-link {
