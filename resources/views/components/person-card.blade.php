@@ -58,7 +58,7 @@
     }
 @endphp
 
-<div class="card bg-base-100 rounded-lg shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg relative border">
+<div class="cursor-pointer card bg-base-100 rounded-lg shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg relative border">
   <!-- Gray header background -->
   <div class="h-24 bg-base-200 dark:bg-gray-700"></div>
   
