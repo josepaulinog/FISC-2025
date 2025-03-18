@@ -169,6 +169,12 @@
   layout="horizontal" />
 
 
+<x-carousel
+  title="Speakers & Panelists"
+  description="Meet the experts sharing insights at FISC 2025."
+  :limit="8"
+  bgClass="bg-base-200"
+  showCTA="true" />
 <!-- Venue Location Section -->
 <x-venue-map
   venueLabel="Venue"
@@ -358,6 +364,7 @@ $faqItems = [
       </div>
 
       <style>
+
         /* Highlight navigation buttons on hover */
         .slide-nav:hover {
           background-color: rgba(var(--p), 0.2);
