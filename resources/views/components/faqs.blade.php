@@ -8,6 +8,15 @@
     // Array of FAQs. Each FAQ should have 'question' and 'answer' keys.
     'faqs' => []
 ])
+
+<style>
+/* Target specifically the transition property to override */
+.collapse-title {
+  transition: none !important;
+  background: transparent !important;
+}
+</style>
+
 <section class="py-16 {{ $bgClass }}">
   <div class="container mx-auto px-4">
     <div class="text-center mb-8">
@@ -21,7 +30,7 @@
       @foreach($faqs as $faq)
         <div class="collapse collapse-arrow shadow-lg mb-4 rounded-md p-2 border bg-white dark:bg-black/25">
           <input type="checkbox" @if($loop->first) checked @endif />
-          <div class="text-xl text-gray-800 dark:text-white transition-none">
+          <div class="collapse-title text-xl text-gray-800 dark:text-white">
             {{ $faq['question'] }}
           </div>
           <div class="collapse-content text-gray-600 dark:text-white/75">
