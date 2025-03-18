@@ -50,47 +50,6 @@
     </div>
 </div>
 
-<style>
-    /* Fix for the hover border causing menu items to jump */
-    .nav-link {
-        height: 56px;
-        /* Match the height of the navbar (h-14) */
-        line-height: 56px;
-        padding: 0;
-        display: inline-block;
-        position: relative;
-        transition: color 0.3s ease;
-    }
-
-    /* Active state for text */
-    .nav-link.active {
-        color: var(--p);
-        /* Using Daisy UI's primary color */
-    }
-
-    /* The navigation indicator - explicitly positioned */
-    #nav-indicator {
-        position: absolute;
-        bottom: 0;
-        z-index: 10;
-        background-color: #fd6b18;
-        /* Hard-coding the orange color to ensure it works */
-        height: 3px;
-        transition: transform 0.3s ease, width 0.3s ease, left 0.3s ease;
-    }
-
-    /* For smooth scrolling */
-    html {
-        scroll-behavior: smooth;
-    }
-
-    /* Debug styles - to visualize positioning */
-    #nav-container {
-        position: relative;
-        /* Ensure proper positioning context for absolute elements */
-    }
-</style>
-
 
 <main class="mx-auto">
 
