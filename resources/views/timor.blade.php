@@ -6,7 +6,7 @@
 
 @section('content')
 <!-- Enhanced Hero Section - Simplified -->
-<div class="hero bg-cover bg-center relative" style="background-image: url('https://fisc.freebalance.com/wp-content/uploads/2025/03/Timor-Leste.jpg')">
+<div class="hero bg-cover bg-center relative" style="background-image: url('http://fisc.freebalance.com/wp-content/uploads/2025/03/Timor-Leste.jpg')">
     <div class="absolute inset-0 bg-black bg-opacity-60"></div>
     <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4 lg:py-10 py-12">
         <div class="inline-block py-1 px-3 bg-black bg-opacity-20 text-white text-sm rounded-full mb-3">FISC 2025</div>
@@ -22,6 +22,225 @@
         </a>
     </div>
 </div>
+
+<!-- Clean Navigation Bar (Fixed) with Animated Item Indicator -->
+<div class="sticky top-0 bg-base-100 shadow-sm border-b border-base-200 z-20">
+    <div class="container mx-auto mx-4 px-0">
+        <div class="relative">
+            <nav class="flex justify-between items-center h-14 px-4">
+                <div class="relative flex space-x-6" id="nav-container">
+                    <!-- Animated indicator that moves between menu items -->
+                    <div id="nav-indicator" class="absolute bottom-0 left-0 h-1 bg-primary" style="width: 0; transition: all 0.3s ease;"></div>
+
+                    <a href="#about-timor" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="about-timor">
+                        About
+                    </a>
+                    <a href="#pre-arrival" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="pre-arrival">
+                        Pre-Arrival
+                    </a>
+                    <a href="#essentials" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="essentials">
+                        Essentials
+                    </a>
+                    <a href="#location" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="location">
+                        Location
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Fix for the hover border causing menu items to jump */
+    .nav-link {
+        height: 56px;
+        /* Match the height of the navbar (h-14) */
+        line-height: 56px;
+        padding: 0;
+        display: inline-block;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    /* Active state for text */
+    .nav-link.active {
+        color: var(--p);
+        /* Using Daisy UI's primary color */
+    }
+
+    /* The navigation indicator - explicitly positioned */
+    #nav-indicator {
+        position: absolute;
+        bottom: 0;
+        z-index: 10;
+        background-color: #fd6b18;
+        /* Hard-coding the orange color to ensure it works */
+        height: 3px;
+        transition: transform 0.3s ease, width 0.3s ease, left 0.3s ease;
+    }
+
+    /* For smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Debug styles - to visualize positioning */
+    #nav-container {
+        position: relative;
+        /* Ensure proper positioning context for absolute elements */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Simpler direct approach to manipulate the indicator
+        const navIndicator = document.getElementById('nav-indicator');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Simple function to position the indicator
+        function setActiveLink(link) {
+            // Remove active class from all links
+            navLinks.forEach(l => l.classList.remove('active'));
+
+            // Add active class to the current link
+            link.classList.add('active');
+
+            // Position the indicator directly using the link's offsetLeft and width
+            navIndicator.style.width = link.offsetWidth + 'px';
+            navIndicator.style.left = link.offsetLeft + 'px';
+
+            // Debug to console
+            console.log(`Active link: ${link.textContent.trim()}, Position: ${link.offsetLeft}px, Width: ${link.offsetWidth}px`);
+        }
+
+        // Handle clicks on navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Set this as the active link
+                setActiveLink(this);
+
+                // Smooth scroll to the target section
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                if (targetSection) {
+                    const headerHeight = 70; // Adjust based on your header height
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Find which section is currently visible when scrolling
+        function updateOnScroll() {
+            const scrollPosition = window.pageYOffset + 100; // Add offset for header
+
+            // Find the section that's currently in view
+            let activeSection = null;
+
+            // Check each section from bottom to top (reverse order)
+            // This ensures we pick the topmost visible section when multiple are in view
+            for (let i = navLinks.length - 1; i >= 0; i--) {
+                const link = navLinks[i];
+                const sectionId = link.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+
+                if (section) {
+                    const sectionTop = section.offsetTop - 150; // Higher offset for better UX
+
+                    if (scrollPosition >= sectionTop) {
+                        activeSection = link;
+                        break; // Use the first section that matches
+                    }
+                }
+            }
+
+            // If no section is active and we're at the top, default to first section
+            if (!activeSection && scrollPosition < 300 && navLinks.length > 0) {
+                activeSection = navLinks[0];
+            }
+
+            // Set the active section if found
+            if (activeSection) {
+                setActiveLink(activeSection);
+            }
+        }
+
+        // Currency Converter functionality
+        const currencyAmount = document.getElementById('currency-amount');
+        const currencyFrom = document.getElementById('currency-from');
+        const currencyResult = document.getElementById('currency-result');
+
+        // Exchange rates relative to USD (since USD is the official currency of Timor-Leste)
+        const exchangeRates = {
+            'USD': 1.00,
+            'EUR': 0.91,
+            'GBP': 0.78,
+            'AUD': 1.47
+        };
+
+        function updateCurrencyConversion() {
+            if (!currencyAmount || !currencyFrom || !currencyResult) return;
+
+            const amount = parseFloat(currencyAmount.value) || 0;
+            const fromCurrency = currencyFrom.value;
+            const rate = exchangeRates[fromCurrency];
+
+            if (rate) {
+                // Since USD is the currency of Timor-Leste, we convert to USD
+                const resultInUSD = amount * (1 / rate);
+                currencyResult.textContent = `${amount} ${fromCurrency} = ${resultInUSD.toFixed(2)} USD`;
+            }
+        }
+
+        // Add event listeners for currency converter
+        if (currencyAmount && currencyFrom) {
+            currencyAmount.addEventListener('input', updateCurrencyConversion);
+            currencyFrom.addEventListener('change', updateCurrencyConversion);
+
+            // Initial calculation
+            updateCurrencyConversion();
+        }
+
+        // Initialize the indicator position (after a small delay to ensure DOM is ready)
+        setTimeout(() => {
+            // Default to first link
+            if (navLinks.length > 0) {
+                setActiveLink(navLinks[0]);
+            }
+
+            // Then update based on scroll position
+            updateOnScroll();
+        }, 100);
+
+        // Add scroll listener with throttling to prevent performance issues
+        let isScrolling = false;
+        window.addEventListener('scroll', function() {
+            if (!isScrolling) {
+                window.requestAnimationFrame(function() {
+                    updateOnScroll();
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        });
+
+        // Also update on window resize
+        window.addEventListener('resize', function() {
+            // Find current active link and reposition indicator
+            const activeLink = document.querySelector('.nav-link.active') || navLinks[0];
+            if (activeLink) {
+                setActiveLink(activeLink);
+            }
+        });
+    });
+</script>
 
 <main class="mx-auto">
 
@@ -437,6 +656,273 @@
         </div>
     </section>
 
+
+    <section id="cultural" class="py-16 bg-base-100 hidden">
+        <div class="container mx-auto px-4">
+            <!-- Clean, Simple Header -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl mb-4">Cultural Experiences</h2>
+                <div class="w-24 h-1 bg-primary rounded-full mx-auto mb-4"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Experience the unique culture of Timor-Leste during your FISC 2025 visit
+                </p>
+            </div>
+
+            <div class="card bg-white shadow-lg border hover:shadow-xl transition-shadow duration-300">
+                <div class="card-body p-6">
+                    <!-- Local Culture Sections -->
+                    <div class="grid md:grid-cols-2 gap-6 mt-8">
+                        <!-- Traditional Crafts Section (replaced Useful Phrases) -->
+                        <div class="border rounded-lg p-5 bg-gray-50">
+                            <div class="flex items-center gap-3 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                                </svg>
+                                <h3 class="font-semibold text-lg">Traditional Crafts to Discover</h3>
+                            </div>
+                            <div class="grid grid-cols-1 gap-4">
+                                <div class="flex flex-col sm:flex-row gap-4 items-center">
+                                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXJjV4O1LpGPfqG2o3iAwP6E5nr_vcs8YCrJ77XGAJUXaoInY1SzAyXJ01K7ZJd9MoDM0FhX4DNEvMVdHKkQeBfRqZd94BKRyNeYNzCWKy7CVHPAm4AUjRibxsMTNXUS7eOt6DMFeQnjM/s320/Tais,+Dili,+E+Timor,+Nov06.jpg" alt="Tais weaving" class="rounded-lg object-cover sm:w-1/3 max-w-xs w-28 h-28 aspect-square" />
+                                    <div>
+                                        <h4 class="font-medium text-md mb-1">Tais Textiles</h4>
+                                        <p class="text-sm text-gray-600">These handwoven cloths are Timor-Leste's most iconic craft. Each region has distinctive patterns and colors that tell stories of cultural heritage and family history. Delegates can purchase these as meaningful souvenirs.</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-4 items-center">
+                                    <img src="https://www.artesintonia.com.br/cdn/shop/collections/banner-colecao-artesanatos-decoratvos-decoracoes-tribais-timor-indonesia-etnicas.jpg?v=1693456247" alt="Wood carving" class="rounded-lg object-cover sm:w-1/3 max-w-xs w-28 h-28 aspect-square" />
+                                    <div>
+                                        <h4 class="font-medium text-md mb-1">Traditional Wood Carvings</h4>
+                                        <p class="text-sm text-gray-600">Local artisans create intricate sculptures representing ancestral figures, everyday life, and natural elements. These beautiful pieces showcase the skilled craftsmanship passed down through generations.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Local Foods with Images -->
+                        <div class="border rounded-lg p-5 bg-gray-50">
+                            <div class="flex items-center gap-3 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                                <h3 class="font-semibold text-lg">Foods to Try</h3>
+                            </div>
+                            <div class="grid gap-4">
+                                <div class="flex flex-col sm:flex-row gap-3 items-center">
+                                    <img src="https://amcarmenskitchen.com/wp-content/uploads/2021/05/1895.jpg" alt="Ikan Pepes" class="rounded-lg object-cover w-28 h-28 aspect-square" />
+                                    <div>
+                                        <h4 class="font-medium">Ikan Pepes</h4>
+                                        <p class="text-sm text-gray-600">Fish seasoned with aromatic spices and wrapped in banana leaf before being grilled or steamed. The banana leaf imparts a unique fragrance and keeps the fish moist during cooking.</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-3 items-center">
+                                    <img src="https://www.crsricebowl.org/wp-content/uploads/2024/09/CRS2012074635_2560w.jpg" alt="Batar Da'an" class="rounded-lg object-cover w-28 h-28 aspect-square" />
+                                    <div>
+                                        <h4 class="font-medium">Batar Da'an</h4>
+                                        <p class="text-sm text-gray-600">A hearty traditional stew made with corn and pumpkin, often including beans and other local vegetables. This comforting dish is a staple in Timorese households.</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-3 items-center">
+                                    <img src="https://images.squarespace-cdn.com/content/v1/636bcbc6e2494c61701cfca1/e14a2cb4-1c7b-4ff6-b81a-8cc890f22c46/4212NEW.jpg" alt="Timor Coffee" class="rounded-lg object-cover w-28 h-28 aspect-square" />
+                                    <div>
+                                        <h4 class="font-medium">Timor Coffee</h4>
+                                        <p class="text-sm text-gray-600">Timor-Leste produces some of the world's finest organic coffee. Grown at high elevations, it has a smooth, full-bodied flavor with low acidity and notes of chocolate and caramel.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Cultural Tips -->
+                    <div class="mt-6 p-4 border border-dashed rounded-lg bg-gray-50">
+                        <h3 class="font-semibold text-lg mb-3 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Quick Cultural Tips
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-3 text-sm">
+                            <div class="flex items-start gap-2">
+                                <svg class="h-5 w-5 text-primary mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Greet people with a handshake and a smile. Many Timorese also place their right hand over their heart after shaking hands as a sign of sincerity.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg class="h-5 w-5 text-primary mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Dress modestly, especially when visiting cultural sites or rural communities. Shoulders and knees should be covered.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg class="h-5 w-5 text-primary mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Remove shoes when entering someone's home or certain buildings if others have done so.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg class="h-5 w-5 text-primary mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>The U.S. dollar is the official currency in Timor-Leste. Bring smaller bills as change can be limited.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Component -->
+    <x-interactive-map />
 </main>
+
+<script>
+    // This code should be included in your Sage 10 theme's JavaScript files
+    // e.g., in resources/scripts/app.js or a custom module
+
+    // Cookie helper functions
+    const Cookies = {
+        set: function(name, value, days) {
+            let expires = '';
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = '; expires=' + date.toUTCString();
+            }
+            document.cookie = name + '=' + JSON.stringify(value) + expires + '; path=/';
+        },
+        get: function(name) {
+            const nameEQ = name + '=';
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) {
+                    try {
+                        return JSON.parse(c.substring(nameEQ.length, c.length));
+                    } catch (e) {
+                        return null;
+                    }
+                }
+            }
+            return null;
+        },
+        delete: function(name) {
+            document.cookie = name + '=; Max-Age=-99999999; path=/';
+        }
+    };
+
+    // After the DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if Alpine.js is available
+        if (typeof window.Alpine !== 'undefined') {
+            // Add our custom Alpine.js data handler
+            window.Alpine.data('checklistData', function() {
+                // The initial checklist items
+                const defaultItems = [{
+                        id: 1,
+                        text: 'Passport (valid for at least 6 months beyond your stay)',
+                        done: false,
+                        link: '#passport',
+                        urgent: true
+                    },
+                    {
+                        id: 2,
+                        text: 'Flight reservations to Dili',
+                        done: false,
+                        link: '#flights',
+                        urgent: true
+                    },
+                    {
+                        id: 3,
+                        text: 'Travel insurance with medical coverage',
+                        done: false,
+                        link: '#insurance',
+                        urgent: false
+                    },
+                    {
+                        id: 4,
+                        text: 'Pack appropriate clothing for hot, humid climate',
+                        done: false,
+                        link: '#packing',
+                        urgent: false
+                    },
+                    {
+                        id: 5,
+                        text: 'Exchange currency or withdraw USD from ATM',
+                        done: false,
+                        link: '#currency',
+                        urgent: false
+                    },
+                    {
+                        id: 6,
+                        text: 'Inform bank of international travel',
+                        done: false,
+                        link: '#banking',
+                        urgent: false
+                    }
+                ];
+
+                // Load saved items from cookies or use defaults
+                const savedItems = Cookies.get('fisc_checklist_items');
+
+                return {
+                    items: savedItems || defaultItems,
+                    showSuccessModal: false,
+
+                    // Initialize component
+                    init() {
+                        // Watch for changes and save to cookies
+                        this.$watch('items', (value) => {
+                            Cookies.set('fisc_checklist_items', value, 90); // Save for 90 days
+                        }, {
+                            deep: true
+                        });
+                    },
+
+                    // Reset the checklist to default state
+                    resetChecklist() {
+                        this.items = JSON.parse(JSON.stringify(defaultItems));
+                    },
+
+                    // Save progress and show success modal
+                    saveProgress() {
+                        // Save current state to cookies
+                        Cookies.set('fisc_checklist_items', this.items, 90); // Save for 90 days
+
+                        // Calculate stats for the modal
+                        this.completedCount = this.items.filter(item => item.done).length;
+                        this.totalCount = this.items.length;
+                        this.completionPercentage = Math.round((this.completedCount / this.totalCount) * 100);
+
+                        // Show the success modal
+                        this.showSuccessModal = true;
+                    },
+
+                    // Close the success modal
+                    closeModal() {
+                        this.showSuccessModal = false;
+                    },
+
+                    // Get completion percentage
+                    getCompletionPercentage() {
+                        const completed = this.items.filter(item => item.done).length;
+                        return Math.round((completed / this.items.length) * 100);
+                    },
+
+                    // Get completion counts
+                    getCompletedCount() {
+                        return this.items.filter(item => item.done).length;
+                    },
+
+                    // Get total count
+                    getTotalCount() {
+                        return this.items.length;
+                    }
+                };
+            });
+        }
+    });
+</script>
 
 @endsection
