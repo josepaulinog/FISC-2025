@@ -78,6 +78,11 @@
         height: 3px;
     }
 
+    /* For smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
     /* Debug styles - to visualize positioning */
     #nav-container {
         position: relative;
