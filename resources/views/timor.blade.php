@@ -5,50 +5,198 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Enhanced Hero Section - Simplified -->
-<div class="hero bg-cover bg-center relative" style="background-image: url('http://fisc.freebalance.com/wp-content/uploads/2025/03/Timor-Leste.jpg')">
-    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-    <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4 lg:py-10 py-12">
-        <div class="inline-block py-1 px-3 bg-black bg-opacity-20 text-white text-sm rounded-full mb-3">FISC 2025</div>
-        <h1 class="text-4xl md:text-6xl mb-4">Timor-Leste Delegate Guide</h1>
-        <p class="text-xl mb-10">April 7-10, 2025 | Palm Springs Hotel Dili</p>
 
-        <!-- Single Primary Call-to-Action -->
-        <a href="#about-timor" class="btn btn-primary text-white text-white">
-            Get Started
-            <svg class="w-3 h-3 text-white transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"></path>
-            </svg>
-        </a>
-    </div>
-</div>
+<style>
+    /* Fix for the hover border causing menu items to jump */
+    .nav-link {
+        height: 56px;
+        /* Match the height of the navbar (h-14) */
+        line-height: 56px;
+        padding: 0;
+        display: inline-block;
+        position: relative;
+        transition: color 0.3s ease;
+    }
 
-<!-- Clean Navigation Bar (Fixed) with Animated Item Indicator -->
-<div class="sticky top-0 bg-base-100 shadow-sm border-b border-base-200 z-20">
-    <div class="container mx-auto mx-4 px-0">
-        <div class="relative">
-            <nav class="flex justify-between items-center h-14 px-4">
-                <div class="relative flex space-x-6" id="nav-container">
-                    <!-- Animated indicator that moves between menu items -->
-                    <div id="nav-indicator" class="absolute bottom-0 left-0 h-1 bg-primary" style="width: 0; transition: all 0.3s ease;"></div>
+    /* Active state for text */
+    .nav-link.active {
+        color: var(--p);
+        /* Using Daisy UI's primary color */
+    }
 
-                    <a href="#about-timor" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="about-timor">
-                        About
-                    </a>
-                    <a href="#pre-arrival" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="pre-arrival">
-                        Pre-Arrival
-                    </a>
-                    <a href="#essentials" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="essentials">
-                        Essentials
-                    </a>
-                    <a href="#location" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="location">
-                        Location
-                    </a>
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
+    /* The navigation indicator - explicitly positioned */
+    #nav-indicator {
+        position: absolute;
+        bottom: 0;
+        z-index: 10;
+        background-color: #fd6b18;
+        /* Hard-coding the orange color to ensure it works */
+        height: 3px;
+        transition: transform 0.3s ease, width 0.3s ease, left 0.3s ease;
+    }
+
+    /* For smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Debug styles - to visualize positioning */
+    #nav-container {
+        position: relative;
+        /* Ensure proper positioning context for absolute elements */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Simpler direct approach to manipulate the indicator
+        const navIndicator = document.getElementById('nav-indicator');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Simple function to position the indicator
+        function setActiveLink(link) {
+            // Remove active class from all links
+            navLinks.forEach(l => l.classList.remove('active'));
+
+            // Add active class to the current link
+            link.classList.add('active');
+
+            // Position the indicator directly using the link's offsetLeft and width
+            navIndicator.style.width = link.offsetWidth + 'px';
+            navIndicator.style.left = link.offsetLeft + 'px';
+
+            // Debug to console
+            console.log(`Active link: ${link.textContent.trim()}, Position: ${link.offsetLeft}px, Width: ${link.offsetWidth}px`);
+        }
+
+        // Handle clicks on navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Set this as the active link
+                setActiveLink(this);
+
+                // Smooth scroll to the target section
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                if (targetSection) {
+                    const headerHeight = 70; // Adjust based on your header height
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Find which section is currently visible when scrolling
+        function updateOnScroll() {
+            const scrollPosition = window.pageYOffset + 100; // Add offset for header
+
+            // Find the section that's currently in view
+            let activeSection = null;
+
+            // Check each section from bottom to top (reverse order)
+            // This ensures we pick the topmost visible section when multiple are in view
+            for (let i = navLinks.length - 1; i >= 0; i--) {
+                const link = navLinks[i];
+                const sectionId = link.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+
+                if (section) {
+                    const sectionTop = section.offsetTop - 150; // Higher offset for better UX
+
+                    if (scrollPosition >= sectionTop) {
+                        activeSection = link;
+                        break; // Use the first section that matches
+                    }
+                }
+            }
+
+            // If no section is active and we're at the top, default to first section
+            if (!activeSection && scrollPosition < 300 && navLinks.length > 0) {
+                activeSection = navLinks[0];
+            }
+
+            // Set the active section if found
+            if (activeSection) {
+                setActiveLink(activeSection);
+            }
+        }
+
+        // Currency Converter functionality
+        const currencyAmount = document.getElementById('currency-amount');
+        const currencyFrom = document.getElementById('currency-from');
+        const currencyResult = document.getElementById('currency-result');
+
+        // Exchange rates relative to USD (since USD is the official currency of Timor-Leste)
+        const exchangeRates = {
+            'USD': 1.00,
+            'EUR': 0.91,
+            'GBP': 0.78,
+            'AUD': 1.47
+        };
+
+        function updateCurrencyConversion() {
+            if (!currencyAmount || !currencyFrom || !currencyResult) return;
+
+            const amount = parseFloat(currencyAmount.value) || 0;
+            const fromCurrency = currencyFrom.value;
+            const rate = exchangeRates[fromCurrency];
+
+            if (rate) {
+                // Since USD is the currency of Timor-Leste, we convert to USD
+                const resultInUSD = amount * (1 / rate);
+                currencyResult.textContent = `${amount} ${fromCurrency} = ${resultInUSD.toFixed(2)} USD`;
+            }
+        }
+
+        // Add event listeners for currency converter
+        if (currencyAmount && currencyFrom) {
+            currencyAmount.addEventListener('input', updateCurrencyConversion);
+            currencyFrom.addEventListener('change', updateCurrencyConversion);
+
+            // Initial calculation
+            updateCurrencyConversion();
+        }
+
+        // Initialize the indicator position (after a small delay to ensure DOM is ready)
+        setTimeout(() => {
+            // Default to first link
+            if (navLinks.length > 0) {
+                setActiveLink(navLinks[0]);
+            }
+
+            // Then update based on scroll position
+            updateOnScroll();
+        }, 100);
+
+        // Add scroll listener with throttling to prevent performance issues
+        let isScrolling = false;
+        window.addEventListener('scroll', function() {
+            if (!isScrolling) {
+                window.requestAnimationFrame(function() {
+                    updateOnScroll();
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        });
+
+        // Also update on window resize
+        window.addEventListener('resize', function() {
+            // Find current active link and reposition indicator
+            const activeLink = document.querySelector('.nav-link.active') || navLinks[0];
+            if (activeLink) {
+                setActiveLink(activeLink);
+            }
+        });
+    });
+</script>
 
 <main class="mx-auto">
 
