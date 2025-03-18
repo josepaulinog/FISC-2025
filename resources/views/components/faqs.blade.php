@@ -21,7 +21,12 @@
       @foreach($faqs as $faq)
         <div class="collapse collapse-arrow shadow-lg mb-4 rounded-md p-2 border bg-white dark:bg-black/25">
           <input type="checkbox" @if($loop->first) checked @endif />
-          
+          <div class="">
+            {{ $faq['question'] }}
+          </div>
+          <div class="">
+            <p>{{ $faq['answer'] }}</p>
+          </div>
         </div>
       @endforeach
     </div>
