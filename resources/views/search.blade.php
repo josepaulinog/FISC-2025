@@ -4,7 +4,7 @@
 
 {{-- Hero Section --}}
 <section
-  class="hero min-h-[18vh] relative bg-gray-100 bg-cover bg-center bg-no-repeat"
+  class="hero h-60 relative bg-gray-100 bg-cover bg-center bg-no-repeat"
   style="background-image: url('{{ asset('images/docs.jpeg') }}')">
   <div class="hero-overlay bg-black bg-opacity-50"></div>
   <div class="hero-content text-center text-neutral-content">

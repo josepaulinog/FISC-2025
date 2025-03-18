@@ -1,4 +1,4 @@
-<div class="hero min-h-[18vh] relative" style="background-image: url('{{ get_the_post_thumbnail_url(get_the_ID(), 'full') }}');">
+<div class="hero h-60 relative" style="background-image: url('{{ get_the_post_thumbnail_url(get_the_ID(), 'full') }}');">
   <div class="hero-overlay bg-black bg-opacity-40"></div>
   <div class="hero-content text-center text-neutral-content">
     <div>
