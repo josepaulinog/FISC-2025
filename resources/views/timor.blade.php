@@ -76,6 +76,7 @@
         background-color: #fd6b18;
         /* Hard-coding the orange color to ensure it works */
         height: 3px;
+        transition: transform 0.3s ease, width 0.3s ease, left 0.3s ease;
     }
 
     /* For smooth scrolling */
