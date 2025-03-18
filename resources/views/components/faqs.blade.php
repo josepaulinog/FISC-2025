@@ -13,11 +13,14 @@
 /* Override the problematic transition in collapse-title */
 .custom-collapse-title {
   position: relative;
-  padding: 1rem;
+  min-height: 3.75rem;
+  padding: 1rem 3rem 1rem 1rem;
   font-size: 1.25rem;
   line-height: 1.75rem;
   font-weight: 500;
   cursor: pointer;
+  grid-column-start: 1;
+  grid-row-start: 1;
 }
 </style>
 
