@@ -73,7 +73,7 @@
         </div>
         <!-- Illustration on the right -->
         <div class="w-full lg:w-1/2">
-          <img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" class="lg:max-w-md mx-auto" />
+          <img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" class="lg:max-w-md mx-auto px-8" />
         </div>
       @elseif($imagePosition === 'left')
         <!-- Illustration on the left -->
