@@ -20,7 +20,7 @@
                     <p class="text-gray-700">You are already logged in. Explore more options below.</p>
 
                     <div class="space-y-4">
-                        <a href="{{ home_url('/dashboard') }}" class="btn btn-primary w-full text-white">Go to Dashboard</a>
+                        <a href="{{ home_url('/') }}" class="btn btn-primary w-full text-white">Go to Home</a>
                         <a href="{{ wp_logout_url(home_url('/')) }}" class="btn btn-outline w-full">Logout</a>
                     </div>
                 </div>
