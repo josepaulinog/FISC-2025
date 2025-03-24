@@ -187,7 +187,7 @@ landscape.'
         </div>
     </section>
 
-    <section class="py-16 bg-base-200">
+    <section class="py-16 bg-base-200 hidden">
         <div class="container mx-auto px-4">
             <div class="text-center lg:mb-12">
                 <h2 class="text-3xl mb-4">FISC Program Evolution: 2007-2025</h2>
@@ -332,12 +332,6 @@ landscape.'
     ],
     ];
     @endphp
-
-    <x-faqs
-        title="Frequently Asked Questions"
-        subtitle="Information about FISC 2025 in Timor-Leste"
-        bgClass=""
-        :faqs="$faqItems" />
 
 </main>
 

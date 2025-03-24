@@ -176,19 +176,6 @@
   bgClass="bg-base-200"
   showCTA="true" />
 <!-- Venue Location Section -->
-<x-venue-map
-  venueLabel="Venue"
-  venueTitle="Palm Springs Hotel Dili"
-  venueImage="https://devsite.freebalance.com/wp-content/uploads/palms-springs2.jpg"
-  mapCaption="Palm Springs Hotel Dili, Timor Leste"
-  mapUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15781.754082080079!2d125.53304161805914!3d-8.55376131383627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d01dd006439a6cb%3A0xd677435eec582d71!2sPalm%20Springs%20Hotel%20Dili!5e0!3m2!1ses!2sus!4v1741707721544!5m2!1ses!2sus"
-  latitude="-8.5537613"
-  longitude="125.5330416"
-  apiKey="AIzaSyDXzyvduzOJ4K3bYeEzwDYveHiwPR92em8"
-  width="600"
-  height="300" />
-
-<!-- FAQs Section -->
 
 <!-- FAQs Section -->
 @php
@@ -215,12 +202,6 @@ $faqItems = [
 ],
 ];
 @endphp
-
-<x-faqs
-  title="Frequently Asked Questions"
-  subtitle="Find answers to common questions about FISC 2025."
-  bgClass="bg-base-200"
-  :faqs="$faqItems" />
 
 <!-- Contact Form Section -->
 

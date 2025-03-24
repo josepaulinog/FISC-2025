@@ -180,8 +180,4 @@ $faqItems = [
 ];
 @endphp
 
-<x-faqs
-  title="Frequently Asked Questions"
-  subtitle="Find answers to common questions about FISC 2025."
-  bgClass="bg-base-100"
-  :faqs="$faqItems" />
+<style>main ~ div { background-color: #fff !important;} </style>
