@@ -99,10 +99,10 @@ landscape.'
 
     <section class="py-16">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div class="text-left mb-8">
                 <h2 class="text-3xl mb-4">Key Benefits of FISC 2025</h2>
-                <div class="w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
-                <p class="text-lg max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400 mb-8">
+                <div class="hidden w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
+                <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8">
                     FISC brings together customers at all stages of their PFM modernization journey. Some have been using FreeBalance solutions for over 25 years, while others are just beginning. FISC creates a dynamic environment where delegates share stories, lessons learned, and good practices. Attendees benefit from:
                 </p>
             </div>
@@ -179,8 +179,8 @@ landscape.'
             </div>
 
             <!-- Additional paragraph -->
-            <div class="text-center mt-12">
-                <p class="text-lg max-w-3xl mx-auto text-neutral-600 dark:text-neutral-400">
+            <div class="text-left mt-4">
+                <p class="text-lg text-neutral-600 dark:text-neutral-400">
                     By actively participating in FISC, FreeBalance customers influence the solutions that support their financial reform goals—a level of collaboration that sets FISC apart from any other industry event.
                 </p>
             </div>

@@ -11,7 +11,7 @@
     <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4 lg:py-10 py-12">
         <div class="inline-block py-1 px-3 bg-black bg-opacity-20 text-white text-sm rounded-full mb-3">FISC 2025</div>
         <h1 class="text-4xl md:text-6xl mb-4">Timor-Leste Delegate Guide</h1>
-        <p class="text-xl mb-4">April 7-10, 2025 | Palm Springs Hotel Dili</p>
+        <p class="text-xl mb-4">April 6-10, 2025 | Palm Springs Hotel Dili</p>
 
         <!-- Single Primary Call-to-Action -->
         <a href="#about-timor" class="btn btn-primary text-white text-white">
@@ -32,16 +32,16 @@
                     <!-- Animated indicator that moves between menu items -->
                     <div id="nav-indicator" class="absolute bottom-0 left-0 h-1 bg-primary"></div>
 
-                    <a href="#about-timor" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="about-timor">
+                    <a href="#about-timor" class="text-sm font-medium text-base-content/70 hover:text-orange-600 nav-link" data-section="about-timor">
                         About
                     </a>
-                    <a href="#pre-arrival" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="pre-arrival">
+                    <a href="#pre-arrival" class="text-sm font-medium text-base-content/70 hover:text-orange-600 nav-link" data-section="pre-arrival">
                         Pre-Arrival
                     </a>
-                    <a href="#essentials" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="essentials">
+                    <a href="#essentials" class="text-sm font-medium text-base-content/70 hover:text-orange-600 nav-link" data-section="essentials">
                         Essentials
                     </a>
-                    <a href="#location" class="text-sm font-medium text-base-content/70 hover:text-primary nav-link" data-section="location">
+                    <a href="#location" class="text-sm font-medium text-base-content/70 hover:text-orange-600 nav-link" data-section="location">
                         Location
                     </a>
                 </div>
@@ -244,113 +244,120 @@
 
 <main class="mx-auto">
 
-    <!-- Minimalist Welcome Section - Place after hero section and before sticky navigation -->
-    <section id="welcome-fisc" class="py-12 bg-base-100">
-        <div class="container mx-auto px-4">
-            <!-- Clean, Minimalist Layout -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Left Column: Essential Information -->
+<!-- Minimalist Welcome Section - Place after hero section and before sticky navigation -->
+<section id="welcome-fisc" class="py-12 bg-base-100">
+    <div class="container mx-auto px-4">
+        <!-- Clean, Minimalist Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Left Column: Essential Information -->
+            <div>
+                <div class="mb-4">
+                    <h2 class="text-3xl text-gray-800 dark:text-white mb-4">Welcome to FISC 2025</h2>
+
+                    <div class="max-w-3xl mb-2">
+                        <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">We are looking forward to welcoming you in Dili for the 2025 FreeBalance International Steering Committee (FISC) event in April. We're confident that this year's event will leave you with many great takeaways and best practices to bring back to your country.</p>
+
+                        <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">The overall theme for FISC 2025, <span class="italic">"The Digital Transformation of Public Financial Management"</span> is focused on providing insights into leveraging digital solutions to enhance Public Financial Management systems. PFM is the core to effective government operations and sustainable development. Attendees will engage FreeBalance executives in the adjustment of the product roadmap in the context of digital transformation.</p>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium mb-4">Event Information</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-600 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-neutral-600 dark:text-neutral-400">April 7-10, 2025 at Palm Springs Hotel Dili</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-600 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="text-neutral-600 dark:text-neutral-400">Theme: The Digital Transformation of Public Financial Management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-600 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <div class="text-neutral-600 dark:text-neutral-400">
+                                <div>Zero IV, Fatuhada</div>
+                                <div>Dom Aleixo, Timor-Leste</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
                 <div>
-                    <div class="mb-4">
-                        <h2 class="text-3xl text-gray-800 dark:text-white mb-4">Welcome to FISC 2025</h2>
+                    <h3 class="text-lg font-medium">Airport Arrival</h3>
+                    <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">Upon exiting the customs area at Presidente Nicolau Lobato International Airport, look out for a driver with a sign with your name. The driver will take you directly to your hotel. The Palm Springs Hotel Dili is approximately 15-20 minutes from the airport depending on traffic.</p>
 
-                        <div class="max-w-3xl mb-2">
-                            <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">We are looking forward to welcoming you in Dili for the 2025 FreeBalance International Steering Committee (FISC) event in April. We're confident that this year's event will leave you with many great takeaways and best practices to bring back to your country.</p>
+                    <p class="text-sm mb-2">In the event you don't see your driver or you separate from your group, please call, text or WhatsApp:</p>
+                    <p><a href="tel:+17865211544" class="text-orange-600">Ludmila: +1 786 521-1544</a></p>
+                    <p><a href="tel:+447752017663" class="text-orange-600">Carolyn: +44 7752 017663</a></p>
+                </div>
+            </div>
 
-                            <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">The overall theme for FISC 2025, <span class="italic">"The Digital Transformation of Public Financial Management"</span> is focused on providing insights into leveraging digital solutions to enhance Public Financial Management systems. PFM is the core to effective government operations and sustainable development. Attendees will engage FreeBalance executives in the adjustment of the product roadmap in the context of digital transformation.</p>
+            <!-- Right Column: Contacts -->
+            <div>
+                <div class="mb-8 p-4 bg-base-200/50 rounded-md">
+                    <h3 class="text-lg font-medium mb-4">Emergency Contacts</h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-medium">BCD Travel Support</p>
+                            <p><a href="tel:+19055074445" class="text-orange-600">+1 905 507-4445</a></p>
+                            <p class="text-sm text-gray-500 mt-1">Office hours: 8:30am-5:00pm EST Mon-Fri</p>
                         </div>
-                    </div>
-                    <div class="mb-6">
-                        <h3 class="text-lg font-medium mb-4">Event Information</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                                <span class="text-neutral-600 dark:text-neutral-400">April 7-10, 2025 at Palm Springs Hotel Dili</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <span class="text-neutral-600 dark:text-neutral-400">Theme: The Digital Transformation of Public Financial Management</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                                <div class="text-neutral-600 dark:text-neutral-400">
-                                    <div>Zero IV, Fatuhada</div>
-                                    <div>Dom Aleixo, Timor-Leste</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
 
-                    <div>
-                        <h3 class="text-lg font-medium">Airport Arrival</h3>
-                        <p class="py-4 leading-relaxed text-neutral-600 dark:text-neutral-400">Upon exiting the customs area at Presidente Nicolau Lobato International Airport, look out for a driver with a sign with your name. The driver will take you directly to your hotel. The Palm Springs Hotel Dili is approximately 15-20 minutes from the airport depending on traffic.</p>
+                        <div>
+                            <p class="font-medium">After Hours Support</p>
+                            <p><a href="tel:+18553814440" class="text-orange-600">+1 855-381-4440</a> (Toll Free)</p>
+                            <p><a href="tel:+19055077909" class="text-orange-600">+1 905-507-7909</a> (International)</p>
+                            <p class="text-sm text-gray-500 mt-1">Executive Code: TL25</p>
+                        </div>
 
-                        <p class="text-sm mb-2">In the event you don’t see your driver or you separate from your group, please call, text or WhatsApp:</p>
-                        <p><a href="tel:+6707723488" class="text-primary">Ludmila: +1 786 521-1544</a></p>
-                        <p><a href="tel:+6707723566" class="text-primary">Carolyn: +670 7723 5566</a></p>
+                        <div>
+                            <p class="font-medium">Local Support</p>
+                            <p><a href="tel:+17865211544" class="text-orange-600">Ludmila: +1 786 521-1544</a></p>
+                            <p><a href="tel:+447752017663" class="text-orange-600">Carolyn: +44 7752 017663</a></p>
+                            <p><a href="tel:+351919476227" class="text-orange-600">Ana: +351 919 476 227</a></p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Right Column: Contacts -->
                 <div>
-                    <div class="mb-8 p-4 bg-base-200/50 rounded-md">
-                        <h3 class="text-lg font-medium mb-4">Emergency Contacts</h3>
+                    <h3 class="text-lg font-medium mb-4">Need Assistance?</h3>
+                    <p class="mb-4">If you have any questions, please do not hesitate to contact:</p>
 
-                        <div class="space-y-4">
-                            <div>
-                                <p class="font-medium">BCD Travel Support</p>
-                                <p><a href="tel:+19055074445" class="text-primary">+1 905 507-4445</a></p>
-                                <p class="text-sm text-gray-500 mt-1">Office hours: 8:30am-5:00pm EST Mon-Fri</p>
+                    <div class="space-y-5">
+                        <!-- Ludmila Patralska -->
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <a href="mailto:lpatralska@freebalance.com" class="text-orange-600">lpatralska@freebalance.com</a>
                             </div>
 
-                            <div>
-                                <p class="font-medium">After Hours Support</p>
-                                <p><a href="tel:+18553814440" class="text-primary">+1 855-381-4440</a> (Toll Free)</p>
-                                <p><a href="tel:+19055077909" class="text-primary">+1 905-507-7909</a> (International)</p>
-                                <p class="text-sm text-gray-500 mt-1">Executive Code: TL25</p>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                <a href="tel:+17865211544" class="text-orange-600">+1 786 521-1544</a>
                             </div>
-
-                            <div>
-                                <p class="font-medium">Local Support</p>
-                                <p><a href="tel:+6707723488" class="text-primary">Ludmila: +1 786 521-1544</a></p>
-                                <p><a href="tel:+6707723566" class="text-primary">Carolyn: +670 7723 5566</a></p>
-                            </div>
+                            <p class="mt-2 text-md text-gray-600 font-medium">Ludmila Patralska</p>
+                            <p class="mt-0 text-sm text-gray-500">Director of Human Resources</p>
                         </div>
+
                     </div>
 
-                    <div>
-                        <h3 class="text-lg font-medium mb-4">Need Assistance?</h3>
-                        <p class="mb-4">If you have any questions, please do not hesitate to contact:</p>
-
-                        <div class="flex items-center mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            <a href="mailto:lpatralska@freebalance.com" class="text-primary">lpatralska@freebalance.com</a>
-                        </div>
-
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                            </svg>
-                            <a href="tel:+6707723488" class="text-primary">+1 786 521-1544</a>
-                        </div>
-                        <p class="mt-6 text-md text-gray-600 font-medium">Ludmila Patralska</p>
-                        <p class="mt-0 text-sm text-gray-500">Director of Affairs, Office of the CEO</p>
-
-                        <p class="mt-6 text-sm text-gray-600">We look forward to a successful and enjoyable event in Dili. We know that the program we have planned will provide you with valuable information to drive better PFM reform and modernization efforts when you return home.</p>
-                    </div>
+                    <p class="mt-6 text-sm text-gray-600">We look forward to a successful and enjoyable event in Dili. We know that the program we have planned will provide you with valuable information to drive better PFM reform and modernization efforts when you return home.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- About Timor-Leste Section -->
     <section id="about-timor" class="py-16 bg-base-200">
@@ -369,7 +376,7 @@
                 <div class="card bg-white shadow-lg">
                     <div class="card-body">
                         <h3 class="text-xl font-semibold mb-4 flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             Key Facts
@@ -428,7 +435,7 @@
                                 </div>
                             </div>
                             <div class="mt-3 p-3 bg-gray-50 rounded-lg text-center">
-                                <p class="font-medium text-primary" id="currency-result">1 USD = 1.00 USD</p>
+                                <p class="font-medium text-orange-600" id="currency-result">1 USD = 1.00 USD</p>
                                 <p class="text-xs text-gray-500 mt-1">US Dollar is the official currency of Timor-Leste</p>
                             </div>
                         </div>
@@ -443,7 +450,7 @@
                     </figure>
                     <div class="card-body">
                         <h3 class="text-xl font-semibold mb-4 flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                             </svg>
                             Useful Phrases in Tetum
@@ -509,7 +516,7 @@
                         <!-- Weather Widget -->
                         <div class="mt-6 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-blue-100">
                             <h4 class="font-medium mb-2 flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                                 </svg>
                                 Current Weather in Dili
@@ -598,7 +605,7 @@
                                     <input type="checkbox" class="checkbox checkbox-primary mr-3 [--chkbg:theme(colors.primary)] [--chkfg:white]" :checked="item.done" @click="item.done = !item.done">
                                     <div class="flex-1">
                                         <p class="font-medium" x-text="item.text"></p>
-                                        <a :href="item.link" class="text-xs text-primary hover:underline hidden">View details</a>
+                                        <a :href="item.link" class="text-xs text-orange-600 hover:underline hidden">View details</a>
                                     </div>
                                     <span x-show="item.urgent && !item.done" class="badge bg-secondary badge-sm text-white border-0">Required</span>
                                 </div>
@@ -675,7 +682,7 @@
                     <div class="flex overflow-x-auto bg-base-100 rounded-t-lg">
                         <button
                             @click="activeTab = 'visa'"
-                            :class="{ 'border-b-2 border-primary text-primary': activeTab === 'visa', 'text-gray-500': activeTab !== 'visa' }"
+                            :class="{ 'border-b-2 border-primary text-orange-600': activeTab === 'visa', 'text-gray-500': activeTab !== 'visa' }"
                             class="flex items-center gap-2 px-4 py-3 font-medium text-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
@@ -684,7 +691,7 @@
                         </button>
                         <button
                             @click="activeTab = 'climate'"
-                            :class="{ 'border-b-2 border-primary text-primary': activeTab === 'climate', 'text-gray-500': activeTab !== 'climate' }"
+                            :class="{ 'border-b-2 border-primary text-orange-600': activeTab === 'climate', 'text-gray-500': activeTab !== 'climate' }"
                             class="flex items-center gap-2 px-4 py-3 font-medium text-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
@@ -693,7 +700,7 @@
                         </button>
                         <button
                             @click="activeTab = 'health'"
-                            :class="{ 'border-b-2 border-primary text-primary': activeTab === 'health', 'text-gray-500': activeTab !== 'health' }"
+                            :class="{ 'border-b-2 border-primary text-orange-600': activeTab === 'health', 'text-gray-500': activeTab !== 'health' }"
                             class="flex items-center gap-2 px-4 py-3 font-medium text-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -702,7 +709,7 @@
                         </button>
                         <button
                             @click="activeTab = 'money'"
-                            :class="{ 'border-b-2 border-primary text-primary': activeTab === 'money', 'text-gray-500': activeTab !== 'money' }"
+                            :class="{ 'border-b-2 border-primary text-orange-600': activeTab === 'money', 'text-gray-500': activeTab !== 'money' }"
                             class="flex items-center gap-2 px-4 py-3 font-medium text-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -721,7 +728,7 @@
                                 <!-- Left Column: Passport Information -->
                                 <div class="border bg-base-100 p-5 rounded-lg">
                                     <h3 class="font-semibold text-lg mb-4 flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                         </svg>
                                         Passport Requirements
@@ -731,19 +738,19 @@
                                         <p class="text-sm text-gray-600">Please ensure your passport meets these requirements for travel to Timor-Leste:</p>
                                         <ul class="space-y-2 mt-2">
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>Valid for at least 6 months beyond your intended stay</span>
                                             </li>
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>At least one blank page for visa stamp</span>
                                             </li>
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>No damage or unauthorized alterations</span>
@@ -766,7 +773,7 @@
                                 <!-- Right Column: Travel Documentation & Support -->
                                 <div class="border bg-base-100 p-5 rounded-lg">
                                     <h3 class="font-semibold text-lg mb-4 flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                         Important Travel Documentation
@@ -776,19 +783,19 @@
                                         <p class="text-sm text-gray-600">Please ensure you have the following for your trip to Timor-Leste:</p>
                                         <ul class="space-y-2 mt-2">
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>Return or onward ticket</span>
                                             </li>
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>Hotel booking confirmation </span>
                                             </li>
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>Travel insurance documents (strongly recommended)</span>
@@ -804,7 +811,7 @@
                                             </svg>
                                             Questions About Travel?
                                         </h4>
-                                        <p class="text-sm text-amber-700 mt-1">If you have any questions about visa arrangements or travel requirements, please contact the FISC team at <a href="mailto:fisc2025@freebalance.com" class="text-primary underline">fisc2025@freebalance.com</a></p>
+                                        <p class="text-sm text-amber-700 mt-1">If you have any questions about visa arrangements or travel requirements, please contact the FISC team at <a href="mailto:fisc2025@freebalance.com" class="text-orange-600 underline">fisc2025@freebalance.com</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -826,7 +833,7 @@
                             <!-- Weather Stats -->
                             <div class="stats stats-vertical lg:stats-horizontal border bg-base-100 mb-6 w-full">
                                 <div class="stat">
-                                    <div class="stat-figure text-primary">
+                                    <div class="stat-figure text-orange-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                         </svg>
@@ -836,7 +843,7 @@
                                     <div class="stat-desc">82-90°F</div>
                                 </div>
                                 <div class="stat">
-                                    <div class="stat-figure text-primary">
+                                    <div class="stat-figure text-orange-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                                         </svg>
@@ -846,7 +853,7 @@
                                     <div class="stat-desc">Tropical</div>
                                 </div>
                                 <div class="stat">
-                                    <div class="stat-figure text-primary">
+                                    <div class="stat-figure text-orange-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                                         </svg>
@@ -861,7 +868,7 @@
                                 <!-- Recommended Attire -->
                                 <div class="border bg-base-100 p-5 rounded-lg">
                                     <h3 class="font-semibold text-lg mb-4 flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                                         </svg>
                                         Recommended Attire
@@ -869,7 +876,7 @@
 
                                     <div class="space-y-3">
                                         <div class="flex items-start gap-4 pb-3 border-b">
-                                            <div class="bg-primary/10 text-primary rounded-full p-2">
+                                            <div class="bg-primary/10 text-orange-600 rounded-full p-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                                                 </svg>
@@ -880,7 +887,7 @@
                                             </div>
                                         </div>
                                         <div class="flex items-start gap-4 pb-3 border-b">
-                                            <div class="bg-primary/10 text-primary rounded-full p-2">
+                                            <div class="bg-primary/10 text-orange-600 rounded-full p-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
                                                 </svg>
@@ -891,7 +898,7 @@
                                             </div>
                                         </div>
                                         <div class="flex items-start gap-4">
-                                            <div class="bg-primary/10 text-primary rounded-full p-2">
+                                            <div class="bg-primary/10 text-orange-600 rounded-full p-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                                                 </svg>
@@ -907,7 +914,7 @@
                                 <!-- Rainy Season Tips -->
                                 <div class="border bg-base-100 p-5 rounded-lg">
                                     <h3 class="font-semibold text-lg mb-4 flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                                         </svg>
                                         Weather Tips
@@ -926,19 +933,19 @@
 
                                         <ul class="space-y-2">
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>Light jacket recommended for air-conditioned venues</span>
                                             </li>
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>UV index is very high - sunscreen essential</span>
                                             </li>
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>Shuttle service available if rain occurs</span>
@@ -972,7 +979,7 @@
                                 <!-- Medical Information -->
                                 <div class="border bg-base-100 p-5 rounded-lg">
                                     <h3 class="font-semibold text-lg mb-4 flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                         </svg>
                                         Medical Information
@@ -982,13 +989,13 @@
                                         <h4 class="font-medium">Vaccinations</h4>
                                         <ul class="space-y-2">
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>Hepatitis A & B advisable</span>
                                             </li>
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>Typhoid recommended</span>
@@ -998,19 +1005,19 @@
                                         <h4 class="font-medium mt-4">Common Precautions</h4>
                                         <ul class="space-y-2">
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>Drink only bottled or purified water</span>
                                             </li>
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>Use mosquito repellent (especially at dawn/dusk)</span>
                                             </li>
                                             <li class="flex items-start gap-2">
-                                                <svg class="h-5 w-5 text-primary mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <svg class="h-5 w-5 text-orange-600 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"></path>
                                                 </svg>
                                                 <span>Apply sunscreen regularly (UV index is very high)</span>
@@ -1022,7 +1029,7 @@
                                 <!-- Emergency Contacts -->
                                 <div class="border bg-base-100 p-5 rounded-lg">
                                     <h3 class="font-semibold text-lg mb-4 flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                                         </svg>
                                         Emergency Contacts
@@ -1033,23 +1040,23 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="font-medium">Conference Emergency</td>
-                                                    <td class="text-primary">+670 7723 5566</td>
+                                                    <td class="text-orange-600">+670 7723 5566</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-medium">Police</td>
-                                                    <td class="text-primary">112</td>
+                                                    <td class="text-orange-600">112</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-medium">Ambulance</td>
-                                                    <td class="text-primary">110</td>
+                                                    <td class="text-orange-600">110</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-medium">Fire</td>
-                                                    <td class="text-primary">115</td>
+                                                    <td class="text-orange-600">115</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-medium">Tourist Police</td>
-                                                    <td class="text-primary">+670 7723 0635</td>
+                                                    <td class="text-orange-600">+670 7723 0635</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -1062,7 +1069,7 @@
                         <div x-show="activeTab === 'money'" class="space-y-6">
                             <div class="stats shadow mb-6 w-full border border-gray-200">
                                 <div class="stat">
-                                    <div class="stat-figure text-primary">
+                                    <div class="stat-figure text-orange-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
@@ -1073,7 +1080,7 @@
                                 </div>
 
                                 <div class="stat">
-                                    <div class="stat-figure text-primary">
+                                    <div class="stat-figure text-orange-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                                         </svg>
@@ -1084,7 +1091,7 @@
                                 </div>
 
                                 <div class="stat">
-                                    <div class="stat-figure text-primary">
+                                    <div class="stat-figure text-orange-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                                         </svg>
@@ -1099,7 +1106,7 @@
                                 <!-- Currency & Banking -->
                                 <div class="border bg-base-100 p-5 rounded-lg">
                                     <h3 class="font-semibold text-lg mb-4 flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                         Currency & Banking
@@ -1113,7 +1120,7 @@
 
                                     <div class="space-y-4">
                                         <div class="flex items-start gap-4 pb-3 border-b">
-                                            <div class="bg-primary/10 text-primary rounded-full p-2 shrink-0">
+                                            <div class="bg-primary/10 text-orange-600 rounded-full p-2 shrink-0">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                                                 </svg>
@@ -1125,7 +1132,7 @@
                                         </div>
 
                                         <div class="flex items-start gap-4 pb-3 border-b">
-                                            <div class="bg-primary/10 text-primary rounded-full p-2 shrink-0">
+                                            <div class="bg-primary/10 text-orange-600 rounded-full p-2 shrink-0">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                                                 </svg>
@@ -1137,7 +1144,7 @@
                                         </div>
 
                                         <div class="flex items-start gap-4">
-                                            <div class="bg-primary/10 text-primary rounded-full p-2 shrink-0">
+                                            <div class="bg-primary/10 text-orange-600 rounded-full p-2 shrink-0">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                                                 </svg>
@@ -1161,7 +1168,7 @@
                                 <!-- Expenses & Tipping -->
                                 <div class="border bg-base-100 p-5 rounded-lg">
                                     <h3 class="font-semibold text-lg mb-4 flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                                         </svg>
                                         Expenses & Tipping
@@ -1233,7 +1240,7 @@
                         <!-- Traditional Crafts Section (replaced Useful Phrases) -->
                         <div class="border rounded-lg p-5 bg-gray-50">
                             <div class="flex items-center gap-3 mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                                 </svg>
                                 <h3 class="font-semibold text-lg">Traditional Crafts to Discover</h3>
@@ -1259,7 +1266,7 @@
                         <!-- Local Foods with Images -->
                         <div class="border rounded-lg p-5 bg-gray-50">
                             <div class="flex items-center gap-3 mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                 </svg>
                                 <h3 class="font-semibold text-lg">Foods to Try</h3>
@@ -1293,32 +1300,32 @@
                     <!-- Quick Cultural Tips -->
                     <div class="mt-6 p-4 border border-dashed rounded-lg bg-gray-50">
                         <h3 class="font-semibold text-lg mb-3 flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             Quick Cultural Tips
                         </h3>
                         <div class="grid md:grid-cols-2 gap-3 text-sm">
                             <div class="flex items-start gap-2">
-                                <svg class="h-5 w-5 text-primary mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="h-5 w-5 text-orange-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
                                 <span>Greet people with a handshake and a smile. Many Timorese also place their right hand over their heart after shaking hands as a sign of sincerity.</span>
                             </div>
                             <div class="flex items-start gap-2">
-                                <svg class="h-5 w-5 text-primary mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="h-5 w-5 text-orange-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
                                 <span>Dress modestly, especially when visiting cultural sites or rural communities. Shoulders and knees should be covered.</span>
                             </div>
                             <div class="flex items-start gap-2">
-                                <svg class="h-5 w-5 text-primary mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="h-5 w-5 text-orange-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
                                 <span>Remove shoes when entering someone's home or certain buildings if others have done so.</span>
                             </div>
                             <div class="flex items-start gap-2">
-                                <svg class="h-5 w-5 text-primary mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="h-5 w-5 text-orange-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
                                 <span>The U.S. dollar is the official currency in Timor-Leste. Bring smaller bills as change can be limited.</span>
