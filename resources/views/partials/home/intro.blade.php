@@ -22,7 +22,7 @@
           </svg>
         </div>
         <h5 class="text-lg font-semibold">Date</h5>
-        <p class="mb-0">April 7-10, 2025</p>
+        <p class="mb-0">April 6-10, 2025</p>
       </div>
 
       <!-- Admission -->

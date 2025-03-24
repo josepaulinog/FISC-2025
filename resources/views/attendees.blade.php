@@ -23,7 +23,7 @@
     showSocial="true"
     showContact="true"
     showAdditionalInfo="false"
-    description="FISC 2025 is proud to welcome an esteemed lineup of global leaders and public sector innovators who are shaping the future of Public Financial Management."
+    description="FISC 2025 brings together a community of delegates from across the globe committed to advancing Public Financial Management. "
   />
 
 @endsection

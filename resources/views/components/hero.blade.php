@@ -49,7 +49,7 @@
   <div class="z-3 relative flex items-center justify-center h-full w-full px-4 transform-gpu will-change-transform container" data-parallax="scroll" data-speed="0.1">
     <div class="text-left">
       <h1 class="mb-4 text-4xl md:text-5xl drop-shadow-lg text-white mt-6">FISC 2025: The Digital Transformation of Public Financial Management</h1>
-      <p class="mb-8 text-lg md:text-2xl drop-shadow text-white text-opacity-80">April 7-10, 2025 | Dili, Timor-Leste</p>
+      <p class="mb-8 text-lg md:text-2xl drop-shadow text-white text-opacity-80">April 6-10, 2025 | Dili, Timor-Leste</p>
       <div>
         <a href="/agenda" class="btn btn-primary text-white group">
           View Agenda 

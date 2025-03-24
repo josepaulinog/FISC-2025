@@ -2,7 +2,7 @@
     {{-- Hero for Logged-in Users --}}
     <x-hero-image 
         title="FISC 2025: The Digital Transformation of Public Financial Management" 
-        subtitle="April 7-10, 2025 | Dili, Timor-Leste"
+        subtitle="April 6-10, 2025 | Dili, Timor-Leste"
         primaryButtonText="View Agenda"
         primaryButtonUrl="/agenda"
     >
@@ -11,7 +11,7 @@
     {{-- Hero for Guests (Not Logged-in Users) --}}
     <x-hero-image 
         title="FISC 2025: The Digital Transformation of Public Financial Management" 
-        subtitle="April 7-10, 2025 | Dili, Timor-Leste"
+        subtitle="April 6-10, 2025 | Dili, Timor-Leste"
         primaryButtonText="Login"
         primaryButtonUrl="/login"
     >
