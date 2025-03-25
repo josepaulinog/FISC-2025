@@ -45,7 +45,7 @@
                     @endphp
                     
                     @if ($key_error)
-                        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 my-5 border-red-500">
+                        <div class="alert p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 my-5 border-red-500">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
@@ -58,7 +58,7 @@
                             </a>
                         </div>
                     @elseif ($error === 'password')
-                        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 my-5 text-white border-red-500">
+                        <div class="alert p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 my-5 text-white border-red-500">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
@@ -307,7 +307,7 @@ function validatePasswords() {
             strengthMeter.className = 'w-full h-2 bg-success rounded-full mt-2';
         } else {
             strengthText.textContent = `Password must be at least 8 characters (${password.length}/8)`;
-            strengthText.className = 'text-xs mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 border-red-500';
+            strengthText.className = 'alert text-xs mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 border-red-500';
             strengthMeter.className = 'w-full h-2 bg-error rounded-full mt-2';
         }
     } else {
@@ -321,7 +321,7 @@ function validatePasswords() {
             passwordMatchText.className = 'text-xs mt-2 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 border-green-500';
         } else {
             passwordMatchText.textContent = 'Passwords do not match';
-            passwordMatchText.className = 'text-xs mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 border-red-500';
+            passwordMatchText.className = 'alert text-xs mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 border-red-500';
         }
     }
     
