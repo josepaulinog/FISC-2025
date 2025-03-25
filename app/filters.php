@@ -147,3 +147,57 @@ add_action('login_init', function () {
 
 // Hide the admin bar for all users
 add_filter('show_admin_bar', '__return_false');
+
+add_action('wp_login', function($user_login, $user) {
+    // Only apply to attendee users
+    if (!in_array('attendee', (array) $user->roles)) {
+        return;
+    }
+    
+    // Check if user needs to reset password
+    $reset_required = get_user_meta($user->ID, 'password_reset_required', true);
+    
+    if ($reset_required) {
+        // Generate a password reset key
+        $key = get_password_reset_key($user);
+        
+        if (is_wp_error($key)) {
+            return;
+        }
+        
+        // Build the reset URL
+        $reset_url = home_url('/reset-password/');
+        $reset_url = add_query_arg(array(
+            'login' => rawurlencode($user->user_login),
+            'key' => $key,
+            'first_login' => '1'
+        ), $reset_url);
+        
+        // Redirect to the password reset page
+        wp_redirect($reset_url);
+        exit;
+    }
+}, 10, 2);
+
+/**
+ * Override the default WordPress login URL
+ */
+add_filter('login_url', function ($login_url, $redirect, $force_reauth) {
+    $login_page = get_page_by_path('login');
+    
+    if (!$login_page) {
+        return $login_url;
+    }
+    
+    $custom_login_url = get_permalink($login_page->ID);
+    
+    if ($redirect) {
+        $custom_login_url = add_query_arg('redirect_to', urlencode($redirect), $custom_login_url);
+    }
+    
+    if ($force_reauth) {
+        $custom_login_url = add_query_arg('reauth', '1', $custom_login_url);
+    }
+    
+    return $custom_login_url;
+}, 10, 3);

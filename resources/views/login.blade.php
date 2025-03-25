@@ -28,13 +28,13 @@
                 <div class="mb-8">
                     <h2 class="text-2xl tracking-tight text-gray-900">{{ __('Login to your FISC account', 'sage') }}</h2>
                     <p class="mt-2 text-sm text-gray-600">
-                    Login to access agenda, videos, materials, and networking.
+                        Login to access agenda, videos, materials, and networking.
                     </p>
                 </div>
 
                 <div class="my-4">
                     @if (isset($_GET['login']) && $_GET['login'] == 'failed')
-                    <div class="alert alert-error my-5 text-white">
+                    <div class="alert p-4 mb-4 text-sm text-red-800 border-red-500 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 my-5">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -43,7 +43,7 @@
                     @endif
 
                     @if (isset($_GET['login_required']) && $_GET['login_required'] == 'true')
-                    <div class="alert alert-warning my-5 flex items-center p-4 bg-amber-50 border-l-4 border-amber-500 rounded-md">
+                    <div class="alert p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 my-5 flex items-center p-4 bg-amber-50 border-l-4 border-amber-500 rounded-md">
                         <div class="flex-shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
@@ -118,6 +118,16 @@
                         @php do_action('login_form_bottom') @endphp
                     </form>
                 </div>
+
+
+                @if (isset($_GET['password-reset']) && $_GET['password-reset'] === 'true')
+                        <div class="alert p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 my-5 border-green-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>{{ __('Your password has been reset successfully. You can now log in with your new password.', 'sage') }}</span>
+                        </div>
+                    @endif
                 @endif
             </div>
         </div>
@@ -203,7 +213,7 @@
                 <p class="text-xs text-gray-500 mt-2">We'll send a password reset link to this email address.</p>
             </div>
 
-            <div id="recovery-message" class="alert alert-success hidden">
+            <div id="recovery-message" class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 hidden border-green-500">
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
