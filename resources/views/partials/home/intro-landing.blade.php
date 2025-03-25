@@ -129,7 +129,7 @@
   imageAlt="Illustration of FreeBalance Partner Portal"
   imagePosition="vectorRight"
   title="Welcome to the FISC 2025 Event Portal"
-  paragraph1="This portal is designed exclusively for event participants attending FISC 2025. Here, you can:"
+  paragraph1="This portal is designed exclusively for event participants attending FISC 2025, which is hosted by the Timor-Leste Ministry of Finance. Here, you can:"
   :items="[
     'Access the event agenda and session details.',
     'Watch recorded sessions after the event.',
