@@ -84,8 +84,7 @@
         imageAlt="FISC Conference Session"
         imagePosition="left"
         title="The Digital Transformation of Public Financial Management"
-        paragraph1="This year’s theme emphasizes how governments can leverage technology to improve
-transparency, efficiency, and service delivery. Discussions will focus on:"
+        paragraph1="This year’s event is hosted by the Timor-Leste Ministry of Finance, under the theme Digital Transformation of Public Financial Management. We'll explore how governments can leverage technology to improve transparency, efficiency, and service delivery. Discussions will focus on:"
         :items="[
             'Modernizing public financial systems through digital platforms and AI-driven solutions.',
             'Enhancing fiscal transparency and accountability using real-time data and automation.',
