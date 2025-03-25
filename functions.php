@@ -89,49 +89,6 @@ if ( ! function_exists( 'tribe_include_view_list' ) ) {
 |--------------------------------------------------------------------------
 */
 
-function create_attendees_and_delegates_post_types() {
-    $post_types = [
-        'attendee' => 'Attendee',
-        'delegate' => 'Delegate',
-    ];
-
-    foreach ($post_types as $slug => $singular_name) {
-        $labels = [
-            'name'               => __($singular_name . 's', 'your-text-domain'),
-            'singular_name'      => __($singular_name, 'your-text-domain'),
-            'menu_name'          => __($singular_name . 's', 'your-text-domain'),
-            'name_admin_bar'     => __($singular_name, 'your-text-domain'),
-            'add_new'            => __('Add New', 'your-text-domain'),
-            'add_new_item'       => __('Add New ' . $singular_name, 'your-text-domain'),
-            'edit_item'          => __('Edit ' . $singular_name, 'your-text-domain'),
-            'new_item'           => __('New ' . $singular_name, 'your-text-domain'),
-            'view_item'          => __('View ' . $singular_name, 'your-text-domain'),
-            'search_items'       => __('Search ' . $singular_name . 's', 'your-text-domain'),
-            'not_found'          => __('No ' . strtolower($singular_name) . 's found', 'your-text-domain'),
-            'not_found_in_trash' => __('No ' . strtolower($singular_name) . 's found in Trash', 'your-text-domain'),
-        ];
-
-        $args = [
-            'label'               => __($singular_name, 'your-text-domain'),
-            'labels'              => $labels,
-            'supports'            => ['title', 'editor', 'thumbnail', 'excerpt'],
-            'public'              => true,
-            'show_ui'             => true,
-            'show_in_menu'        => true,
-            'show_in_rest'        => true,
-            'menu_position'       => 5,
-            'menu_icon'           => 'dashicons-groups',
-            'has_archive'         => true,
-            'publicly_queryable'  => true,
-            'capability_type'     => 'post',
-        ];
-
-        register_post_type($slug, $args);
-    }
-}
-add_action('init', 'create_attendees_and_delegates_post_types', 0);
-
-
 add_filter('em_calendar_get_args', function( $args ) {
     if ( is_array( $args ) && array_key_exists( 'style', $args ) ) {
         unset( $args['style'] );
@@ -239,6 +196,14 @@ function display_custom_user_fields($user) {
                 <input type="url" name="website" id="website" value="<?php echo esc_attr(get_user_meta($user->ID, 'website', true)); ?>" class="regular-text" />
             </td>
         </tr>
+        <tr>
+            <th><label for="show_in_directory"><?php _e("Show in Attendee Directory"); ?></label></th>
+            <td>
+                <input type="checkbox" name="show_in_directory" id="show_in_directory" 
+                       value="1" <?php checked(get_user_meta($user->ID, 'show_in_directory', true)); ?> />
+                <span class="description"><?php _e("Display this user in the attendee directory."); ?></span>
+            </td>
+        </tr>
     </table>
     <?php
 }
@@ -252,6 +217,7 @@ function save_custom_user_fields($user_id) {
     update_user_meta($user_id, 'linkedin', esc_url_raw($_POST['linkedin'] ?? ''));
     update_user_meta($user_id, 'twitter', esc_url_raw($_POST['twitter'] ?? ''));
     update_user_meta($user_id, 'website', esc_url_raw($_POST['website'] ?? ''));
+    update_user_meta($user_id, 'show_in_directory', isset($_POST['show_in_directory']) ? 1 : 0);
 }
 
 // Register the hooks directly in functions.php

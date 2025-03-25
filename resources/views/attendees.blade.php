@@ -13,6 +13,13 @@
       'role'    => 'attendee',
       'orderby' => 'display_name',
       'order'   => 'ASC',
+      'meta_query' => [
+        [
+          'key' => 'show_in_directory',
+          'value' => '1',
+          'compare' => '='
+        ]
+      ]
     ]);
   @endphp
 
