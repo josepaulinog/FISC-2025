@@ -38,19 +38,31 @@
                 <div id="map" class="h-[600px] w-full z-0"></div>
 
                 <div class="p-6 bg-base-200/50">
-                  <h3 class="text-lg font-medium mb-4">Key Locations</h3>
+                  <h3 class="text-lg font-medium mb-4">Map Legend</h3>
                   <div class="grid md:grid-cols-3 gap-6">
                     <div class="flex items-center gap-3">
                       <div class="badge badge-primary badge-lg"></div>
-                      <span class="text-base-content/80">Conference Venue</span>
+                      <span class="text-base-content/80">Palm Springs Hotel (Conference Venue)</span>
                     </div>
                     <div class="flex items-center gap-3">
                       <div class="badge badge-info badge-lg"></div>
-                      <span class="text-base-content/80">Airport</span>
+                      <span class="text-base-content/80">Nicolau Lobato Airport</span>
                     </div>
                     <div class="flex items-center gap-3">
                       <div class="badge badge-warning badge-lg"></div>
-                      <span class="text-base-content/80">Cultural Landmarks</span>
+                      <span class="text-base-content/80">Cristo Rei of Dili</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <div class="badge badge-secondary badge-lg"></div>
+                      <span class="text-base-content/80">Timor Plaza Hotel</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <div class="badge badge-accent badge-lg"></div>
+                      <span class="text-base-content/80">Restaurants</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <div class="badge badge-neutral badge-lg"></div>
+                      <span class="text-base-content/80">Cultural Sites</span>
                     </div>
                   </div>
                 </div>
@@ -75,7 +87,7 @@ const MAP_DATA = {
   ],
   transportation: [
     {
-      position: [-8.54759825, 125.52229053330531],
+      position: [-8.546417, 125.524833],
       title: 'Presidente Nicolau Lobato International Airport',
       category: 'transportation',
       icon: 'airport',
@@ -93,42 +105,66 @@ const MAP_DATA = {
       address: 'Eastern Dili, Timor-Leste',
       description: 'Iconic 27-meter statue of Jesus overlooking the city and bay',
       amenities: ['Scenic Views', 'Photography Spot', '570 Steps Climb']
+    }
+  ],
+  hotels: [
+    {
+      position: [-8.556856, 125.560310],
+      title: 'Timor Plaza Hotel',
+      category: 'hotels',
+      icon: 'hotel',
+      address: 'Rua Presidente Nicolau Lobato, Dili, Timor-Leste',
+      description: 'Modern hotel connected to Timor Plaza shopping mall with comfortable accommodations',
+      amenities: ['Free WiFi', 'Restaurant', 'Shopping Mall Access']
     },
     {
-      position: [-8.55541575, 125.56306325],
-      title: 'Government Palace',
-      category: 'landmarks',
-      icon: 'landmark',
+      position: [-8.552969245626006, 125.54174832266361],
+      title: 'Sky Garden',
+      category: 'hotels',
+      icon: 'hotel',
+      address: 'Level 5, Timor Plaza Hotel, Dili, Timor-Leste',
+      description: 'Rooftop restaurant and lounge with panoramic views of Dili Bay',
+      amenities: ['Outdoor Lounge', 'Spectacular Views', 'Cocktails & Dining']
+    }
+  ],
+  dining: [
+    {
+      position: [-8.552969245626006, 125.54174832266361],
+      title: 'JL World Restaurant',
+      category: 'dining',
+      icon: 'restaurant',
       address: 'Central Dili, Timor-Leste',
-      description: 'Official government building and historical landmark',
-      amenities: ['Historical Site', 'Colonial Architecture']
+      description: 'Popular restaurant offering Indonesian and international cuisine',
+      amenities: ['Indoor & Outdoor Seating', 'Vegetarian Options', 'Group Friendly']
     },
     {
-      position: [-8.552407, 125.578745],
-      title: 'Timor-Leste National Museum',
-      category: 'landmarks',
+      position: [-8.549031150000001, 125.58687798920283],
+      title: 'Novo Turismo Elegendário Restaurant',
+      category: 'dining',
+      icon: 'restaurant',
+      address: 'Avenue Bidau, Lecidere, Dili, Timor-Leste',
+      description: 'Upscale dining experience at the Novo Turismo Resort',
+      amenities: ['Fine Dining', 'International Cuisine', 'Resort Setting']
+    }
+  ],
+  cultural: [
+    {
+      position: [-8.556850, 125.576500],
+      title: 'TAIS Market',
+      category: 'cultural',
       icon: 'museum',
-      address: 'Av. de Portugal, Dili, Timor-Leste',
-      description: 'National museum showcasing Timorese history and culture',
-      amenities: ['Cultural Exhibits', 'Historical Artifacts']
+      address: 'Central Dili, Timor-Leste',
+      description: 'Market selling traditional Timorese textiles and handicrafts',
+      amenities: ['Local Crafts', 'Traditional Textiles', 'Souvenirs']
     },
     {
-      position: [-8.5556454, 125.5775575],
-      title: 'Resistance Museum',
-      category: 'landmarks',
+      position: [-8.5808, 125.5750],
+      title: 'Dare Memorial, Coffee & Museum',
+      category: 'cultural',
       icon: 'museum',
-      address: 'Av. da Liberdade de Imprensa, Dili, Timor-Leste',
-      description: 'Museum documenting Timor-Leste\'s struggle for independence',
-      amenities: ['Historical Exhibits', 'Photography Displays']
-    },
-    {
-      position: [-8.551541, 125.576869],
-      title: 'Dili Cathedral',
-      category: 'landmarks',
-      icon: 'landmark',
-      address: 'Av. Bispo de Medeiros, Dili, Timor-Leste',
-      description: 'The Catholic cathedral of Dili, an important religious landmark',
-      amenities: ['Religious Site', 'Architecture']
+      address: 'Dare, outskirts of Dili, Timor-Leste',
+      description: 'Historical site with museum and coffee shop showcasing Timorese history and coffee culture',
+      amenities: ['Museum Exhibits', 'Coffee Tasting', 'Historical Significance']
     }
   ]
 };
@@ -139,7 +175,7 @@ class InteractiveMap {
     this.markers = [];
     this.mapStyle = 'https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=VhMYYW4B1qp8ZpsVF2LP';
     
-    // Add these new icon definitions to your InteractiveMap class
+    // Icon definitions
     this.icons = {
       venue: L.divIcon({
         html: `<div class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white shadow-lg">
@@ -166,7 +202,6 @@ class InteractiveMap {
               </div>`,
         className: 'custom-marker'
       }),
-      // NEW ICON: Airport
       airport: L.divIcon({
         html: `<div class="flex items-center justify-center w-8 h-8 rounded-full bg-info text-white shadow-lg">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -175,7 +210,6 @@ class InteractiveMap {
               </div>`,
         className: 'custom-marker'
       }),
-      // NEW ICON: Landmark
       landmark: L.divIcon({
         html: `<div class="flex items-center justify-center w-8 h-8 rounded-full bg-warning text-white shadow-lg">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -184,7 +218,6 @@ class InteractiveMap {
               </div>`,
         className: 'custom-marker'
       }),
-      // NEW ICON: Museum
       museum: L.divIcon({
         html: `<div class="flex items-center justify-center w-8 h-8 rounded-full bg-neutral text-white shadow-lg">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -201,16 +234,18 @@ class InteractiveMap {
       venue: 'badge-primary',
       hotels: 'badge-secondary',
       dining: 'badge-accent',
-      transportation: 'badge-info',     // Added for airport
-      landmarks: 'badge-warning'   
+      transportation: 'badge-info',
+      landmarks: 'badge-warning',
+      cultural: 'badge-neutral'
     }[location.category];
 
     const typeLabel = {
       venue: 'Conference Venue',
       hotels: 'Hotel',
       dining: 'Restaurant',
-      transportation: 'Transportation',  // Added for airport
-      landmarks: 'Landmark'  
+      transportation: 'Transportation',
+      landmarks: 'Landmark',
+      cultural: 'Cultural Site'
     }[location.category];
 
     return `
@@ -313,7 +348,7 @@ class InteractiveMap {
 
     // Fit bounds to show all markers
     const bounds = L.featureGroup(allMarkers).getBounds();
-    this.map.fitBounds(bounds, { padding: [50, 50], maxZoom: 16 });
+    this.map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
   }
 }
 
