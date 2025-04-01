@@ -121,6 +121,14 @@
                     // Define which categories should have their labels hidden
                     $hideLabelCategories = ['opening', 'lunch', 'dinner', 'break', 'closing', 'social'];
                     $shouldDisplayLabel = !in_array(strtolower($category), $hideLabelCategories);
+                    
+                    // Define categories that should hide excerpt
+                    $hideExcerptCategories = ['break', 'lunch', 'social'];
+                    $shouldDisplayExcerpt = !in_array(strtolower($category), $hideExcerptCategories);
+
+                    // Define categories that should always be clickable
+                    $nonClickableCategories = ['lunch', 'dinner', 'break', 'social'];
+                    $shouldBeClickable = !in_array(strtolower($category), $nonClickableCategories);
 
                     // Set CSS classes based on event category.
                     $cat = strtolower($category);
@@ -149,7 +157,7 @@
                   <div class="group pb-8 border-b border-gray-200 last:border-0 space-x-8">
                     <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
                       <div class="md:col-span-2 space-y-1 space-x-3">
-                        <time class="block font-semibold mb-4">{{ $start_time }} - {{ $end_time }}</time>
+                        <time class="block font-semibold {{ in_array(strtolower($category), ['lunch', 'dinner', 'break', 'social']) ? '' : 'mb-4' }}">{{ $start_time }} - {{ $end_time }}</time>
                         <div class="text-xs/5 text-gray-500 pb-5 hidden">{{ $full_date }}</div>
                         @if($shouldDisplayLabel)
                           <span class="inline-flex items-center rounded-md {{ $labelClasses }}">
@@ -158,7 +166,7 @@
                         @endif
                       </div>
                       <div class="md:col-span-4 space-y-3">
-                      @if(in_array(strtolower($category), ['closing', 'opening', 'lunch', 'dinner', 'break']))
+                      @if(!$shouldBeClickable)
                           <h3 class="text-xl font-semibold text-gray-900 transition-colors dark:text-white">
                             {{ $event->post_title }}
                           </h3>
@@ -170,9 +178,11 @@
                           </a>
                         @endif
 
+                        @if($shouldDisplayExcerpt)
                         <p class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed">
                           {!! get_the_excerpt($event->ID) !!}
                         </p>
+                        @endif
 
                         @php
                           // Retrieve the linked speakers.
@@ -303,6 +313,14 @@
                     // Define which categories should have their labels hidden
                     $hideLabelCategories = ['opening', 'lunch', 'dinner', 'break', 'closing', 'social'];
                     $shouldDisplayLabel = !in_array(strtolower($category), $hideLabelCategories);
+                    
+                    // Define categories that should hide excerpt
+                    $hideExcerptCategories = ['break', 'lunch', 'dinner', 'social'];
+                    $shouldDisplayExcerpt = !in_array(strtolower($category), $hideExcerptCategories);
+
+                    // Define categories that should always be clickable
+                    $nonClickableCategories = ['lunch', 'dinner', 'break', 'social'];
+                    $shouldBeClickable = !in_array(strtolower($category), $nonClickableCategories);
 
                     // Set CSS classes based on event category.
                     $cat = strtolower($category);
@@ -342,14 +360,23 @@
                         @endif
                       </div>
                       <div class="md:col-span-4 space-y-3">
-                        <a href="{{ get_permalink($event->ID) }}" class="block">
-                          <h3 class="text-xl font-semibold text-gray-900 hover:text-orange-600 transition-colors">
+                        @if(!$shouldBeClickable)
+                          <h3 class="text-xl font-semibold text-gray-900 transition-colors">
                             {{ $event->post_title }}
                           </h3>
-                        </a>
+                        @else
+                          <a href="{{ get_permalink($event->ID) }}" class="block">
+                            <h3 class="text-xl font-semibold text-gray-900 hover:text-orange-600 transition-colors">
+                              {{ $event->post_title }}
+                            </h3>
+                          </a>
+                        @endif
+                        
+                        @if($shouldDisplayExcerpt)
                         <p class="text-gray-600 text-sm leading-relaxed">
                           {!! get_the_excerpt($event->ID) !!}
                         </p>
+                        @endif
 
                         @php
                           // Retrieve the linked speakers.
