@@ -332,6 +332,13 @@ landscape.'
     ];
     @endphp
 
+    <style>
+        @media (min-width: 1024px) {
+            .lg\:max-w-md {
+                max-width: 34rem !important;
+            }
+        }
+    </style>
 </main>
 
 @endsection
