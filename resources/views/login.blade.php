@@ -10,7 +10,7 @@
         <div class="mx-auto w-full max-w-sm lg:w-96">
 
             <a class="btn btn-ghost hover:bg-transparent p-0" href="/">
-                <x-logo class="lg:h-12 h-12 fill-current dark:text-white font-normal" />
+                <x-logo class="lg:h-14 h-14 fill-current dark:text-white font-normal" />
             </a>
             <div class="mt-8">
                 @if (is_user_logged_in())
