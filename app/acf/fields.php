@@ -303,7 +303,7 @@ acf_add_local_field_group(array(
                     'type' => 'repeater',
                     'layout' => 'row',
                     'min' => 1,
-                    'max' => 4,
+                    'max' => 5,
                     'button_label' => 'Add Day',
                     'sub_fields' => array(
                         array(
@@ -313,7 +313,7 @@ acf_add_local_field_group(array(
                             'type' => 'number',
                             'required' => 1,
                             'min' => 1,
-                            'max' => 4,
+                            'max' => 5,
                         ),
                         array(
                             'key' => 'field_photos',
