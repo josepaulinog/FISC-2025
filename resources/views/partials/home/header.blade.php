@@ -5,6 +5,8 @@
         subtitle="April 6-10, 2025 | Dili, Timor-Leste"
         primaryButtonText="View Agenda"
         primaryButtonUrl="/agenda"
+        secondaryButtonText="Access Materials"
+        secondaryButtonUrl="/materials"
     >
     </x-hero-image>
 @else
