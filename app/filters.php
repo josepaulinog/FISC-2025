@@ -204,62 +204,66 @@ add_filter('login_url', function ($login_url, $redirect, $force_reauth) {
 
 /**
  * JavaScript to remove intro tour classes and disable the plugin functionality on mobile
+ * Only runs on home page and for logged-in users
  */
 add_action('wp_footer', function() {
-    ?>
-    <script>
-    (function() {
-        // Check if we're on a mobile device (screen width <= 768px)
-        if (window.innerWidth <= 768) {
-            // Function to disable intro tours
-            function disableIntroTours() {
-                // Remove classes from html element
-                document.documentElement.classList.remove('dpit-on');
-                document.documentElement.classList.remove('dpit-on-35666');
-                document.documentElement.classList.remove('dpit-step-1');
-                
-                // Find and hide any intro tour elements
-                var tourElements = document.querySelectorAll('.dpit-wrap, .dpit-wrap--dummy, .dp-intro-tooltip, .dp-intro-backdrop, .dp-intro-animation-container, .dp-intro-overlay');
-                tourElements.forEach(function(el) {
-                    if(el) {
-                        el.style.display = 'none';
-                        el.style.visibility = 'hidden';
-                        el.style.opacity = '0';
-                        el.style.pointerEvents = 'none';
+    // Check if user is logged in and on home page
+    if (is_user_logged_in() && is_front_page()) {
+        ?>
+        <script>
+        (function() {
+            // Check if we're on a mobile device (screen width <= 768px)
+            if (window.innerWidth <= 768) {
+                // Function to disable intro tours
+                function disableIntroTours() {
+                    // Remove classes from html element
+                    document.documentElement.classList.remove('dpit-on');
+                    document.documentElement.classList.remove('dpit-on-35666');
+                    document.documentElement.classList.remove('dpit-step-1');
+                    
+                    // Find and hide any intro tour elements
+                    var tourElements = document.querySelectorAll('.dpit-wrap, .dpit-wrap--dummy, .dp-intro-tooltip, .dp-intro-backdrop, .dp-intro-animation-container, .dp-intro-overlay');
+                    tourElements.forEach(function(el) {
+                        if(el) {
+                            el.style.display = 'none';
+                            el.style.visibility = 'hidden';
+                            el.style.opacity = '0';
+                            el.style.pointerEvents = 'none';
+                        }
+                    });
+                    
+                    // If dpIntroTourPublicConfig exists, try to disable it
+                    if(window.dpIntroTourPublicConfig) {
+                        window.dpIntroTourPublicConfig.tours = [];
                     }
-                });
-                
-                // If dpIntroTourPublicConfig exists, try to disable it
-                if(window.dpIntroTourPublicConfig) {
-                    window.dpIntroTourPublicConfig.tours = [];
                 }
-            }
-            
-            // Run immediately
-            disableIntroTours();
-            
-            // Also run when DOM is loaded
-            document.addEventListener('DOMContentLoaded', disableIntroTours);
-            
-            // Set up observer to watch for class changes
-            var observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if(mutation.attributeName === 'class') {
-                        disableIntroTours();
-                    }
+                
+                // Run immediately
+                disableIntroTours();
+                
+                // Also run when DOM is loaded
+                document.addEventListener('DOMContentLoaded', disableIntroTours);
+                
+                // Set up observer to watch for class changes
+                var observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if(mutation.attributeName === 'class') {
+                            disableIntroTours();
+                        }
+                    });
                 });
-            });
-            
-            // Start observing document.documentElement for class changes
-            observer.observe(document.documentElement, {
-                attributes: true,
-                attributeFilter: ['class']
-            });
-            
-            // As a fail-safe, run the function periodically
-            setInterval(disableIntroTours, 1000);
-        }
-    })();
-    </script>
-    <?php
+                
+                // Start observing document.documentElement for class changes
+                observer.observe(document.documentElement, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+                
+                // As a fail-safe, run the function periodically
+                setInterval(disableIntroTours, 1000);
+            }
+        })();
+        </script>
+        <?php
+    }
 }, 999);
