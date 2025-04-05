@@ -22,6 +22,7 @@
     // Find the IDs to exclude and the IDs to prioritize
     $manuelId = null;
     $santinaId = null;
+    $kayId = null;
     $dougId = null;
     
     if ($allSpeakers->have_posts()) {
@@ -34,6 +35,8 @@
           $manuelId = $postId;
         } elseif ($title === 'Santina Viegas Cardoso') {
           $santinaId = $postId;
+        } elseif ($title === 'HE Kay Rala Xanana Gusmão') {
+          $kayId = $postId;
         } elseif ($title === 'Doug Hadden') {
           $dougId = $postId;
         }
@@ -49,17 +52,18 @@
       'order'          => 'ASC',
     ]);
     
-    // Get all regular speakers except Manuel, Santina, and Doug
+    // Get all regular speakers except Manuel, Santina, Kay, and Doug
     $regularSpeakers = [];
     foreach ($speakersQuery->posts as $post) {
-      if ($post->ID != $manuelId && $post->ID != $santinaId && $post->ID != $dougId) {
+      if ($post->ID != $manuelId && $post->ID != $santinaId && $post->ID != $kayId && $post->ID != $dougId) {
         $regularSpeakers[] = $post;
       }
     }
     
-    // Step 3: Get Manuel, Santina, and Doug's full post objects
+    // Step 3: Get Manuel, Santina, Kay, and Doug's full post objects
     $manuelPost = null;
     $santinaPost = null;
+    $kayPost = null;
     $dougPost = null;
     
     if ($manuelId) {
@@ -68,6 +72,10 @@
     
     if ($santinaId) {
       $santinaPost = get_post($santinaId);
+    }
+    
+    if ($kayId) {
+      $kayPost = get_post($kayId);
     }
     
     if ($dougId) {
@@ -82,12 +90,17 @@
       $speakerPosts[] = $manuelPost;
     }
     
-    // Add Santina (the Minister) second if found
+    // Add Santina second if found
     if ($santinaPost) {
       $speakerPosts[] = $santinaPost;
     }
     
-    // Add Doug third if found
+    // Add Kay (the Prime Minister) third if found
+    if ($kayPost) {
+      $speakerPosts[] = $kayPost;
+    }
+    
+    // Add Doug fourth if found
     if ($dougPost) {
       $speakerPosts[] = $dougPost;
     }
