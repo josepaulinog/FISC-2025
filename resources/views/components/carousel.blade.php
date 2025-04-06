@@ -63,7 +63,7 @@ $desktopSlideCount = count($desktopSlides);
 @endphp
 
 <section class="team-section py-16 {{ $bgClass }}">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto">
         <div class="text-center mb-8"> {{-- Increased bottom margin --}}
             <h2 class="text-3xl text-gray-800 dark:text-white mb-4">{{ $title }}</h2>
             <div class="w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
@@ -77,7 +77,7 @@ $desktopSlideCount = count($desktopSlides);
             <div class="relative block md:hidden" x-data="{ currentMobileSlide: 1, totalMobileSlides: {{ $speakerCount }} }">
                 <div class="carousel w-full">
                     @foreach($speakers as $index => $speaker)
-                        <div id="mobile-slide-{{ $index + 1 }}" class="carousel-item relative w-full justify-center px-4">
+                        <div id="mobile-slide-{{ $index + 1 }}" class="carousel-item relative w-full justify-center">
                             {{-- Re-use the speaker card component/structure --}}
                             <div class="card w-full max-w-sm bg-base-100 rounded-lg shadow-md overflow-hidden relative border mb-8">
                                 {{-- Gray header background --}}
