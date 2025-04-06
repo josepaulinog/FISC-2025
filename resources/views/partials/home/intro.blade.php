@@ -180,12 +180,107 @@
   layout="horizontal" />
 
 
+  @php
+    // --- Configuration ---
+    // Use names for priority, matching the speakers template logic
+    $priorityNames = [
+        'Manuel Schiappa Pietra',
+        'Santina Viegas Cardoso',
+        'HE Kay Rala Xanana Gusmão',
+        'Doug Hadden',
+    ];
+    // Define Funcionario A & B names if they are different and needed instead/in addition
+    // $priorityNames = ['Manuel Schiappa Pietra', 'Funcionario A Name', 'Funcionario B Name'];
+
+    $excludeTitles = ['Customer Representatives', 'FreeBalance Staff']; // Titles to fully exclude
+    $total_limit = 12; // Total desired speakers in carousel
+
+    // --- Logic ---
+    $priorityIdsOrdered = []; // To store the *found* IDs of priority names, in order
+    $priorityIdsLookup = []; // To quickly check if an ID belongs to a priority name
+    $excludeIds = [];        // To store IDs of speakers with excluded titles
+
+    // --- Step 1: Initial scan to find IDs for names/exclusions ---
+    $idScanArgs = [
+        'post_type' => 'tribe_ext_speaker',
+        'posts_per_page' => -1,
+        'fields' => 'ids', // Only get IDs
+    ];
+    $idScanQuery = new WP_Query($idScanArgs);
+    $foundPriorityNames = []; // Track which priority names we've found IDs for
+
+    if ($idScanQuery->have_posts()) {
+        foreach ($idScanQuery->posts as $postId) {
+            $title = get_the_title($postId);
+            if ($title) { // Ensure title exists
+                if (in_array($title, $excludeTitles)) {
+                    $excludeIds[] = $postId;
+                } elseif (in_array($title, $priorityNames)) {
+                     // Store ID mapped to name for later ordering
+                     $foundPriorityNames[$title] = $postId;
+                     $priorityIdsLookup[] = $postId; // Add to lookup list
+                }
+            }
+        }
+    }
+    // Now, assemble the $priorityIdsOrdered array based on the $priorityNames order
+    foreach($priorityNames as $name) {
+        if(isset($foundPriorityNames[$name])) {
+            $priorityIdsOrdered[] = $foundPriorityNames[$name];
+        }
+    }
+    // At this point:
+    // $excludeIds contains IDs of speakers with excluded titles.
+    // $priorityIdsOrdered contains IDs of priority speakers, in the desired order.
+    // $priorityIdsLookup contains IDs of priority speakers for quick exclusion checks.
+
+    // --- Step 2: Fetch IDs for "other" speakers ---
+    $filtered_ids_to_fetch = $priorityIdsOrdered; // Start with the ordered priority IDs
+
+    // IDs to exclude from the "other" query = priority IDs + excluded title IDs
+    $allExcludeIds = array_unique(array_merge($priorityIdsLookup, $excludeIds));
+
+    // Calculate how many more speakers we need
+    $remaining_limit = $total_limit - count($filtered_ids_to_fetch);
+
+    if ($remaining_limit > 0) {
+        // Query for other speaker IDs, excluding priority and excluded titles
+        $other_args = [
+            'post_type' => 'tribe_ext_speaker',
+            'posts_per_page' => $remaining_limit, // Fetch exactly the number needed
+            'post__not_in' => $allExcludeIds,     // Exclude all unwanted IDs
+            'orderby' => 'title',              // Order the rest alphabetically
+            'order' => 'ASC',
+            'fields' => 'ids',                // Only fetch IDs
+        ];
+        $other_speaker_ids_query = new WP_Query($other_args);
+        $other_ids = $other_speaker_ids_query->posts ?: []; // Ensure it's an array
+
+        // Combine the ordered priority IDs with the other IDs
+        $filtered_ids_to_fetch = array_merge($filtered_ids_to_fetch, $other_ids);
+    }
+
+    // --- Step 3: Final cleanup ---
+    // Ensure uniqueness (safety check, though should be handled by post__not_in)
+    $filtered_ids_to_fetch = array_unique($filtered_ids_to_fetch);
+
+    // Apply the final total limit precisely (safety check)
+    $filtered_ids_to_fetch = array_slice($filtered_ids_to_fetch, 0, $total_limit);
+
+    // The final count of IDs we are actually passing
+    $final_id_count = count($filtered_ids_to_fetch);
+
+@endphp
+
+{{-- Call the component with the correctly ordered list of IDs --}}
 <x-carousel
-  title="Speakers & Panelists"
-  description="Meet the experts sharing insights at FISC 2025."
-  :limit="8"
+  :ids="$filtered_ids_to_fetch"
+  :limit="$final_id_count" {{-- Pass the *actual count* of IDs being sent --}}
+  title="Featured Speakers"
+  description="Meet the innovative minds driving our mission forward."
   bgClass="bg-base-200"
-  showCTA="true" />
+  :showCTA="true"
+/>
 <!-- Venue Location Section -->
 
 <!-- FAQs Section -->
