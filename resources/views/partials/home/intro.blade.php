@@ -3,42 +3,53 @@
     <div class="grid grid-cols-1 md:grid-cols-3 -mt-8 bg-base-100 rounded-lg shadow-lg z-80 border">
 
       <!-- Location -->
-      <div class="border-b md:border-b-0 md:border-r p-6 text-center">
-        <div class="mx-auto flex justify-center items-center w-16 h-16 rounded-full dark:bg-gray-700 bg-gray-100 mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
+      <div class="border-b md:border-b-0 md:border-r p-6">
+        <div class="flex md:flex-col items-start md:items-center">
+          <div class="flex justify-center items-center w-16 h-16 rounded-full bg-gray-100 mr-4 md:mx-auto flex-shrink-0 mb-0 md:mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <div class="text-left md:text-center md:w-full">
+            <h5 class="text-lg font-semibold">Location</h5>
+            <p class="mb-0 text-neutral-600 dark:text-neutral-400">Timor-Leste, Official Venue of FISC 2025</p>
+          </div>
         </div>
-        <h5 class="text-lg font-semibold">Location</h5>
-        <p class="mb-0">Timor-Leste, Official Venue of FISC 2025</p>
       </div>
 
       <!-- Date & Time -->
-      <div class="border-b md:border-b-0 md:border-r p-6 text-center">
-        <div class="mx-auto flex justify-center items-center w-16 h-16 rounded-full dark:bg-gray-700 bg-gray-100 mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
+      <div class="border-b md:border-b-0 md:border-r p-6">
+        <div class="flex md:flex-col items-start md:items-center">
+          <div class="flex justify-center items-center w-16 h-16 rounded-full bg-gray-100 mr-4 md:mx-auto flex-shrink-0 mb-0 md:mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="text-left md:text-center md:w-full">
+            <h5 class="text-lg font-semibold">Date</h5>
+            <p class="mb-0 text-neutral-600 dark:text-neutral-400">April 6-10, 2025</p>
+          </div>
         </div>
-        <h5 class="text-lg font-semibold">Date</h5>
-        <p class="mb-0">April 6-10, 2025</p>
       </div>
 
       <!-- Admission -->
-      <div class="p-6 text-center">
-        <div class="mx-auto flex justify-center items-center w-16 h-16 rounded-full dark:bg-gray-700 bg-gray-100 mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
-          </svg>
+      <div class="p-6">
+        <div class="flex md:flex-col items-start md:items-center">
+          <div class="flex justify-center items-center w-16 h-16 rounded-full bg-gray-100 mr-4 md:mx-auto flex-shrink-0 mb-0 md:mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+            </svg>
+          </div>
+          <div class="text-left md:text-center md:w-full">
+            <h5 class="text-lg font-semibold">Admission</h5>
+            <p class="mb-0 text-neutral-600 dark:text-neutral-400">Exclusive event for delegates and official guests</p>
+          </div>
         </div>
-        <h5 class="text-lg font-semibold">Admission</h5>
-        <p class="mb-0">Exclusive event for delegates and official guests</p>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- About Section with Stats -->
 <section class="py-16 hidden">
@@ -388,3 +399,26 @@ $faqItems = [
     </div>
   </div>
 </section>
+
+        <!-- Social Media & Follow -->
+        <div class="mb-20 text-center px-20">
+            <h3 class="text-2xl mb-4">Connect With Us</h3>
+            <p class="mb-6 max-w-2xl mx-auto">Follow the conversation and get the latest updates on FISC 2025</p>
+
+<div class="flex justify-center space-x-4 mb-4">
+    <a target="_blank" href="https://x.com/FreeBalance" class="btn btn-circle btn-outline border-gray-400 hover:bg-black hover:border-black hover:text-white transition-colors duration-300">
+        <svg width="24" height="24" class="w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+    </a>
+    <a target="_blank" href="https://www.linkedin.com/company/freebalance/" class="btn btn-circle btn-outline border-gray-400 hover:bg-[#0077b5] hover:border-[#0077b5] hover:text-white transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+        </svg>
+    </a>
+</div>
+
+            <a target="_blank" href="https://x.com/hashtag/FISC2025?src=hashtag_click" class="mt-4">
+                <span class="btn btn-secondary rounded-full text-white btn-sm">#FISC2025</span>
+            </a>
+        </div>

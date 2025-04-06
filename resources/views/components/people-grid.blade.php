@@ -24,7 +24,7 @@
         @endif
         
         @if($description)
-          <p class="text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+          <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
             {{ $description }}
           </p>
         @endif

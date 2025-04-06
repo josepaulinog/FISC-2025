@@ -29,7 +29,7 @@
     <div class="text-center mb-8">
       <h2 class="text-3xl mb-4 dark:text-white-500">{{ $title }}</h2>
       <div class="w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
-      <p class="text-lg max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400">
+      <p class="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400">
         {{ $subtitle }}
       </p>
     </div>

@@ -12,7 +12,7 @@
   <div class="text-center lg:mb-12">
     <h2 class="text-3xl mb-4">FISC 2025 in Pictures</h2>
     <div class="w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
-    <p class="text-lg max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400 lg:mb-12 mb-4">
+    <p class="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400 lg:mb-12 mb-8">
         A visual journey through the moments that shaped the conversation.
     </p>
   </div>
@@ -143,7 +143,7 @@
     @endif
 
     <!-- Social Media & Follow -->
-    <div class="mt-16 text-center">
+    <div class="mt-16 mb-16 text-center px-20">
         <h3 class="text-2xl mb-4">Connect With Us</h3>
         <p class="mb-6 max-w-2xl mx-auto">Follow the conversation and get the latest updates on FISC 2025</p>
         
@@ -161,7 +161,7 @@
         </div>
         
         <a target="_blank" href="https://x.com/hashtag/FISC2025?src=hashtag_click" class="mt-4">
-            <span class="badge badge-secondary badge-lg text-white">#FISC2025</span>
+            <span class="btn btn-secondary rounded-full text-white btn-sm">#FISC2025</span>
         </a>
     </div>
   </div>

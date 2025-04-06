@@ -65,7 +65,7 @@ $slideCount = count($slides);
         <div class="text-center mb-4">
             <h2 class="text-3xl text-gray-800 dark:text-white mb-4">{{ $title }}</h2>
             <div class="w-16 h-1 rounded-full bg-primary mx-auto mb-4 inline-flex"></div>
-            <p class="text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+            <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
                 {{ $description }}
             </p>
         </div>
