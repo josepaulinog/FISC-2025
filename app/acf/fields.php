@@ -316,6 +316,14 @@ acf_add_local_field_group(array(
                             'max' => 5,
                         ),
                         array(
+                            'key' => 'field_day_caption',
+                            'label' => 'Day Caption',
+                            'name' => 'day_caption',
+                            'type' => 'textarea',
+                            'instructions' => 'Enter a caption for all photos on this day',
+                            'required' => 0,
+                        ),
+                        array(
                             'key' => 'field_photos',
                             'label' => 'Photos',
                             'name' => 'photos',
@@ -330,13 +338,6 @@ acf_add_local_field_group(array(
                                     'type' => 'image',
                                     'return_format' => 'url',
                                     'preview_size' => 'medium',
-                                    'required' => 1,
-                                ),
-                                array(
-                                    'key' => 'field_photo_caption',
-                                    'label' => 'Caption',
-                                    'name' => 'caption',
-                                    'type' => 'text',
                                     'required' => 1,
                                 ),
                                 array(
