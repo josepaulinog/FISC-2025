@@ -30,6 +30,7 @@
     "daisyui": "^4.12.23",
     "debounce": "^2.2.0",
     "lodash": "^4.17.21",
+    "lozad": "^1.16.0",
     "shufflejs": "^6.1.1",
     "vanilla-calendar-pro": "^3.0.3",
     "video.js": "^8.21.0",
