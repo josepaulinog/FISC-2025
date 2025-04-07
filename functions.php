@@ -518,3 +518,20 @@ add_action('validate_password_reset', function($errors, $user) {
     
     return $errors;
 }, 10, 2);
+
+add_filter('acf/load_field/key=field_photo_category', function ($field) {
+    $field['choices'] = [];
+
+    $terms = get_terms([
+        'taxonomy'   => 'photo_category',
+        'hide_empty' => false,
+    ]);
+
+    if (!is_wp_error($terms) && !empty($terms)) {
+        foreach ($terms as $term) {
+            $field['choices'][$term->slug] = $term->name;
+        }
+    }
+
+    return $field;
+});

@@ -380,3 +380,13 @@ add_filter('sage/template', function($data) {
     $data['extension_instance'] = Tribe__Extension__Speaker_Linked_Post_Type::instance();
     return $data;
 });
+
+add_action('init', function () {
+    register_taxonomy('photo_category', ['tribe_events'], [
+        'label' => 'Photo Categories',
+        'hierarchical' => false,
+        'public' => true,
+        'show_in_rest' => true,
+        'rewrite' => ['slug' => 'photo-category'],
+    ]);
+});

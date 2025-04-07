@@ -42,38 +42,38 @@
     <div class="tabs tabs-boxed mb-10 p-2">
       @for($i = 1; $i <= 5; $i++)
         @php
-          // Count photos for this day to show count
-          $day_photos_count = 0;
-          $current_day_number = 0;
-          if(isset($year['gallery_days']) && is_array($year['gallery_days'])) {
-            foreach($year['gallery_days'] as $day_index => $day) {
-              // Use the explicit day_number field rather than array index
-              $current_day_number = isset($day['day_number']) ? intval($day['day_number']) : ($day_index + 1);
-              if($current_day_number == $i && isset($day['photos']) && is_array($day['photos'])) {
-                $day_photos_count = count($day['photos']);
-              }
-            }
-          }
+        // Count photos for this day to show count
+        $day_photos_count=0;
+        $current_day_number=0;
+        if(isset($year['gallery_days']) && is_array($year['gallery_days'])) {
+        foreach($year['gallery_days'] as $day_index=> $day) {
+        // Use the explicit day_number field rather than array index
+        $current_day_number = isset($day['day_number']) ? intval($day['day_number']) : ($day_index + 1);
+        if($current_day_number == $i && isset($day['photos']) && is_array($day['photos'])) {
+        $day_photos_count = count($day['photos']);
+        }
+        }
+        }
         @endphp
         <a class="h-10 tab tab-bordered day-tab {{ $i === 1 ? 'tab-active' : '' }}"
-        data-day="{{ $i }}"
-        data-year="{{ $year['year'] }}">
-        Day {{ $i }} <span class="text-xs ml-1">({{ $day_photos_count }})</span>
+          data-day="{{ $i }}"
+          data-year="{{ $year['year'] }}">
+          Day {{ $i }} <span class="text-xs ml-1">({{ $day_photos_count }})</span>
         </a>
-      @endfor
+        @endfor
     </div>
 
     <!-- Day Captions -->
     @if(isset($year['gallery_days']) && is_array($year['gallery_days']))
-      @foreach($year['gallery_days'] as $day_index => $day)
-        @php
-          // Get the day number from the field or default to index+1
-          $day_number = isset($day['day_number']) ? intval($day['day_number']) : ($day_index + 1);
-          // If there's a caption field in the day, use it, otherwise create a default one
-          $day_caption = isset($day['day_caption']) ? $day['day_caption'] : "Day " . $day_number . " of FISC 2025";
-        @endphp
-        
-      @endforeach
+    @foreach($year['gallery_days'] as $day_index => $day)
+    @php
+    // Get the day number from the field or default to index+1
+    $day_number = isset($day['day_number']) ? intval($day['day_number']) : ($day_index + 1);
+    // If there's a caption field in the day, use it, otherwise create a default one
+    $day_caption = isset($day['day_caption']) ? $day['day_caption'] : "Day " . $day_number . " of FISC 2025";
+    @endphp
+
+    @endforeach
     @endif
 
     <h3 class="text-lg font-medium mb-3">Filter by Category</h3>
@@ -81,43 +81,63 @@
     <!-- Desktop Category Filter Tabs (hidden on mobile) -->
     <div role="tablist" class="hidden md:flex mb-6 flex-wrap filter-tabs tabs tabs-lifted tabs-lg" data-year="{{ $year['year'] }}">
       @php
-        // Count photos for each category to show in filters
-        $categories = ['all' => 0, 'sessions' => 0, 'opening' => 0, 'closing' => 0, 'social' => 0, 'other' => 0];
-        if(isset($year['gallery_days']) && is_array($year['gallery_days'])) {
-          foreach($year['gallery_days'] as $day) {
-            if(isset($day['photos']) && is_array($day['photos'])) {
-              foreach($day['photos'] as $photo) {
-                $categories['all']++;
-                if(isset($photo['category']) && isset($categories[$photo['category']])) {
-                  $categories[$photo['category']]++;
-                }
-              }
-            }
-          }
-        }
+      // Count photos for each category to show in filters
+      $categories = ['all' => 0, 'sessions' => 0, 'opening' => 0, 'closing' => 0, 'social' => 0, 'other' => 0];
+      if(isset($year['gallery_days']) && is_array($year['gallery_days'])) {
+      foreach($year['gallery_days'] as $day) {
+      if(isset($day['photos']) && is_array($day['photos'])) {
+      foreach($day['photos'] as $photo) {
+      $categories['all']++;
+      if(isset($photo['category']) && isset($categories[$photo['category']])) {
+      $categories[$photo['category']]++;
+      }
+      }
+      }
+      }
+      }
       @endphp
-      
+
       <a class="tab tab-bordered filter-tab tab-active" data-filter="all" data-year="{{ $year['year'] }}">
         All <span class="text-xs ml-1">({{ $categories['all'] }})</span>
       </a>
-      @foreach(['sessions', 'opening', 'closing', 'social', 'other'] as $category)
-        @if(isset($categories[$category]) && $categories[$category] > 0)
-        <a class="tab tab-bordered filter-tab" data-filter="{{ $category }}" data-year="{{ $year['year'] }}">
-          {{ ucfirst($category) }} <span class="text-xs ml-1">({{ $categories[$category] }})</span>
-        </a>
-        @endif
+      @php
+      $terms = get_terms([
+      'taxonomy' => 'photo_category',
+      'hide_empty' => false,
+      ]);
+      @endphp
+
+      @foreach($terms as $term)
+      @php
+      $category = $term->slug;
+      @endphp
+      @if(isset($categories[$category]) && $categories[$category] > 0)
+      <a class="tab tab-bordered filter-tab" data-filter="{{ $category }}" data-year="{{ $year['year'] }}">
+        {{ $term->name }} <span class="text-xs ml-1">({{ $categories[$category] }})</span>
+      </a>
+      @endif
       @endforeach
+
     </div>
 
     <!-- Mobile Filter Dropdown (visible only on mobile) -->
     <div class="md:hidden mb-6">
       <select id="mobile-filter-{{ $year['year'] }}" class="select select-bordered w-full" data-year="{{ $year['year'] }}">
         <option value="all" selected>All Categories ({{ $categories['all'] }})</option>
-        @foreach(['sessions', 'opening', 'closing', 'social', 'other'] as $category)
-          @if(isset($categories[$category]) && $categories[$category] > 0)
-          <option value="{{ $category }}">{{ ucfirst($category) }} ({{ $categories[$category] }})</option>
-          @endif
+        @php
+        $terms = get_terms([
+        'taxonomy' => 'photo_category',
+        'hide_empty' => false, // true if you want only terms with posts/photos
+        ]);
+        @endphp
+
+        @foreach($terms as $term)
+        @php $category = $term->slug; @endphp
+        @if(isset($categories[$category]) && $categories[$category] > 0)
+        <option value="{{ $category }}">{{ $term->name }} ({{ $categories[$category] }})</option>
+        @endif
         @endforeach
+
       </select>
     </div>
 
@@ -136,62 +156,62 @@
     <!-- Grid Container using Shuffle Template Markup -->
     <div id="grid-{{ $year['year'] }}" class="js-grid my-shuffle" data-year="{{ $year['year'] }}">
       @if(isset($year['gallery_days']) && is_array($year['gallery_days']))
-        @foreach($year['gallery_days'] as $day_index => $day)
-          @php
-            // Get the day number from the field or default to index+1
-            $day_number = isset($day['day_number']) ? intval($day['day_number']) : ($day_index + 1);
-            // Get day caption for this group of photos
-            $day_caption = isset($day['day_caption']) ? $day['day_caption'] : "Day " . $day_number . " of FISC 2025";
-          @endphp
-          
-          @if(isset($day['photos']) && is_array($day['photos']))
-            @foreach($day['photos'] as $photo_index => $photo)
-              @php
-              // Get the attachment ID from the full image URL (if not already available)
-              $attachment_id = attachment_url_to_postid($photo['full_image']);
+      @foreach($year['gallery_days'] as $day_index => $day)
+      @php
+      // Get the day number from the field or default to index+1
+      $day_number = isset($day['day_number']) ? intval($day['day_number']) : ($day_index + 1);
+      // Get day caption for this group of photos
+      $day_caption = isset($day['day_caption']) ? $day['day_caption'] : "Day " . $day_number . " of FISC 2025";
+      @endphp
 
-              // Get the thumbnail image URL using wp_get_attachment_image_src()
-              $thumbnail = wp_get_attachment_image_src($attachment_id, 'large'); // 'large' size
-              $thumbnail_url = $thumbnail ? $thumbnail[0] : $photo['full_image']; // Fallback to full image if no thumbnail exists
+      @if(isset($day['photos']) && is_array($day['photos']))
+      @foreach($day['photos'] as $photo_index => $photo)
+      @php
+      // Get the attachment ID from the full image URL (if not already available)
+      $attachment_id = attachment_url_to_postid($photo['full_image']);
 
-              // Define an array with all aspect ratio classes
-              $aspectClasses = ['aspect--16x9', 'aspect--9x80', 'aspect--4x3'];
-              // Cycle through the classes based on the photo index
-              $aspectClass = $aspectClasses[$photo_index % count($aspectClasses)];
-              @endphp
-              <figure class="js-item column group relative"
-                data-groups='["{{ $photo['category'] }}"]'
-                data-day="{{ $day_number }}"
-                data-year="{{ $year['year'] }}"
-                data-full-image="{{ $photo['full_image'] }}"
-                data-caption="{{ $day_caption }}"
-                data-category="{{ $photo['category'] }}">
-                <div class="shadow-lg aspect {{ $aspectClass }}">
-                  <div class="aspect__inner">
-                    <div class="relative w-full h-full">
-                      <!-- Use Thumbnail Image with lazy loading -->
-                      <img data-src="{{ $thumbnail_url }}"
-                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                        alt="{{ $day_caption }}"
-                        class="shadow-lg rounded-lg object-cover w-full h-full cursor-pointer lazy"
-                        loading="lazy">
-                    </div>
-                    <div
-                      class="cursor-pointer absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center gallery-image-trigger">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-12 w-12 text-white">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM10.5 7.5v6m3-3h-6" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </figure>
-            @endforeach
-          @endif
-        @endforeach
+      // Get the thumbnail image URL using wp_get_attachment_image_src()
+      $thumbnail = wp_get_attachment_image_src($attachment_id, 'large'); // 'large' size
+      $thumbnail_url = $thumbnail ? $thumbnail[0] : $photo['full_image']; // Fallback to full image if no thumbnail exists
+
+      // Define an array with all aspect ratio classes
+      $aspectClasses = ['aspect--16x9', 'aspect--9x80', 'aspect--4x3'];
+      // Cycle through the classes based on the photo index
+      $aspectClass = $aspectClasses[$photo_index % count($aspectClasses)];
+      @endphp
+      <figure class="js-item column group relative"
+        data-groups='["{{ $photo['category'] }}"]'
+        data-day="{{ $day_number }}"
+        data-year="{{ $year['year'] }}"
+        data-full-image="{{ $photo['full_image'] }}"
+        data-caption="{{ $day_caption }}"
+        data-category="{{ $photo['category'] }}">
+        <div class="shadow-lg aspect {{ $aspectClass }}">
+          <div class="aspect__inner">
+            <div class="relative w-full h-full">
+              <!-- Use Thumbnail Image with lazy loading -->
+              <img data-src="{{ $thumbnail_url }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="{{ $day_caption }}"
+                class="shadow-lg rounded-lg object-cover w-full h-full cursor-pointer lazy"
+                loading="lazy">
+            </div>
+            <div
+              class="cursor-pointer absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center gallery-image-trigger">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-12 w-12 text-white">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM10.5 7.5v6m3-3h-6" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </figure>
+      @endforeach
+      @endif
+      @endforeach
       @endif
       <!-- Sizer element for Shuffle.js (if needed) -->
       <div class="column my-sizer-element"></div>
-      </div>
+    </div>
   </div>
   @endforeach
   @else
@@ -375,7 +395,7 @@
     display: flex;
     align-items: center;
   }
-  
+
   .pagination .join-item.btn {
     margin: 0;
     min-width: 2.5rem;
@@ -416,6 +436,7 @@
 
   /* Make modal controls more touch-friendly */
   @media (max-width: 768px) {
+
     #prev-button,
     #next-button {
       padding: 15px;
