@@ -188,15 +188,12 @@
         data-category="{{ $photo['category'] }}">
         <div class="shadow-lg aspect {{ $aspectClass }}">
           <div class="aspect__inner">
-            <div class="relative w-full h-full image-container">
-              <!-- DaisyUI Skeleton -->
-              <div class="skeleton absolute inset-0 rounded-lg"></div>
-              
-              <!-- Image with lazy loading -->
+            <div class="relative w-full h-full">
+              <!-- Use Thumbnail Image with lazy loading -->
               <img data-src="{{ $thumbnail_url }}"
                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                 alt="{{ $day_caption }}"
-                class="shadow-lg rounded-lg object-cover w-full h-full cursor-pointer lazy opacity-0 transition-opacity duration-300"
+                class="shadow-lg rounded-lg object-cover w-full h-full cursor-pointer lazy"
                 loading="lazy">
             </div>
             <div
@@ -215,30 +212,6 @@
       <!-- Sizer element for Shuffle.js (if needed) -->
       <div class="column my-sizer-element"></div>
     </div>
-    
-    <!-- Pagination (dynamically created) -->
-    @if(isset($year['gallery_days']) && is_array($year['gallery_days']))
-    @foreach($year['gallery_days'] as $day_index => $day)
-    @php
-    $day_number = isset($day['day_number']) ? intval($day['day_number']) : ($day_index + 1);
-    @endphp
-    <div id="pagination-{{ $year['year'] }}-day-{{ $day_number }}" class="pagination flex justify-center items-center mt-8 {{ $day_number == 1 ? '' : 'hidden' }}">
-      <div class="join">
-        <button class="join-item btn btn-sm prev-page">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <div class="page-numbers join flex"></div>
-        <button class="join-item btn btn-sm next-page">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-    </div>
-    @endforeach
-    @endif
   </div>
   @endforeach
   @else
@@ -301,9 +274,6 @@
     <!-- Image and Caption -->
     <div class="flex flex-col h-full justify-center items-center p-4 md:p-8 lg:p-16">
       <div class="max-w-7xl max-h-[80vh] bg-transparent rounded-lg overflow-hidden relative">
-        <!-- Modal Skeleton -->
-        <div id="modal-skeleton" class="skeleton w-full h-[75vh] rounded-lg"></div>
-        
         <img id="modal-image" src="" alt="" class="max-w-full max-h-[75vh] object-contain mx-auto">
 
         <!-- Caption and Category -->
@@ -410,17 +380,15 @@
     object-fit: cover;
   }
 
-  /* Lazy loading effect with smooth fade-in */
+  /* Lazy loading effect */
   img.lazy {
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.3s;
   }
 
   img.lazy.loaded {
     opacity: 1;
   }
-
-  /* DaisyUI v4 already has skeleton animations built-in */
 
   /* Pagination styles */
   .pagination .page-numbers {

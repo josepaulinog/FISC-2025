@@ -8,22 +8,8 @@ const initLazyLoad = () => {
   // Initialize lozad observer
   const observer = lozad('.lazy', {
     loaded: function(el) {
-      // When the image is loaded, we don't immediately add the class
-      // Instead, use a small timeout to ensure the image is fully rendered
-      // before starting the fade-in transition
-      setTimeout(() => {
-        // When image is loaded, hide the skeleton
-        const imageContainer = el.closest('.image-container');
-        if (imageContainer) {
-          const skeleton = imageContainer.querySelector('.skeleton');
-          if (skeleton) {
-            skeleton.classList.add('hidden');
-          }
-        }
-        
-        // Now add the loaded class for fade-in effect
-        el.classList.add('loaded');
-      }, 50);
+      // Add loaded class for fade-in effect
+      el.classList.add('loaded');
     },
     rootMargin: '10px 0px', // Preload images slightly before they appear in viewport
     threshold: 0.1 // Trigger load when 10% of the image is visible
@@ -35,9 +21,13 @@ const initLazyLoad = () => {
   return observer;
 };
 
+// Pagination configuration
+const ITEMS_PER_PAGE = 100; // Set to 30 photos max per page
 let shuffleInstances = {};
 let currentFilters = {};
 let currentSearch = {};
+let currentPage = {};
+let totalPages = {};
 
 // Modal implementation for DaisyUI modal with checkbox toggle
 window.openModal = (imageUrl, caption, category, resetGallery = true) => {
@@ -67,32 +57,14 @@ window.openModal = (imageUrl, caption, category, resetGallery = true) => {
   // Find elements, with fallbacks if they don't exist yet
   const modalImage = document.getElementById('modal-image');
   if (modalImage) {
-    // Reset the image and make it invisible during loading
-    modalImage.src = '';
-    modalImage.classList.add('opacity-0');
-    
-    // Show skeleton in modal while loading
-    const modalSkeleton = document.getElementById('modal-skeleton');
-    if (modalSkeleton) {
-      modalSkeleton.classList.remove('hidden');
-    }
+    // Show loading state
+    modalImage.classList.add('opacity-50');
     
     // Preload image to get dimensions
     const img = new Image();
     img.onload = function() {
-      // Update the src attribute
       modalImage.src = imageUrl;
-      
-      // Hide skeleton when image is loaded
-      if (modalSkeleton) {
-        modalSkeleton.classList.add('hidden');
-      }
-      
-      // Add a small delay to ensure smooth transition
-      setTimeout(() => {
-        // Show the image with fade-in effect
-        modalImage.classList.remove('opacity-0');
-      }, 50);
+      modalImage.classList.remove('opacity-50');
       
       // Show the caption only if provided
       const modalTitle = document.getElementById('modal-title');
@@ -129,6 +101,190 @@ window.closeModal = () => {
     modalToggle.checked = false;
   }
   document.body.classList.remove('overflow-hidden');
+};
+
+// Apply CSS based pagination (showing/hiding items)
+const applyPagination = (year, day, page) => {
+  // Get all items for this day (filtered and unfiltered)
+  const allItems = document.querySelectorAll(`#grid-${year} .js-item[data-day="${day}"]`);
+  
+  // Get only the items that aren't filtered out by category/search
+  const visibleItems = Array.from(allItems).filter(item => 
+    !item.classList.contains('shuffle-filtered')
+  );
+  
+  // Calculate total pages
+  const totalItems = visibleItems.length;
+  const totalPagesCount = Math.ceil(totalItems / ITEMS_PER_PAGE);
+  
+  // Validate current page
+  const currentPageNum = Math.min(Math.max(1, page), totalPagesCount || 1);
+  
+  // Calculate start and end indices
+  const startIndex = (currentPageNum - 1) * ITEMS_PER_PAGE;
+  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE - 1, totalItems - 1);
+  
+  // Apply pagination by adding/removing the CSS class
+  visibleItems.forEach((item, index) => {
+    if (index >= startIndex && index <= endIndex) {
+      item.classList.remove('hidden-by-pagination');
+    } else {
+      item.classList.add('hidden-by-pagination');
+    }
+  });
+  
+  // Update shuffle layout
+  if (shuffleInstances[year]) {
+    shuffleInstances[year].update();
+  }
+  
+  return { totalPages: totalPagesCount, currentPage: currentPageNum };
+};
+
+// Go to specific page in pagination
+const goToPage = (year, day, page) => {
+  // Update pagination state
+  if (!currentPage[year]) {
+    currentPage[year] = {};
+  }
+  
+  // Apply pagination and get updated state
+  const paginationState = applyPagination(year, day, page);
+  currentPage[year][day] = paginationState.currentPage;
+  
+  if (!totalPages[year]) {
+    totalPages[year] = {};
+  }
+  totalPages[year][day] = paginationState.totalPages;
+  
+  // Update pagination UI
+  updatePaginationUI(year, day);
+  
+  // Scroll to top of the gallery section
+  document.querySelector(`#year-${year}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  
+  // Trigger lazy loading for newly visible images
+  setTimeout(() => {
+    window.dispatchEvent(new Event('scroll'));
+  }, 300);
+};
+
+// Update the pagination buttons based on current state
+const updatePaginationUI = (year, day) => {
+  const paginationContainer = document.getElementById(`pagination-${year}-day-${day}`);
+  if (!paginationContainer) return;
+  
+  const pageNumbersContainer = paginationContainer.querySelector('.page-numbers');
+  if (!pageNumbersContainer) return;
+  
+  // Ensure pagination state is initialized
+  if (!currentPage[year]) currentPage[year] = {};
+  if (!currentPage[year][day]) currentPage[year][day] = 1;
+  if (!totalPages[year]) totalPages[year] = {};
+  if (!totalPages[year][day]) {
+    // Recalculate total pages
+    const visibleItems = Array.from(document.querySelectorAll(`#grid-${year} .js-item[data-day="${day}"]`))
+      .filter(item => !item.classList.contains('shuffle-filtered'));
+    totalPages[year][day] = Math.ceil(visibleItems.length / ITEMS_PER_PAGE) || 1;
+  }
+  
+  const currentPageNum = currentPage[year][day];
+  const totalPagesNum = totalPages[year][day];
+  
+  // Show/hide pagination if necessary
+  if (totalPagesNum > 1) {
+    paginationContainer.classList.remove('hidden');
+  } else {
+    paginationContainer.classList.add('hidden');
+    return;
+  }
+  
+  // Clear existing page numbers
+  pageNumbersContainer.innerHTML = '';
+  
+  // Determine range of page numbers to show
+  let startPage = Math.max(1, currentPageNum - 2);
+  let endPage = Math.min(totalPagesNum, startPage + 4);
+  
+  // Adjust if we're at the end
+  if (endPage - startPage < 4) {
+    startPage = Math.max(1, endPage - 4);
+  }
+  
+  // Add page buttons
+  if (startPage > 1) {
+    // Add first page and ellipsis
+    const firstPageBtn = document.createElement('button');
+    firstPageBtn.className = 'btn btn-sm';
+    firstPageBtn.textContent = '1';
+    firstPageBtn.addEventListener('click', () => {
+      goToPage(year, day, 1);
+    });
+    pageNumbersContainer.appendChild(firstPageBtn);
+    
+    if (startPage > 2) {
+      const ellipsis = document.createElement('span');
+      ellipsis.className = 'px-2';
+      ellipsis.textContent = '...';
+      pageNumbersContainer.appendChild(ellipsis);
+    }
+  }
+  
+  for (let i = startPage; i <= endPage; i++) {
+    const pageBtn = document.createElement('button');
+    pageBtn.className = `btn btn-sm ${i === currentPageNum ? 'active' : ''}`;
+    pageBtn.textContent = i;
+    pageBtn.addEventListener('click', () => {
+      goToPage(year, day, i);
+    });
+    pageNumbersContainer.appendChild(pageBtn);
+  }
+  
+  if (endPage < totalPagesNum) {
+    // Add ellipsis and last page
+    if (endPage < totalPagesNum - 1) {
+      const ellipsis = document.createElement('span');
+      ellipsis.className = 'px-2';
+      ellipsis.textContent = '...';
+      pageNumbersContainer.appendChild(ellipsis);
+    }
+    
+    const lastPageBtn = document.createElement('button');
+    lastPageBtn.className = 'btn btn-sm';
+    lastPageBtn.textContent = totalPagesNum;
+    lastPageBtn.addEventListener('click', () => {
+      goToPage(year, day, totalPagesNum);
+    });
+    pageNumbersContainer.appendChild(lastPageBtn);
+  }
+  
+  // Update prev/next buttons
+  const prevBtn = paginationContainer.querySelector('.prev-page');
+  const nextBtn = paginationContainer.querySelector('.next-page');
+  
+  if (prevBtn) {
+    prevBtn.disabled = currentPageNum <= 1;
+    // Remove existing event listeners
+    const newPrevBtn = prevBtn.cloneNode(true);
+    prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+    newPrevBtn.addEventListener('click', () => {
+      if (currentPageNum > 1) {
+        goToPage(year, day, currentPageNum - 1);
+      }
+    });
+  }
+  
+  if (nextBtn) {
+    nextBtn.disabled = currentPageNum >= totalPagesNum;
+    // Remove existing event listeners
+    const newNextBtn = nextBtn.cloneNode(true);
+    nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+    newNextBtn.addEventListener('click', () => {
+      if (currentPageNum < totalPagesNum) {
+        goToPage(year, day, currentPageNum + 1);
+      }
+    });
+  }
 };
 
 // Count images in specific category for a year/day
@@ -211,7 +367,7 @@ const updateDayCaptions = (year, day) => {
   });
 };
 
-// Apply combined filters (day, category, and search)
+// Apply combined filters (day, category, and search) and pagination
 const applyFilters = (year) => {
   const activeDayElem = document.querySelector(`.day-tab.tab-active[data-year="${year}"]`);
   if (!activeDayElem) return;
@@ -221,6 +377,11 @@ const applyFilters = (year) => {
   const searchValue = (currentSearch[year] || '').toLowerCase();
 
   if (shuffleInstances[year]) {
+    // First remove pagination classes to let Shuffle see all items
+    document.querySelectorAll(`#grid-${year} .js-item`).forEach(item => {
+      item.classList.remove('hidden-by-pagination');
+    });
+    
     // Apply category and search filters
     shuffleInstances[year].filter(item => {
       // Check day filter
@@ -257,8 +418,22 @@ const applyFilters = (year) => {
     // Update category counts after filtering
     updateCategoryCounts(year);
     
+    // Reset pagination to page 1 for active day
+    if (!currentPage[year]) {
+      currentPage[year] = {};
+    }
+    currentPage[year][activeDay] = 1;
+    
     // Update day caption
     updateDayCaptions(year, activeDay);
+    
+    // Hide all day paginations first
+    document.querySelectorAll(`[id^="pagination-${year}-day-"]`).forEach(pagination => {
+      pagination.classList.add('hidden');
+    });
+    
+    // Apply pagination for current day
+    goToPage(year, activeDay, 1);
   }
 };
 
@@ -267,16 +442,20 @@ export const setupGallery = () => {
   shuffleInstances = {};
   currentFilters = {};
   currentSearch = {};
+  currentPage = {};
+  totalPages = {};
   
-  // Initialize lazy loading for all gallery images
+  // Add CSS for pagination
+  const style = document.createElement('style');
+  style.textContent = `
+    .hidden-by-pagination {
+      display: none !important;
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // Initialize lazy loading
   const lazyLoadObserver = initLazyLoad();
-
-  // Initialize lazy loading for modal image
-  const modalImage = document.getElementById('modal-image');
-  if (modalImage) {
-    modalImage.classList.add('lazy');
-    lazyLoadObserver.observe();
-  }
 
   // Initialize shuffle for each year
   years.forEach(yearEl => {
@@ -323,7 +502,7 @@ export const setupGallery = () => {
           if (shuffleInstances[selectedYear]) {
             shuffleInstances[selectedYear].update();
             
-            // Apply filters for the selected year
+            // Apply filters and pagination for the selected year
             applyFilters(selectedYear);
             
             // Trigger lazy loading
@@ -346,7 +525,7 @@ export const setupGallery = () => {
       siblingTabs.forEach(sibTab => sibTab.classList.remove('tab-active'));
       tab.classList.add('tab-active');
       
-      // Apply filters for the new day
+      // Apply filters and pagination for the new day
       applyFilters(year);
     });
   });
@@ -415,7 +594,7 @@ export const setupGallery = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && shuffleInstances[year]) {
-          // Apply initial filters
+          // Apply initial filters and pagination
           applyFilters(year);
           observer.disconnect();
         }
@@ -486,6 +665,11 @@ export const setupGalleryModal = () => {
       const figureElement = trigger.closest('figure.js-item');
       if (!figureElement) return;
       
+      // Skip if this image is hidden by pagination
+      if (figureElement.classList.contains('hidden-by-pagination')) {
+        return;
+      }
+      
       // Extract data from the figure element attributes
       const imageUrl = figureElement.dataset.fullImage;
       const caption = figureElement.dataset.caption;
@@ -495,7 +679,7 @@ export const setupGalleryModal = () => {
       const year = figureElement.dataset.year;
       const day = figureElement.dataset.day;
       
-      const selector = `figure.js-item[data-year="${year}"][data-day="${day}"]:not(.shuffle-filtered)`;
+      const selector = `figure.js-item[data-year="${year}"][data-day="${day}"]:not(.shuffle-filtered):not(.hidden-by-pagination)`;
       window.currentGalleryImages = Array.from(document.querySelectorAll(selector));
       
       // Find index of current image
