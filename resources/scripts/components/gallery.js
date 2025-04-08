@@ -30,15 +30,11 @@ let currentPage = {};
 let totalPages = {};
 
 // Modal implementation for DaisyUI modal with checkbox toggle
+// Modal implementation for DaisyUI modal with checkbox toggle
 window.openModal = (imageUrl, caption, category, resetGallery = true) => {
   // For DaisyUI modal with checkbox toggle
   const modalToggle = document.getElementById('gallery-modal-toggle');
   if (!modalToggle) return;
-  
-  // Reset gallery collection if requested
-  if (resetGallery) {
-    // Will be set by the click handler
-  }
   
   // Update navigation button visibility
   const prevButton = document.getElementById('prev-button');
@@ -57,14 +53,36 @@ window.openModal = (imageUrl, caption, category, resetGallery = true) => {
   // Find elements, with fallbacks if they don't exist yet
   const modalImage = document.getElementById('modal-image');
   if (modalImage) {
-    // Show loading state
-    modalImage.classList.add('opacity-50');
+    // Important: Clear the src immediately to prevent showing old image
+    modalImage.src = '';
     
-    // Preload image to get dimensions
+    // Make sure the image is initially hidden
+    modalImage.classList.add('opacity-0');
+    
+    // Show skeleton in modal while loading
+    const modalSkeleton = document.getElementById('modal-skeleton');
+    if (modalSkeleton) {
+      modalSkeleton.classList.remove('hidden');
+    }
+    
+    // Preload image to get dimensions before setting the src
     const img = new Image();
+    
+    // When image is fully loaded, update the modal image
     img.onload = function() {
+      // Set the modal image src to the loaded image
       modalImage.src = imageUrl;
-      modalImage.classList.remove('opacity-50');
+      
+      // Hide skeleton when image is loaded
+      if (modalSkeleton) {
+        modalSkeleton.classList.add('hidden');
+      }
+      
+      // Add a small delay to ensure smooth transition
+      setTimeout(() => {
+        // Show the image with fade-in effect
+        modalImage.classList.remove('opacity-0');
+      }, 50);
       
       // Show the caption only if provided
       const modalTitle = document.getElementById('modal-title');
@@ -87,6 +105,22 @@ window.openModal = (imageUrl, caption, category, resetGallery = true) => {
       const downloadLink = document.getElementById('download-link');
       if (downloadLink) downloadLink.href = imageUrl;
     };
+    
+    // Handle errors in image loading
+    img.onerror = function() {
+      console.error('Failed to load image:', imageUrl);
+      
+      // Hide skeleton
+      if (modalSkeleton) {
+        modalSkeleton.classList.add('hidden');
+      }
+      
+      // Display error message
+      const modalTitle = document.getElementById('modal-title');
+      if (modalTitle) modalTitle.textContent = 'Error loading image';
+    };
+    
+    // Start loading the image
     img.src = imageUrl;
   }
   

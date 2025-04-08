@@ -271,27 +271,32 @@
       </svg>
     </button>
 
-    <!-- Image and Caption -->
-    <div class="flex flex-col h-full justify-center items-center p-4 md:p-8 lg:p-16">
-      <div class="max-w-7xl max-h-[80vh] bg-transparent rounded-lg overflow-hidden relative">
-        <img id="modal-image" src="" alt="" class="max-w-full max-h-[75vh] object-contain mx-auto">
+<!-- Image and Caption -->
+<div class="flex flex-col h-full justify-center items-center p-4 md:p-8 lg:p-16">
+  <div class="max-w-7xl max-h-[80vh] bg-transparent rounded-lg overflow-hidden relative image-container">
+    <!-- Skeleton loader that shows while image loads -->
+    <div id="modal-skeleton" class="skeleton w-full h-[75vh] rounded-lg absolute inset-0 z-10"></div>
+    
+    <!-- Image with initial opacity-0 to hide it until loaded -->
+    <img id="modal-image" src="" alt="" 
+      class="max-w-full max-h-[75vh] object-contain mx-auto opacity-0 transition-opacity duration-500 ease-in-out relative z-20">
 
-        <!-- Caption and Category -->
-        <div id="modal-caption" class="bg-black/50 text-white p-2 rounded">
-          <h3 id="modal-title" class="font-bold text-lg"></h3>
-          <p id="modal-category" class="text-sm hidden"></p>
-        </div>
-      </div>
-
-      <!-- Download Button -->
-      <div id="modal-download" class="mt-4">
-        <a id="download-link" href="#" download class="btn btn-primary text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 h-6 w-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-          </svg> Download
-        </a>
-      </div>
+    <!-- Caption and Category -->
+    <div id="modal-caption" class="bg-black/50 text-white p-2 rounded relative z-30">
+      <h3 id="modal-title" class="font-bold text-lg"></h3>
+      <p id="modal-category" class="text-sm hidden"></p>
     </div>
+  </div>
+
+  <!-- Download Button -->
+  <div id="modal-download" class="mt-4">
+    <a id="download-link" href="#" download class="btn btn-primary text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 h-6 w-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg> Download
+    </a>
+  </div>
+</div>
   </div>
 </div>
 
@@ -447,4 +452,44 @@
       height: 3rem;
     }
   }
+
+  .image-container {
+  position: relative;
+  min-height: 200px; /* Ensure a minimum height even when empty */
+}
+
+/* Positioning for the skeleton */
+.image-container .skeleton {
+  z-index: 1;
+}
+
+/* Position the image above the skeleton */
+.image-container img {
+  position: relative;
+  z-index: 2;
+}
+
+/* Fade-in transition effect for images */
+.opacity-0 {
+  opacity: 0;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
+}
+
+/* Ensure captions are always on top */
+#modal-caption {
+  position: relative;
+  z-index: 3;
+  margin-top: 0.5rem;
+}
+
+/* Modal skeleton specific styles */
+#modal-skeleton {
+  position: absolute;
+  inset: 0;
+}
 </style>
