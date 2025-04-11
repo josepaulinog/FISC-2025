@@ -39,7 +39,7 @@
   @foreach($years as $year)
   <div id="year-{{ $year['year'] }}" class="gallery-year mb-20" data-year="{{ $year['year'] }}" style="display: none;">
 <!-- Day Tabs -->
-<div class="tabs tabs-boxed mb-10 p-2">
+<div class="tabs tabs-boxed mb-10 p-2 flex flex-wrap justify-center">
   @for($i = 1; $i <= 5; $i++)
     @php
     // Count photos for this day
@@ -66,15 +66,32 @@
     @endphp
 
     @if($day_photos_count > 0)
-      <a class="h-auto tab tab-bordered day-tab {{ $i === 1 ? 'tab-active' : '' }}"
+      <a class="h-auto tab tab-bordered day-tab {{ $i === 1 ? 'tab-active' : '' }} w-full sm:w-1/2 md:w-auto"
         data-day="{{ $i }}"
         data-year="{{ $year['year'] }}">
-        <div class="flex flex-col items-center justify-center py-2 px-4"><div class="text-md font-medium">Day {{ $i }} </div><div class="text-lg font-medium">{{ $dayDates[$i] }}</div>
+        <div class="flex flex-col items-center justify-center py-2 px-4">
+          <div class="text-md font-medium">Day {{ $i }}</div>
+          <div class="text-lg font-medium">{{ $dayDates[$i] }}</div>
+          <div class="text-md font-medium">({{ $day_photos_count }} photos)</div>
         </div>
       </a>
     @endif
   @endfor
 </div>
+
+<style>
+  /* Additional responsive styling for the tabs */
+  @media (max-width: 640px) {
+    .tabs-boxed {
+      gap: 0.5rem;
+    }
+    
+    .tabs-boxed .tab {
+      margin: 0;
+      border-radius: 0.5rem;
+    }
+  }
+</style>
 
     <!-- Day Captions -->
     @if(isset($year['gallery_days']) && is_array($year['gallery_days']))
