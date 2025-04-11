@@ -80,9 +80,10 @@
 
     <!-- Desktop Category Filter Tabs (hidden on mobile) -->
     <div role="tablist" class="hidden md:flex mb-6 flex-wrap filter-tabs tabs tabs-lifted tabs-lg" data-year="{{ $year['year'] }}">
+      
       @php
       // Count photos for each category to show in filters
-      $categories = ['all' => 0, 'sessions' => 0, 'opening' => 0, 'closing' => 0, 'social' => 0, 'other' => 0];
+      $categories = ['all' => 0, 'cultural' => 0, 'dinner' => 0, 'workshop' => 0,'sessions' => 0, 'opening' => 0 ];
       if(isset($year['gallery_days']) && is_array($year['gallery_days'])) {
       foreach($year['gallery_days'] as $day) {
       if(isset($day['photos']) && is_array($day['photos'])) {
