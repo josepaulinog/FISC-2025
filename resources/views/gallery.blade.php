@@ -39,7 +39,7 @@
   @foreach($years as $year)
   <div id="year-{{ $year['year'] }}" class="gallery-year mb-20" data-year="{{ $year['year'] }}" style="display: none;">
 <!-- Day Tabs -->
-<div class="tabs tabs-boxed mb-10 p-2 flex flex-wrap justify-center">
+<div class="tabs tabs-boxed mb-10 p-2">
   @for($i = 1; $i <= 5; $i++)
     @php
     // Count photos for this day
@@ -78,20 +78,6 @@
     @endif
   @endfor
 </div>
-
-<style>
-  /* Additional responsive styling for the tabs */
-  @media (max-width: 640px) {
-    .tabs-boxed {
-      gap: 0.5rem;
-    }
-    
-    .tabs-boxed .tab {
-      margin: 0;
-      border-radius: 0.5rem;
-    }
-  }
-</style>
 
     <!-- Day Captions -->
     @if(isset($year['gallery_days']) && is_array($year['gallery_days']))
