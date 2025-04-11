@@ -38,30 +38,43 @@
 
   @foreach($years as $year)
   <div id="year-{{ $year['year'] }}" class="gallery-year mb-20" data-year="{{ $year['year'] }}" style="display: none;">
-    <!-- Day Tabs -->
-    <div class="tabs tabs-boxed mb-10 p-2">
-      @for($i = 1; $i <= 5; $i++)
-        @php
-        // Count photos for this day to show count
-        $day_photos_count=0;
-        $current_day_number=0;
-        if(isset($year['gallery_days']) && is_array($year['gallery_days'])) {
-        foreach($year['gallery_days'] as $day_index=> $day) {
+<!-- Day Tabs -->
+<div class="tabs tabs-boxed mb-10 p-2">
+  @for($i = 1; $i <= 5; $i++)
+    @php
+    // Count photos for this day
+    $day_photos_count = 0;
+    $current_day_number = 0;
+    if(isset($year['gallery_days']) && is_array($year['gallery_days'])) {
+      foreach($year['gallery_days'] as $day_index => $day) {
         // Use the explicit day_number field rather than array index
         $current_day_number = isset($day['day_number']) ? intval($day['day_number']) : ($day_index + 1);
         if($current_day_number == $i && isset($day['photos']) && is_array($day['photos'])) {
-        $day_photos_count = count($day['photos']);
+          $day_photos_count = count($day['photos']);
         }
-        }
-        }
-        @endphp
-        <a class="h-10 tab tab-bordered day-tab {{ $i === 1 ? 'tab-active' : '' }}"
-          data-day="{{ $i }}"
-          data-year="{{ $year['year'] }}">
-          Day {{ $i }} <span class="text-xs ml-1">({{ $day_photos_count }})</span>
-        </a>
-        @endfor
-    </div>
+      }
+    }
+    
+    // Define dates for each day
+    $dayDates = [
+      1 => 'April 6, 2025',
+      2 => 'April 7, 2025',
+      3 => 'April 8, 2025',
+      4 => 'April 9, 2025',
+      5 => 'April 10, 2025',
+    ];
+    @endphp
+
+    @if($day_photos_count > 0)
+      <a class="h-auto tab tab-bordered day-tab {{ $i === 1 ? 'tab-active' : '' }}"
+        data-day="{{ $i }}"
+        data-year="{{ $year['year'] }}">
+        <div class="flex flex-col items-center justify-center py-2 px-4"><div class="text-md font-medium">Day {{ $i }} </div><div class="text-lg font-medium">{{ $dayDates[$i] }}</div>
+        </div>
+      </a>
+    @endif
+  @endfor
+</div>
 
     <!-- Day Captions -->
     @if(isset($year['gallery_days']) && is_array($year['gallery_days']))
